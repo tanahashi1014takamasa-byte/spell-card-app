@@ -20,53 +20,84 @@ const cards = [
 
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<string[]>([]);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
-  const handleCardClick = (index: number) => {
-  setSelectedIndex(prev => (prev === index ? null : index));
+  const handleCardClick = (card: string) => {
+  setSelectedCard(prev => (prev === card ? null : card));
 };
 
   const drawCards = () => {
-    const shuffled = [...cards].sort(() => Math.random() - 0.5);
-    setDrawnCards(shuffled.slice(0, 2));
-    setSelectedIndex(null);
-  };
+  const shuffled = [...cards].sort(() => Math.random() - 0.5);
+  setDrawnCards(shuffled.slice(0, 2));
+  setSelectedCard(null);
+};
 
   return (
-    <main style={{ padding: 20, textAlign: "center", background: "#111", minHeight: "100vh", color: "white" }}>
+  <>
+    {selectedCard && (
+      <div
+        onClick={() => setSelectedCard(null)}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          background: "rgba(0,0,0,0.85)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 9999,
+        }}
+      >
+        <img
+          src={selectedCard}
+          style={{
+            width: "85vw",
+            maxWidth: "500px",
+            borderRadius: "12px",
+          }}
+        />
+      </div>
+    )}
+
+    <main
+      style={{
+        padding: 20,
+        textAlign: "center",
+        background: "#111",
+        minHeight: "100vh",
+        color: "white",
+      }}
+    >
       <h1>SPELL CARD SYSTEM</h1>
 
       <button onClick={drawCards}>カードを2枚引く</button>
 
-      <div style={{ marginTop: 20, display: "flex", justifyContent: "center", gap: 20 }}>
+      <div
+        style={{
+          marginTop: 20,
+          display: "flex",
+          justifyContent: "center",
+          gap: 20,
+        }}
+      >
         {drawnCards.map((card, index) => (
-          <div key={index}>
-            <img
-              src={card}
-              width={300}
-              onClick={() => handleCardClick(index)}
-              style={{
-  borderRadius: "12px",
-  boxShadow: selectedIndex === index
-    ? "0 0 40px rgba(255,255,255,0.8)"
-    : "0 0 20px rgba(255,255,255,0.3)",
-
-  transition: "0.3s",
-  cursor: "pointer",
-
-  position: selectedIndex === index ? "fixed" : "relative",
-  top: selectedIndex === index ? "50%" : "auto",
-  left: selectedIndex === index ? "50%" : "auto",
-  transform: selectedIndex === index
-    ? "translate(-50%, -50%) scale(1.5)"
-    : "scale(1)",
-
-  zIndex: selectedIndex === index ? 9999 : 1,
-}}
-            />
-          </div>
+          <img
+            key={index}
+            src={card}
+            onClick={() => handleCardClick(card)}
+            style={{
+              width: "40vw",
+              maxWidth: "300px",
+              borderRadius: "12px",
+              cursor: "pointer",
+              transition: "0.3s",
+            }}
+          />
         ))}
       </div>
     </main>
-  );
+  </>
+);
 }
