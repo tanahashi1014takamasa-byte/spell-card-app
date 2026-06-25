@@ -18,29 +18,41 @@ const cards = [
   "/cards/マグネットフォース.png",
 ];
 
+type DrawnCard = {
+  image: string;
+  revealed: boolean;
+};
+
 export default function Home() {
-  const [drawnCards, setDrawnCards] = useState<string[]>([]);
+  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const [isRevealing, setIsRevealing] = useState(false);
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
-    setDrawnCards([]);
+    setDrawnCards(
+      shuffled.slice(0, 2).map((card) => ({
+        image: card,
+        revealed: false,
+      }))
+    );
+
     setSelectedCard(null);
-    setIsRevealing(false);
-
-    setTimeout(() => {
-      setDrawnCards(shuffled.slice(0, 2));
-
-      setTimeout(() => {
-        setIsRevealing(true);
-      }, 400);
-    }, 50);
   };
 
-  const handleCardClick = (card: string) => {
-    setSelectedCard((prev) => (prev === card ? null : card));
+  const handleCardClick = (index: number) => {
+    const card = drawnCards[index];
+
+    // 裏ならめくる
+    if (!card.revealed) {
+      const updated = [...drawnCards];
+      updated[index].revealed = true;
+      setDrawnCards(updated);
+      return;
+    }
+
+    // 表なら拡大
+    setSelectedCard(card.image);
   };
 
   return (
@@ -103,26 +115,25 @@ export default function Home() {
             display: "flex",
             justifyContent: "center",
             gap: 20,
+            flexWrap: "wrap",
           }}
         >
           {drawnCards.map((card, index) => (
             <img
-              key={`${card}-${index}`}
-              src={isRevealing ? card : "/cards/back.png"}
-              onClick={() => handleCardClick(card)}
+              key={index}
+              src={
+                card.revealed
+                  ? card.image
+                  : "/cards/back.png"
+              }
+              onClick={() => handleCardClick(index)}
               style={{
                 width: "40vw",
                 maxWidth: "300px",
                 borderRadius: "12px",
                 cursor: "pointer",
-
-                transition: "transform 0.6s ease",
-
-                transform: isRevealing
-                  ? "rotateY(0deg)"
-                  : "rotateY(180deg)",
-
-                backfaceVisibility: "hidden",
+                transition: "0.4s",
+                animation: "cardPop 0.8s ease forwards",
               }}
             />
           ))}
