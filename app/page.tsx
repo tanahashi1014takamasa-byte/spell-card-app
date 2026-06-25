@@ -96,7 +96,18 @@ export default function Home() {
           color: "white",
         }}
       >
-        <h1>SPELL CARD SYSTEM</h1>
+        <h1
+  style={{
+    fontFamily: "var(--font-cinzel)",
+    fontSize: "38px",
+    letterSpacing: "3px",
+    color: "#f5f5f5",
+    marginBottom: "20px",
+    textShadow: "0 0 10px rgba(255,255,255,0.15)",
+  }}
+>
+  SPELL CARD SYSTEM
+</h1>
 
         <button
           onClick={drawCards}
