@@ -23,8 +23,8 @@ export default function Home() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const handleCardClick = (index: number) => {
-    setSelectedIndex(index);
-  };
+  setSelectedIndex(prev => (prev === index ? null : index));
+};
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -46,13 +46,23 @@ export default function Home() {
               width={300}
               onClick={() => handleCardClick(index)}
               style={{
-                borderRadius: 12,
-                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
-                transition: "0.3s",
-                transform: selectedIndex === index ? "scale(1.3)" : "scale(1)",
-                cursor: "pointer",
-                position: "relative",
-              }}
+  borderRadius: "12px",
+  boxShadow: selectedIndex === index
+    ? "0 0 40px rgba(255,255,255,0.8)"
+    : "0 0 20px rgba(255,255,255,0.3)",
+
+  transition: "0.3s",
+  cursor: "pointer",
+
+  position: selectedIndex === index ? "fixed" : "relative",
+  top: selectedIndex === index ? "50%" : "auto",
+  left: selectedIndex === index ? "50%" : "auto",
+  transform: selectedIndex === index
+    ? "translate(-50%, -50%) scale(1.5)"
+    : "scale(1)",
+
+  zIndex: selectedIndex === index ? 9999 : 1,
+}}
             />
           </div>
         ))}
