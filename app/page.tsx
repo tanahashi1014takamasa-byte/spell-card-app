@@ -27,6 +27,12 @@ export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
+  const flipSound = () => {
+    const audio = new Audio("/sounds/flip.mp3");
+    audio.volume = 0.7;
+    audio.play();
+  };
+
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
@@ -43,13 +49,17 @@ export default function Home() {
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
 
+    // 裏ならめくる
     if (!card.revealed) {
+      flipSound();
+
       const updated = [...drawnCards];
       updated[index].revealed = true;
       setDrawnCards(updated);
       return;
     }
 
+    // 表なら拡大
     setSelectedCard(card.image);
   };
 
