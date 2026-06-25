@@ -106,7 +106,7 @@ export default function Home() {
     textShadow: "0 0 10px rgba(255,255,255,0.15)",
   }}
 >
-  SPELL CARD SYSTEM
+  SPELL CARD
 </h1>
 
         <button
