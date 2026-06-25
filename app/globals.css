@@ -79,3 +79,17 @@ body {
 .card-back {
   transform: rotateY(0deg);
 }
+
+@keyframes rarePulse {
+  0% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.25);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
