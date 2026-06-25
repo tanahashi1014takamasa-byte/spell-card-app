@@ -1,77 +1,19 @@
 @import "tailwindcss";
 
-/* ===== 基本テーマ ===== */
-
+/* ===== ベース ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0b0b0b;
+  --foreground: #f2f2f2;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== カード出現 ===== */
-
-@keyframes cardPop {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ===== レアカード発光 ===== */
-
-@keyframes rareGlow {
-  0% {
-    box-shadow:
-      0 0 10px gold,
-      0 0 20px gold;
-  }
-
-  50% {
-    box-shadow:
-      0 0 30px gold,
-      0 0 60px gold,
-      0 0 120px orange;
-  }
-
-  100% {
-    box-shadow:
-      0 0 10px gold,
-      0 0 20px gold;
-  }
-}
-
-.rare-card {
-  animation: rareGlow 1.8s infinite;
-  border-radius: 12px;
-  outline: 4px solid gold;
-  transform: scale(1.03);
-}
-
-/* ===== 3Dカードめくり ===== */
+/* ===== 3Dカードめくり（最小構成）===== */
 
 .card-container {
   perspective: 1000px;
@@ -81,7 +23,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
 }
@@ -95,17 +36,18 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-
-  border-radius: 12px;
-
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* 表 */
 .card-front {
   transform: rotateY(180deg);
 }
 
+/* 裏 */
 .card-back {
   transform: rotateY(0deg);
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-/* ===== カードデータ ===== */
 const cards = [
   "/cards/カース.png",
   "/cards/グングニル.png",
@@ -19,12 +18,6 @@ const cards = [
   "/cards/マグネットフォース.png",
 ];
 
-/* ===== レア管理（拡張可能）===== */
-const cardMeta: Record<string, { rarity?: "rare" }> = {
-  "/cards/パーム・ストライク.png": { rarity: "rare" },
-};
-
-/* ===== 型 ===== */
 type DrawnCard = {
   image: string;
   revealed: boolean;
@@ -33,7 +26,6 @@ type DrawnCard = {
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const [log, setLog] = useState<string[]>([]);
 
   /* ===== ドロー ===== */
   const drawCards = () => {
@@ -47,7 +39,12 @@ export default function Home() {
     );
 
     setSelectedCard(null);
-    setLog([]);
+  };
+
+  /* ===== 音（めくった時） ===== */
+  const playSound = () => {
+    const audio = new Audio("/sounds/flip.mp3");
+    audio.play();
   };
 
   /* ===== カードクリック ===== */
@@ -55,36 +52,20 @@ export default function Home() {
     const card = drawnCards[index];
 
     if (!card.revealed) {
-      revealCard(index);
+      const updated = [...drawnCards];
+      updated[index].revealed = true;
+      setDrawnCards(updated);
+
+      playSound();
       return;
     }
 
     setSelectedCard(card.image);
   };
 
-  /* ===== カード開示 ===== */
-  const revealCard = (index: number) => {
-    setDrawnCards((prev) =>
-      prev.map((card, i) =>
-        i === index ? { ...card, revealed: true } : card
-      )
-    );
-
-    const card = drawnCards[index];
-
-    setLog((prev) => [
-      `▶ ${card.image.split("/").pop()?.replace(".png", "")} 発動！`,
-      ...prev,
-    ]);
-  };
-
-  /* ===== レア判定 ===== */
-  const isRare = (image: string, revealed: boolean) =>
-    cardMeta[image]?.rarity === "rare" && revealed;
-
   return (
     <>
-      {/* ===== 拡大表示 ===== */}
+      {/* 拡大表示 */}
       {selectedCard && (
         <div
           onClick={() => setSelectedCard(null)}
@@ -118,114 +99,68 @@ export default function Home() {
           color: "white",
         }}
       >
-        {/* ===== タイトル ===== */}
-        <h1
-          style={{
-            fontFamily: "var(--font-cinzel)",
-            fontSize: "38px",
-            letterSpacing: "3px",
-            marginBottom: "20px",
-            textShadow: "0 0 10px rgba(255,255,255,0.15)",
-          }}
-        >
+        <h1 style={{ fontSize: "32px", marginBottom: 20 }}>
           SPELL CARD SYSTEM
         </h1>
 
-        {/* ===== ドローボタン ===== */}
         <button
           onClick={drawCards}
           style={{
-            padding: "18px 42px",
-            fontSize: "22px",
-            fontWeight: "900",
-            color: "#fff",
-            background:
-              "linear-gradient(180deg, #ff1a1a 0%, #8b0000 50%, #250000 100%)",
-            border: "2px solid #ff5555",
-            borderRadius: "14px",
+            padding: "16px 36px",
+            fontSize: "20px",
+            fontWeight: "bold",
+            background: "#8b0000",
+            color: "white",
+            border: "none",
+            borderRadius: "10px",
             cursor: "pointer",
-            marginTop: "20px",
-            boxShadow:
-              "0 0 10px rgba(255,0,0,0.6), 0 0 30px rgba(120,0,0,0.5)",
           }}
         >
-          なんとかなれーッ！！
+          ドロー
         </button>
 
-        {/* ===== カード表示 ===== */}
         <div
           style={{
-            marginTop: 20,
+            marginTop: 30,
             display: "flex",
             justifyContent: "center",
             gap: 20,
-            flexWrap: "wrap",
           }}
         >
-          {drawnCards.map((card, index) => {
-            const rare = isRare(card.image, card.revealed);
-
-            return (
+          {drawnCards.map((card, index) => (
+            <div
+              key={index}
+              className="card-container"
+              style={{
+                width: "40vw",
+                maxWidth: "300px",
+                aspectRatio: "63 / 88",
+              }}
+              onClick={() => handleCardClick(index)}
+            >
               <div
-                key={index}
-                className={`card-container ${
-                  rare ? "rare-card" : ""
+                className={`card-inner ${
+                  card.revealed ? "flipped" : ""
                 }`}
-                style={{
-                  width: "40vw",
-                  maxWidth: "300px",
-                  aspectRatio: "63 / 88",
-                  animation: "cardPop 0.8s ease forwards",
-                }}
-                onClick={() => handleCardClick(index)}
               >
-                <div
-                  className={`card-inner ${
-                    card.revealed ? "flipped" : ""
-                  }`}
-                >
-                  {/* 裏 */}
-                  <div className="card-back">
-                    <img
-                      src="/cards/back.png"
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </div>
+                {/* 裏 */}
+                <div className="card-back">
+                  <img
+                    src="/cards/back.png"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </div>
 
-                  {/* 表 */}
-                  <div className="card-front">
-                    <img
-                      src={card.image}
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </div>
+                {/* 表 */}
+                <div className="card-front">
+                  <img
+                    src={card.image}
+                    style={{ width: "100%", height: "100%" }}
+                  />
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* ===== ログ ===== */}
-        <div style={{ marginTop: 40, textAlign: "left", maxWidth: 500, marginInline: "auto" }}>
-          {log.map((l, i) => (
-            <div key={i} style={{ opacity: 0.8, marginBottom: 6 }}>
-              {l}
             </div>
           ))}
-        </div>
-
-        {/* ===== 下画像 ===== */}
-        <div
-          style={{
-            marginTop: "60px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            src="/images/yah.png"
-            style={{ width: "220px", height: "auto" }}
-          />
         </div>
       </main>
     </>
