@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+/* ===== 基本テーマ ===== */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Tailwind用テーマ変数 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,6 +14,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* ダークモード */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +22,21 @@
   }
 }
 
+/* ベース */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== カード出現アニメ ===== */
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
