@@ -69,9 +69,32 @@ export default function Home() {
       >
         <h1>SPELL CARD SYSTEM</h1>
 
-        <button onClick={drawCards}>
-          なんとかなれーッ！！
-        </button>
+        <button
+  onClick={drawCards}
+  style={{
+    padding: "16px 32px",
+    fontSize: "20px",
+    fontWeight: "bold",
+    color: "#fff",
+    background: "linear-gradient(135deg, #333, #111)",
+    border: "2px solid #666",
+    borderRadius: "12px",
+    cursor: "pointer",
+    transition: "0.2s",
+    boxShadow: "0 0 15px rgba(255,255,255,0.1)",
+  }}
+  onMouseDown={(e) => {
+    (e.currentTarget as HTMLButtonElement).style.transform = "scale(0.95)";
+  }}
+  onMouseUp={(e) => {
+    (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+  }}
+  onMouseLeave={(e) => {
+    (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+  }}
+>
+  なんとかなれーッ！！
+</button>
 
         <div
           style={{
