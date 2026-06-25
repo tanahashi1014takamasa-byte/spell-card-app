@@ -21,11 +21,22 @@ const cards = [
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<string[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [isRevealing, setIsRevealing] = useState(false);
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
-    setDrawnCards(shuffled.slice(0, 2));
+
+    setDrawnCards([]);
     setSelectedCard(null);
+    setIsRevealing(false);
+
+    setTimeout(() => {
+      setDrawnCards(shuffled.slice(0, 2));
+
+      setTimeout(() => {
+        setIsRevealing(true);
+      }, 400);
+    }, 50);
   };
 
   const handleCardClick = (card: string) => {
@@ -34,7 +45,6 @@ export default function Home() {
 
   return (
     <>
-      {/* fullscreen overlay */}
       {selectedCard && (
         <div
           onClick={() => setSelectedCard(null)}
@@ -70,7 +80,6 @@ export default function Home() {
       >
         <h1>SPELL CARD SYSTEM</h1>
 
-        {/* ボタン */}
         <button
           onClick={drawCards}
           style={{
@@ -88,7 +97,6 @@ export default function Home() {
           なんとかなれーッ！！
         </button>
 
-        {/* カード表示 */}
         <div
           style={{
             marginTop: 20,
@@ -98,20 +106,26 @@ export default function Home() {
           }}
         >
           {drawnCards.map((card, index) => (
-  <img
-    key={`${card}-${Date.now()}-${index}`}
-    src={card}
-    onClick={() => handleCardClick(card)}
-    style={{
-      width: "40vw",
-      maxWidth: "300px",
-      borderRadius: "12px",
-      cursor: "pointer",
+            <img
+              key={`${card}-${index}`}
+              src={isRevealing ? card : "/cards/back.png"}
+              onClick={() => handleCardClick(card)}
+              style={{
+                width: "40vw",
+                maxWidth: "300px",
+                borderRadius: "12px",
+                cursor: "pointer",
 
-      animation: `cardPop 0.8s ease forwards`,
-    }}
-  />
-))}
+                transition: "transform 0.6s ease",
+
+                transform: isRevealing
+                  ? "rotateY(0deg)"
+                  : "rotateY(180deg)",
+
+                backfaceVisibility: "hidden",
+              }}
+            />
+          ))}
         </div>
       </main>
     </>
