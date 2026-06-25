@@ -6,7 +6,6 @@
   --foreground: #171717;
 }
 
-/* Tailwind用テーマ変数 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,7 +13,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* ダークモード */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,26 +20,55 @@
   }
 }
 
-/* ベース */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== カード出現アニメ ===== */
+/* ===== カード出現 ===== */
+
 @keyframes cardPop {
   0% {
     opacity: 0;
     transform: translateY(20px) scale(0.9);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-/* ===== 3Dカードめくり ===== */
+/* ===== レア発光 ===== */
+
+@keyframes rareGlow {
+  0% {
+    box-shadow:
+      0 0 10px gold,
+      0 0 20px gold;
+  }
+
+  50% {
+    box-shadow:
+      0 0 25px gold,
+      0 0 50px orange,
+      0 0 80px gold;
+  }
+
+  100% {
+    box-shadow:
+      0 0 10px gold,
+      0 0 20px gold;
+  }
+}
+
+.rare-card {
+  animation: rareGlow 1.8s infinite;
+  border-radius: 12px;
+}
+
+/* ===== 3Dめくり ===== */
 
 .card-container {
   perspective: 1000px;
@@ -78,18 +105,4 @@ body {
 
 .card-back {
   transform: rotateY(0deg);
-}
-
-@keyframes rarePulse {
-  0% {
-    filter: brightness(1);
-  }
-
-  50% {
-    filter: brightness(1.25);
-  }
-
-  100% {
-    filter: brightness(1);
-  }
 }
