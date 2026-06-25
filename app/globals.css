@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 /* ===== 基本テーマ ===== */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -40,7 +41,7 @@ body {
   }
 }
 
-/* ===== レア発光 ===== */
+/* ===== レアカード発光 ===== */
 
 @keyframes rareGlow {
   0% {
@@ -51,9 +52,9 @@ body {
 
   50% {
     box-shadow:
-      0 0 25px gold,
-      0 0 50px orange,
-      0 0 80px gold;
+      0 0 30px gold,
+      0 0 60px gold,
+      0 0 120px orange;
   }
 
   100% {
@@ -66,9 +67,11 @@ body {
 .rare-card {
   animation: rareGlow 1.8s infinite;
   border-radius: 12px;
+  outline: 4px solid gold;
+  transform: scale(1.03);
 }
 
-/* ===== 3Dめくり ===== */
+/* ===== 3Dカードめくり ===== */
 
 .card-container {
   perspective: 1000px;

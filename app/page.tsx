@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+/* ===== カードデータ ===== */
 const cards = [
   "/cards/カース.png",
   "/cards/グングニル.png",
@@ -18,17 +19,23 @@ const cards = [
   "/cards/マグネットフォース.png",
 ];
 
+/* ===== レア管理（拡張可能）===== */
+const cardMeta: Record<string, { rarity?: "rare" }> = {
+  "/cards/パーム・ストライク.png": { rarity: "rare" },
+};
+
+/* ===== 型 ===== */
 type DrawnCard = {
   image: string;
   revealed: boolean;
 };
 
-const RARE_CARD = "/cards/パーム・ストライク.png";
-
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [log, setLog] = useState<string[]>([]);
 
+  /* ===== ドロー ===== */
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
@@ -40,23 +47,44 @@ export default function Home() {
     );
 
     setSelectedCard(null);
+    setLog([]);
   };
 
+  /* ===== カードクリック ===== */
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
 
     if (!card.revealed) {
-      const updated = [...drawnCards];
-      updated[index].revealed = true;
-      setDrawnCards(updated);
+      revealCard(index);
       return;
     }
 
     setSelectedCard(card.image);
   };
 
+  /* ===== カード開示 ===== */
+  const revealCard = (index: number) => {
+    setDrawnCards((prev) =>
+      prev.map((card, i) =>
+        i === index ? { ...card, revealed: true } : card
+      )
+    );
+
+    const card = drawnCards[index];
+
+    setLog((prev) => [
+      `▶ ${card.image.split("/").pop()?.replace(".png", "")} 発動！`,
+      ...prev,
+    ]);
+  };
+
+  /* ===== レア判定 ===== */
+  const isRare = (image: string, revealed: boolean) =>
+    cardMeta[image]?.rarity === "rare" && revealed;
+
   return (
     <>
+      {/* ===== 拡大表示 ===== */}
       {selectedCard && (
         <div
           onClick={() => setSelectedCard(null)}
@@ -90,12 +118,12 @@ export default function Home() {
           color: "white",
         }}
       >
+        {/* ===== タイトル ===== */}
         <h1
           style={{
             fontFamily: "var(--font-cinzel)",
             fontSize: "38px",
             letterSpacing: "3px",
-            color: "#f5f5f5",
             marginBottom: "20px",
             textShadow: "0 0 10px rgba(255,255,255,0.15)",
           }}
@@ -103,6 +131,7 @@ export default function Home() {
           SPELL CARD SYSTEM
         </h1>
 
+        {/* ===== ドローボタン ===== */}
         <button
           onClick={drawCards}
           style={{
@@ -118,13 +147,12 @@ export default function Home() {
             marginTop: "20px",
             boxShadow:
               "0 0 10px rgba(255,0,0,0.6), 0 0 30px rgba(120,0,0,0.5)",
-            textShadow:
-              "0 0 6px rgba(255,255,255,0.4), 0 0 12px rgba(255,0,0,0.8)",
           }}
         >
           なんとかなれーッ！！
         </button>
 
+        {/* ===== カード表示 ===== */}
         <div
           style={{
             marginTop: 20,
@@ -135,14 +163,13 @@ export default function Home() {
           }}
         >
           {drawnCards.map((card, index) => {
-            const isRare =
-              card.image === RARE_CARD && card.revealed;
+            const rare = isRare(card.image, card.revealed);
 
             return (
               <div
                 key={index}
                 className={`card-container ${
-                  isRare ? "rare-card" : ""
+                  rare ? "rare-card" : ""
                 }`}
                 style={{
                   width: "40vw",
@@ -157,21 +184,37 @@ export default function Home() {
                     card.revealed ? "flipped" : ""
                   }`}
                 >
-                  <img
-                    src="/cards/back.png"
-                    className="card-back"
-                  />
+                  {/* 裏 */}
+                  <div className="card-back">
+                    <img
+                      src="/cards/back.png"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
 
-                  <img
-                    src={card.image}
-                    className="card-front"
-                  />
+                  {/* 表 */}
+                  <div className="card-front">
+                    <img
+                      src={card.image}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
 
+        {/* ===== ログ ===== */}
+        <div style={{ marginTop: 40, textAlign: "left", maxWidth: 500, marginInline: "auto" }}>
+          {log.map((l, i) => (
+            <div key={i} style={{ opacity: 0.8, marginBottom: 6 }}>
+              {l}
+            </div>
+          ))}
+        </div>
+
+        {/* ===== 下画像 ===== */}
         <div
           style={{
             marginTop: "60px",
@@ -181,11 +224,7 @@ export default function Home() {
         >
           <img
             src="/images/yah.png"
-            alt="yah"
-            style={{
-              width: "220px",
-              height: "auto",
-            }}
+            style={{ width: "220px", height: "auto" }}
           />
         </div>
       </main>
