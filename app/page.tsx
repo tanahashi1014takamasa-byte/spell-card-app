@@ -49,7 +49,6 @@ export default function Home() {
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
 
-    // 裏ならめくる
     if (!card.revealed) {
       flipSound();
 
@@ -59,7 +58,6 @@ export default function Home() {
       return;
     }
 
-    // 表なら拡大
     setSelectedCard(card.image);
   };
 
@@ -155,6 +153,23 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div
+          style={{
+            marginTop: "60px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src="/images/yah.png"
+            alt="yah"
+            style={{
+              width: "220px",
+              height: "auto",
+            }}
+          />
         </div>
       </main>
     </>
