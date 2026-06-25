@@ -43,7 +43,6 @@ export default function Home() {
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
 
-    // 裏ならめくる
     if (!card.revealed) {
       const updated = [...drawnCards];
       updated[index].revealed = true;
@@ -51,7 +50,6 @@ export default function Home() {
       return;
     }
 
-    // 表なら拡大
     setSelectedCard(card.image);
   };
 
@@ -119,23 +117,33 @@ export default function Home() {
           }}
         >
           {drawnCards.map((card, index) => (
-            <img
+            <div
               key={index}
-              src={
-                card.revealed
-                  ? card.image
-                  : "/cards/back.png"
-              }
-              onClick={() => handleCardClick(index)}
+              className="card-container"
               style={{
                 width: "40vw",
                 maxWidth: "300px",
-                borderRadius: "12px",
-                cursor: "pointer",
-                transition: "0.4s",
+                aspectRatio: "63 / 88",
                 animation: "cardPop 0.8s ease forwards",
               }}
-            />
+              onClick={() => handleCardClick(index)}
+            >
+              <div
+                className={`card-inner ${
+                  card.revealed ? "flipped" : ""
+                }`}
+              >
+                <img
+                  src="/cards/back.png"
+                  className="card-back"
+                />
+
+                <img
+                  src={card.image}
+                  className="card-front"
+                />
+              </div>
+            </div>
           ))}
         </div>
       </main>
