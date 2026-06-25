@@ -27,7 +27,12 @@ export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
-  /* ===== ドロー ===== */
+  const flipSound = () => {
+    const audio = new Audio("/sounds/flip.mp3");
+    audio.volume = 0.7;
+    audio.play();
+  };
+
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
@@ -41,31 +46,25 @@ export default function Home() {
     setSelectedCard(null);
   };
 
-  /* ===== 音（めくった時） ===== */
-  const playSound = () => {
-    const audio = new Audio("/sounds/flip.mp3");
-    audio.play();
-  };
-
-  /* ===== カードクリック ===== */
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
 
+    // 裏ならめくる
     if (!card.revealed) {
+      flipSound();
+
       const updated = [...drawnCards];
       updated[index].revealed = true;
       setDrawnCards(updated);
-
-      playSound();
       return;
     }
 
+    // 表なら拡大
     setSelectedCard(card.image);
   };
 
   return (
     <>
-      {/* 拡大表示 */}
       {selectedCard && (
         <div
           onClick={() => setSelectedCard(null)}
@@ -99,32 +98,32 @@ export default function Home() {
           color: "white",
         }}
       >
-        <h1 style={{ fontSize: "32px", marginBottom: 20 }}>
-          SPELL CARD SYSTEM
-        </h1>
+        <h1>SPELL CARD SYSTEM</h1>
 
         <button
           onClick={drawCards}
           style={{
-            padding: "16px 36px",
+            padding: "16px 32px",
             fontSize: "20px",
             fontWeight: "bold",
-            background: "#8b0000",
-            color: "white",
-            border: "none",
-            borderRadius: "10px",
+            color: "#fff",
+            background: "linear-gradient(135deg, #333, #111)",
+            border: "2px solid #666",
+            borderRadius: "12px",
             cursor: "pointer",
+            marginTop: "20px",
           }}
         >
-          ドロー
+          なんとかなれーッ！！
         </button>
 
         <div
           style={{
-            marginTop: 30,
+            marginTop: 20,
             display: "flex",
             justifyContent: "center",
             gap: 20,
+            flexWrap: "wrap",
           }}
         >
           {drawnCards.map((card, index) => (
@@ -135,6 +134,7 @@ export default function Home() {
                 width: "40vw",
                 maxWidth: "300px",
                 aspectRatio: "63 / 88",
+                animation: "cardPop 0.8s ease forwards",
               }}
               onClick={() => handleCardClick(index)}
             >
@@ -143,21 +143,15 @@ export default function Home() {
                   card.revealed ? "flipped" : ""
                 }`}
               >
-                {/* 裏 */}
-                <div className="card-back">
-                  <img
-                    src="/cards/back.png"
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </div>
+                <img
+                  src="/cards/back.png"
+                  className="card-back"
+                />
 
-                {/* 表 */}
-                <div className="card-front">
-                  <img
-                    src={card.image}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </div>
+                <img
+                  src={card.image}
+                  className="card-front"
+                />
               </div>
             </div>
           ))}
