@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const cards = [
   "/cards/カース.png",
@@ -25,6 +25,8 @@ type DrawnCard = {
 };
 
 export default function Home() {
+  const bgmRef = useRef<HTMLAudioElement | null>(null);
+
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [isZooming, setIsZooming] = useState(false);
@@ -32,22 +34,22 @@ export default function Home() {
   const [isHomeRun, setIsHomeRun] = useState(false);
 
   useEffect(() => {
-  const bgm = new Audio("/sounds/Neraiuchi.mp3");
-  bgm.loop = true;
-  bgm.volume = 0.3;
+    const bgm = new Audio("/sounds/Neraiuchi.mp3");
+    bgm.loop = true;
+    bgm.volume = 0.3;
 
-  bgmRef.current = bgm;
+    bgmRef.current = bgm;
 
-  const startBgm = () => {
-    bgm.play().catch(() => {});
-  };
+    const startBgm = () => {
+      bgm.play().catch(() => {});
+    };
 
-  document.addEventListener("click", startBgm, { once: true });
+    document.addEventListener("click", startBgm, { once: true });
 
-  return () => {
-    bgm.pause();
-  };
-}, []);
+    return () => {
+      bgm.pause();
+    };
+  }, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -69,33 +71,27 @@ export default function Home() {
   };
 
   const handleCardClick = (index: number) => {
-
     if (isHomeRun) return;
 
     const card = drawnCards[index];
-
     const chance = Math.random();
 
-if (chance < 0.5) {
-  const videos = [
-    "/videos/home-run-1.mp4",
-    "/videos/home-run-2.mp4",
-  ];
+    if (chance < 0.5) {
+      bgmRef.current?.pause();
 
-  const randomVideo =
-    videos[Math.floor(Math.random() * videos.length)];
+      const videos = [
+        "/videos/home-run-1.mp4",
+        "/videos/home-run-2.mp4",
+      ];
 
-  setIsHomeRun(true);
-  setZoomImage(randomVideo);
+      const randomVideo =
+        videos[Math.floor(Math.random() * videos.length)];
 
-  setTimeout(() => {
-  setIsHomeRun(false);
-}, 3000);
+      setIsHomeRun(true);
+      setZoomImage(randomVideo);
 
-
-
-  return;
-}
+      return;
+    }
 
     if (!card.revealed) {
       flipSound();
@@ -106,167 +102,84 @@ if (chance < 0.5) {
       return;
     }
 
-     // ★ここが「間」
-  setIsZooming(true);
+    setIsZooming(true);
 
-  setTimeout(() => {
-    setZoomImage(card.image);
-    setIsZooming(false);
-  }, 150);
-};
+    setTimeout(() => {
+      setZoomImage(card.image);
+      setIsZooming(false);
+    }, 150);
+  };
 
- return (
-  <>
-    {zoomImage && (
-  <div
-    onClick={() => setZoomImage(null)}
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.85)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999,
-    }}
-  >
-    {zoomImage.endsWith(".mp4") ? (
-      <video
-  src={zoomImage}
-  autoPlay
-  muted
-  playsInline
-  onEnded={() => {
-    setZoomImage(null);
-    setIsHomeRun(false);
-  }}
-  style={{
-    width: "85vw",
-    maxWidth: "500px",
-    borderRadius: "12px",
-  }}
-/>
-    ) : (
-      <img
-        src={zoomImage}
-        style={{
-          width: "85vw",
-          maxWidth: "500px",
-          borderRadius: "12px",
-          animation: "zoomIn 0.2s ease-out",
-        }}
-      />
-    )}
-  </div>
-)}
-
-    {/* ★ここに追加 */}
-    {isZooming && (
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(0,0,0,0.95)",
-          zIndex: 9998,
-        }}
-      />
-    )}
-
-    <main
-      style={{
-        padding: 20,
-        textAlign: "center",
-        background: "#111",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
-      
-        <h1
-  style={{
-    fontFamily: "var(--font-cinzel)",
-    fontSize: "38px",
-    letterSpacing: "3px",
-    color: "#f5f5f5",
-    marginBottom: "20px",
-    textShadow: "0 0 10px rgba(255,255,255,0.15)",
-  }}
->
-  SPELL CARD
-</h1>
-
-        <button
-          onClick={drawCards}
+  return (
+    <>
+      {zoomImage && (
+        <div
+          onClick={() => setZoomImage(null)}
           style={{
-            padding: "16px 32px",
-            fontSize: "20px",
-            fontWeight: "bold",
-            color: "#fff",
-            background: "linear-gradient(135deg, #333, #111)",
-            border: "2px solid #666",
-            borderRadius: "12px",
-            cursor: "pointer",
-            marginTop: "20px",
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.85)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
           }}
         >
+          {zoomImage && zoomImage.endsWith(".mp4") ? (
+            <video
+              src={zoomImage}
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => {
+                setZoomImage(null);
+                setIsHomeRun(false);
+                bgmRef.current?.play().catch(() => {});
+              }}
+              style={{
+                width: "85vw",
+                maxWidth: "500px",
+                borderRadius: "12px",
+              }}
+            />
+          ) : (
+            <img
+              src={zoomImage}
+              style={{
+                width: "85vw",
+                maxWidth: "500px",
+                borderRadius: "12px",
+                animation: "zoomIn 0.2s ease-out",
+              }}
+            />
+          )}
+        </div>
+      )}
+
+      {isZooming && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.95)",
+            zIndex: 9998,
+          }}
+        />
+      )}
+
+      <main style={{ padding: 20, textAlign: "center", background: "#111", minHeight: "100vh", color: "white" }}>
+        <h1>SPELL CARD</h1>
+
+        <button onClick={drawCards}>
           なんとかなれーッ！！
         </button>
 
-        <div
-          style={{
-            marginTop: 20,
-            display: "flex",
-            justifyContent: "center",
-            gap: 20,
-            flexWrap: "wrap",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "center", gap: 20 }}>
           {drawnCards.map((card, index) => (
-            <div
-              key={index}
-              className="card-container"
-              style={{
-                width: "40vw",
-                maxWidth: "300px",
-                aspectRatio: "63 / 88",
-                animation: "cardPop 0.8s ease forwards",
-              }}
-              onClick={() => handleCardClick(index)}
-            >
-              <div
-                className={`card-inner ${
-                  card.revealed ? "flipped" : ""
-                }`}
-              >
-                <img
-                  src="/cards/back.png"
-                  className="card-back"
-                />
-
-                <img
-                  src={card.image}
-                  className="card-front"
-                />
-              </div>
+            <div key={index} onClick={() => handleCardClick(index)}>
+              <img src={card.image} />
             </div>
           ))}
-        </div>
-
-        <div
-          style={{
-            marginTop: "60px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            src="/images/yah.png"
-            alt="yah"
-            style={{
-              width: "220px",
-              height: "auto",
-            }}
-          />
         </div>
       </main>
     </>
