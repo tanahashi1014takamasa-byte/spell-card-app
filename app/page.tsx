@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const cards = [
   "/cards/カース.png",
@@ -26,6 +26,24 @@ type DrawnCard = {
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
+
+  
+
+  useEffect(() => {
+    const bgm = new Audio("/sounds/Neraiuchi.mp3");
+    bgm.loop = true;
+    bgm.volume = 0.3;
+
+    const startBgm = () => {
+      bgm.play().catch(() => {});
+    };
+
+    document.addEventListener("click", startBgm, { once: true });
+
+    return () => {
+      bgm.pause();
+    };
+  }, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
