@@ -26,8 +26,8 @@ type DrawnCard = {
 export default function Home() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-
-  
+  const [isZooming, setIsZooming] = useState(false);
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -76,44 +76,66 @@ export default function Home() {
       return;
     }
 
-    setSelectedCard(card.image);
-  };
+     // ★ここが「間」
+  setIsZooming(true);
 
-  return (
-    <>
-      {selectedCard && (
-        <div
-          onClick={() => setSelectedCard(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.85)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 9999,
-          }}
-        >
-          <img
-            src={selectedCard}
-            style={{
-              width: "85vw",
-              maxWidth: "500px",
-              borderRadius: "12px",
-            }}
-          />
-        </div>
-      )}
+  setTimeout(() => {
+    setZoomImage(card.image);
+    setIsZooming(false);
+  }, 150);
+};
 
-      <main
+ return (
+  <>
+    {zoomImage && (
+  <div
+    onClick={() => setZoomImage(null)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <img
+      src={zoomImage}
+      style={{
+        width: "85vw",
+        maxWidth: "500px",
+        borderRadius: "12px",
+
+        // ★ここが“ヌルっと感”
+        animation: "zoomIn 0.2s ease-out",
+      }}
+    />
+  </div>
+)}
+
+    {/* ★ここに追加 */}
+    {isZooming && (
+      <div
         style={{
-          padding: 20,
-          textAlign: "center",
-          background: "#111",
-          minHeight: "100vh",
-          color: "white",
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.95)",
+          zIndex: 9998,
         }}
-      >
+      />
+    )}
+
+    <main
+      style={{
+        padding: 20,
+        textAlign: "center",
+        background: "#111",
+        minHeight: "100vh",
+        color: "white",
+      }}
+    >
+      
         <h1
   style={{
     fontFamily: "var(--font-cinzel)",
