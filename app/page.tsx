@@ -32,20 +32,22 @@ export default function Home() {
   const [isHomeRun, setIsHomeRun] = useState(false);
 
   useEffect(() => {
-    const bgm = new Audio("/sounds/Neraiuchi.mp3");
-    bgm.loop = true;
-    bgm.volume = 0.3;
+  const bgm = new Audio("/sounds/Neraiuchi.mp3");
+  bgm.loop = true;
+  bgm.volume = 0.3;
 
-    const startBgm = () => {
-      bgm.play().catch(() => {});
-    };
+  bgmRef.current = bgm;
 
-    document.addEventListener("click", startBgm, { once: true });
+  const startBgm = () => {
+    bgm.play().catch(() => {});
+  };
 
-    return () => {
-      bgm.pause();
-    };
-  }, []);
+  document.addEventListener("click", startBgm, { once: true });
+
+  return () => {
+    bgm.pause();
+  };
+}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
