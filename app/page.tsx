@@ -29,6 +29,7 @@ export default function Home() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
+  const [isHomeRun, setIsHomeRun] = useState(false);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -66,7 +67,33 @@ export default function Home() {
   };
 
   const handleCardClick = (index: number) => {
+
+    if (isHomeRun) return;
+
     const card = drawnCards[index];
+
+    const chance = Math.random();
+
+if (chance < 0.5) {
+  const videos = [
+    "/videos/home-run-1.mp4",
+    "/videos/home-run-2.mp4",
+  ];
+
+  const randomVideo =
+    videos[Math.floor(Math.random() * videos.length)];
+
+  setIsHomeRun(true);
+  setZoomImage(randomVideo);
+
+  setTimeout(() => {
+  setIsHomeRun(false);
+}, 3000);
+
+
+
+  return;
+}
 
     if (!card.revealed) {
       flipSound();
@@ -101,17 +128,33 @@ export default function Home() {
       zIndex: 9999,
     }}
   >
-    <img
-      src={zoomImage}
-      style={{
-        width: "85vw",
-        maxWidth: "500px",
-        borderRadius: "12px",
-
-        // ★ここが“ヌルっと感”
-        animation: "zoomIn 0.2s ease-out",
-      }}
-    />
+    {zoomImage.endsWith(".mp4") ? (
+      <video
+  src={zoomImage}
+  autoPlay
+  muted
+  playsInline
+  onEnded={() => {
+    setZoomImage(null);
+    setIsHomeRun(false);
+  }}
+  style={{
+    width: "85vw",
+    maxWidth: "500px",
+    borderRadius: "12px",
+  }}
+/>
+    ) : (
+      <img
+        src={zoomImage}
+        style={{
+          width: "85vw",
+          maxWidth: "500px",
+          borderRadius: "12px",
+          animation: "zoomIn 0.2s ease-out",
+        }}
+      />
+    )}
   </div>
 )}
 
