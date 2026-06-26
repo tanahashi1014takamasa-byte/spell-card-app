@@ -15,6 +15,7 @@ const cards = [
   "/cards/ファントム.png",
   "/cards/ブラインド.png",
   "/cards/ブラックチケット.png",
+  "/cards/ボルテックス.png",
   "/cards/マグネットフォース.png",
 ];
 
@@ -24,11 +25,10 @@ type DrawnCard = {
 };
 
 export default function Home() {
-const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
-const [zoomImage, setZoomImage] = useState<string | null>(null);
-const [isZooming, setIsZooming] = useState(false);
-
-const RARE_CARD = "/cards/パーム・ストライク.png";
+  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [isZooming, setIsZooming] = useState(false);
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -53,18 +53,17 @@ const RARE_CARD = "/cards/パーム・ストライク.png";
   };
 
   const drawCards = () => {
-  const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
-  setDrawnCards(
-    shuffled.slice(0, 2).map((card) => ({
-      image: card,
-      revealed: false,
-    }))
-  );
+    setDrawnCards(
+      shuffled.slice(0, 2).map((card) => ({
+        image: card,
+        revealed: false,
+      }))
+    );
 
-  setZoomImage(null);
-  setIsZooming(false);
-};
+    setSelectedCard(null);
+  };
 
   const handleCardClick = (index: number) => {
     const card = drawnCards[index];
@@ -180,7 +179,7 @@ const RARE_CARD = "/cards/パーム・ストライク.png";
           {drawnCards.map((card, index) => (
             <div
               key={index}
-              className={`card-container ${card.image === RARE_CARD && card.revealed ? "rare-card" : ""}`}
+              className="card-container"
               style={{
                 width: "40vw",
                 maxWidth: "300px",
