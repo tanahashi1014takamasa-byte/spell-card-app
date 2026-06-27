@@ -93,7 +93,7 @@ export default function Home() {
   // ② 表カード → 効果表示（ここが本体）
   const chance = Math.random();
 
-  if (chance < 0.5) {
+  if (chance < 0.05) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
