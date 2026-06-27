@@ -79,10 +79,21 @@ export default function Home() {
   if (isHomeRun) return;
 
   const card = drawnCards[index];
+
+  // ① 裏カード → めくるだけ
+  if (!card.revealed) {
+    flipSound();
+
+    const updated = [...drawnCards];
+    updated[index].revealed = true;
+    setDrawnCards(updated);
+    return;
+  }
+
+  // ② 表カード → 効果表示（ここが本体）
   const chance = Math.random();
 
-  if (card.revealed && chance < 0.5) {
-    if (isZooming || isHomeRun) return;
+  if (chance < 0.05) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
@@ -93,20 +104,10 @@ export default function Home() {
 
     setIsHomeRun(true);
     setZoomImage(randomVideo);
-
     return;
   }
 
-  if (!card.revealed) {
-    flipSound();
-
-    const updated = [...drawnCards];
-    updated[index].revealed = true;
-    setDrawnCards(updated);
-    return;
-  }
-
-  // カード拡大
+  // ③ 通常拡大（効果を見る）
   setIsZooming(true);
 
   setTimeout(() => {
