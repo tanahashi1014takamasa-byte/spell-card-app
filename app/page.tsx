@@ -75,7 +75,7 @@ export default function Home() {
   const card = drawnCards[index];
   const chance = Math.random();
 
-  if (chance < 0.5) {
+  if (chance < 0.05) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
