@@ -111,7 +111,6 @@ return (
 
       
   <div
-    onClick={() => setZoomImage(null)}
     style={{
       position: "fixed",
       inset: 0,
