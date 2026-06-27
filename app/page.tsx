@@ -56,6 +56,12 @@ export default function Home() {
     audio.play();
   };
 
+  const closeZoom = () => {
+  setZoomImage(null);
+  setIsHomeRun(false);
+  bgmRef.current?.play().catch(() => {});
+};
+
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
@@ -123,6 +129,7 @@ return (
       alignItems: "center",
       zIndex: 9999,
     }}
+    onClick={closeZoom}
   >
     {zoomImage.endsWith(".mp4") ? (
   <video
@@ -130,12 +137,7 @@ return (
     autoPlay
     controls={false}
     playsInline
-    onEnded={() => {
-  setZoomImage(null);
-  setIsHomeRun(false);
-
-  bgmRef.current?.play().catch(() => {});
-}}
+    onEnded={closeZoom}
     style={{
       width: "85vw",
       maxWidth: "500px",
