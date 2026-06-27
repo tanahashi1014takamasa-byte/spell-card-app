@@ -71,9 +71,8 @@ export default function Home() {
 
   const card = drawnCards[index];
   const chance = Math.random();
-    
 
-     if (chance < 0.03) {
+  if (chance < 0.5) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
@@ -86,28 +85,31 @@ export default function Home() {
     setZoomImage(randomVideo);
 
     return;
+  }
 
-    if (!card.revealed) {
-  flipSound();
+  if (!card.revealed) {
+    flipSound();
 
-  const updated = [...drawnCards];
-  updated[index].revealed = true;
-  setDrawnCards(updated);
-  return;
-}
+    const updated = [...drawnCards];
+    updated[index].revealed = true;
+    setDrawnCards(updated);
+    return;
+  }
 
-// ★ここが「間」
-setIsZooming(true);
+  // カード拡大
+  setIsZooming(true);
 
-setTimeout(() => {
-  setZoomImage(card.image);
-  setIsZooming(false);
-}, 150);
+  setTimeout(() => {
+    setZoomImage(card.image);
+    setIsZooming(false);
+  }, 150);
 };
 
-  }
+return (
   <>
     {zoomImage && (
+
+      
   <div
     onClick={() => setZoomImage(null)}
     style={{
@@ -120,17 +122,33 @@ setTimeout(() => {
       zIndex: 9999,
     }}
   >
-    <img
-      src={zoomImage}
-      style={{
-        width: "85vw",
-        maxWidth: "500px",
-        borderRadius: "12px",
-
-        // ★ここが“ヌルっと感”
-        animation: "zoomIn 0.2s ease-out",
-      }}
-    />
+    {zoomImage.endsWith(".mp4") ? (
+  <video
+    src={zoomImage}
+    autoPlay
+    controls={false}
+    playsInline
+    onEnded={() => {
+      setZoomImage(null);
+      setIsHomeRun(false);
+    }}
+    style={{
+      width: "85vw",
+      maxWidth: "500px",
+      borderRadius: "12px",
+    }}
+  />
+) : (
+  <img
+    src={zoomImage}
+    style={{
+      width: "85vw",
+      maxWidth: "500px",
+      borderRadius: "12px",
+      animation: "zoomIn 0.2s ease-out",
+    }}
+  />
+)}
   </div>
 )}
 
@@ -244,5 +262,6 @@ setTimeout(() => {
         </div>
       </main>
     </>
-  );
+);
+      
 }
