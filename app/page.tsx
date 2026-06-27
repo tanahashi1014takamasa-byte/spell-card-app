@@ -81,7 +81,7 @@ export default function Home() {
   const card = drawnCards[index];
   const chance = Math.random();
 
-  if (chance < 0.05) {
+  if (chance < 0.5) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
@@ -133,17 +133,17 @@ return (
   >
     {zoomImage.endsWith(".mp4") ? (
   <video
-    src={zoomImage}
-    autoPlay
-    controls={false}
-    playsInline
-    onEnded={closeZoom}
-    style={{
-      width: "85vw",
-      maxWidth: "500px",
-      borderRadius: "12px",
-    }}
-  />
+  src={zoomImage}
+  autoPlay
+  playsInline
+  onEnded={closeZoom}
+  onClick={(e) => e.stopPropagation()}
+  style={{
+    width: "85vw",
+    maxWidth: "500px",
+    borderRadius: "12px",
+  }}
+/>
 ) : (
   <img
     src={zoomImage}
