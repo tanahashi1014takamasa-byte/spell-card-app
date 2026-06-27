@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const cards = [
   "/cards/カース.png",
@@ -30,6 +30,7 @@ export default function Home() {
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
   const [isHomeRun, setIsHomeRun] = useState(false);
+  const bgmRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -128,9 +129,11 @@ return (
     controls={false}
     playsInline
     onEnded={() => {
-      setZoomImage(null);
-      setIsHomeRun(false);
-    }}
+  setZoomImage(null);
+  setIsHomeRun(false);
+
+  bgmRef.current?.play().catch(() => {});
+}}
     style={{
       width: "85vw",
       maxWidth: "500px",
