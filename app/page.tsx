@@ -37,6 +37,8 @@ export default function Home() {
     bgm.loop = true;
     bgm.volume = 0.3;
 
+    bgmRef.current = bgm;
+
     const startBgm = () => {
       bgm.play().catch(() => {});
     };
