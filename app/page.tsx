@@ -267,15 +267,13 @@ return (
               height: "auto",
             }}
           />
-
 <div
   style={{
-    marginTop: "35px",
+    marginTop: "60px",
     display: "flex",
     justifyContent: "center",
   }}
->
-</div>
+></div>
   
   <img
     src="/images/spellcard-guide.png"
