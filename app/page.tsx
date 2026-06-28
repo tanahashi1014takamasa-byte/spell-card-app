@@ -269,11 +269,14 @@ return (
           />
         </div>
 
-        <div
+       <div
   style={{
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
     marginTop: "30px",
+    border: "2px solid red",
   }}
 >
   <button
@@ -286,15 +289,16 @@ return (
     }}
   >
     <img
-      src="/images/spellcardguide.png"
-      alt="スペルカード名鑑"
-      style={{
-        width: "500px",
-        maxWidth: "90%",
-        height: "auto",
-        display: "block",
-      }}
-    />
+  src="/images/spellcardguide.png"
+  alt="スペルカード名鑑"
+  style={{
+    width: "500px",
+    maxWidth: "90%",
+    height: "auto",
+    display: "block",
+    border: "3px solid yellow",
+  }}
+/>
   </button>
 </div>
       </main>
