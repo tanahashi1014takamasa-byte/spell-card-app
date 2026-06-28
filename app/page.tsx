@@ -275,28 +275,28 @@ return (
     justifyContent: "center",
     marginTop: "30px",
   }}
-></div>
-        <button
-  style={{
-    marginTop: "30px",
-    padding: 0,
-    background: "transparent",
-    border: "none",
-    cursor: "pointer",
-  }}
 >
-  <img
-    src="/images/spellcardguide.png"
-    alt="スペルカード名鑑"
+  <button
     style={{
-      width: "500x",
-      maxWidth: "90%",
-      height: "auto",
-      display: "block",
+      marginTop: "30px",
+      padding: 0,
+      background: "transparent",
+      border: "none",
+      cursor: "pointer",
     }}
-  />
-</button>
-
+  >
+    <img
+      src="/images/spellcardguide.png"
+      alt="スペルカード名鑑"
+      style={{
+        width: "500px",
+        maxWidth: "90%",
+        height: "auto",
+        display: "block",
+      }}
+    />
+  </button>
+</div>
       </main>
     </>
 );
