@@ -267,26 +267,6 @@ return (
               height: "auto",
             }}
           />
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-  }}
-></div>
-  
-  <img
-    src="/images/spellcard-guide.png"
-    alt="スペルカード名鑑"
-    style={{
-      width: "500px",
-      maxWidth: "90%",
-      cursor: "pointer",
-    }}
-  />
-
-
-
         </div>
       </main>
     </>
