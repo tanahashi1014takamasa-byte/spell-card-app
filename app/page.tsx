@@ -268,6 +268,14 @@ return (
             }}
           />
         </div>
+
+        <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "30px",
+  }}
+></div>
         <button
   style={{
     marginTop: "30px",
@@ -281,13 +289,14 @@ return (
     src="/images/spellcardguide.png"
     alt="スペルカード名鑑"
     style={{
-      width: "420px",
+      width: "50px",
       maxWidth: "90%",
       height: "auto",
       display: "block",
     }}
   />
 </button>
+
       </main>
     </>
 );
