@@ -275,16 +275,18 @@ return (
     justifyContent: "center",
   }}
 >
+</div>
+  
   <img
     src="/images/spellcard-guide.png"
     alt="スペルカード名鑑"
     style={{
-      width: "420px",
+      width: "500px",
       maxWidth: "90%",
       cursor: "pointer",
     }}
   />
-</div>
+
 
 
         </div>
