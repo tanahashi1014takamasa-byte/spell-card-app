@@ -282,7 +282,10 @@ return (
     letterSpacing: "2px",
   }}
 >
-  ⚾ スペルカード名鑑
+  <img
+  src="/images/spellcardguide.png"
+  alt="スペルカード名鑑"
+/>
 </button>
       </main>
     </>
