@@ -281,9 +281,10 @@ return (
     src="/images/spellcard-guide.png"
     alt="spellcard-guide"
     style={{
-      width: "500px",
-      height: "auto",
-    }}
+  width: "500px",
+  height: "550px",
+  objectFit: "contain",
+}}
   />
 </div>
 
