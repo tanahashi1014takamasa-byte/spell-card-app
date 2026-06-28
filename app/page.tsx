@@ -265,7 +265,7 @@ return (
             src="/images/yah.png"
             alt="yah"
             style={{
-              width: "220px",
+              width: "420px",
               height: "auto",
             }}
           />
