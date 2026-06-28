@@ -282,8 +282,8 @@ return (
     alt="spellcard-guide"
     style={{
   width: "500px",
-  height: "550px",
-  objectFit: "contain",
+  height: "520px",
+  objectFit: "cover"
 }}
   />
 </div>
