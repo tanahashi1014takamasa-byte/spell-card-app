@@ -272,21 +272,20 @@ return (
         </div>
 
 <div
-          style={{
-            marginTop: "60px",
-            justifyContent: "center",
-          }}
-          >
-            <img
-            src="/images/spellcard-guide.png
-            alt="spellcard-guide
-            style={{
-              width: "500px",
-              height: "auto",
-            }}
-            />
-
-        </div>
+  style={{
+    marginTop: "60px",
+    justifyContent: "center",
+  }}
+>
+  <img
+    src="/images/spellcard-guide.png"
+    alt="spellcard-guide"
+    style={{
+      width: "500px",
+      height: "auto",
+    }}
+  />
+</div>
 
       </main>
     </>
