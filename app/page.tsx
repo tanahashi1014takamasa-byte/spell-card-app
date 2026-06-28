@@ -268,6 +268,22 @@ return (
             }}
           />
         </div>
+        <button
+  style={{
+    marginTop: "30px",
+    padding: "14px 32px",
+    fontSize: "20px",
+    fontWeight: "bold",
+    color: "#fff",
+    background: "#1b2d1b",
+    border: "3px solid #c8a84d",
+    borderRadius: "12px",
+    cursor: "pointer",
+    letterSpacing: "2px",
+  }}
+>
+  ⚾ スペルカード名鑑
+</button>
       </main>
     </>
 );
