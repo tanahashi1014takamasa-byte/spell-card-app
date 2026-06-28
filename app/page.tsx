@@ -271,21 +271,22 @@ return (
         <button
   style={{
     marginTop: "30px",
-    padding: "14px 32px",
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#fff",
-    background: "#1b2d1b",
-    border: "3px solid #c8a84d",
-    borderRadius: "12px",
+    padding: 0,
+    background: "transparent",
+    border: "none",
     cursor: "pointer",
-    letterSpacing: "2px",
   }}
 >
   <img
-  src="/images/spellcardguide.png"
-  alt="スペルカード名鑑"
-/>
+    src="/images/spellcardguide.png"
+    alt="スペルカード名鑑"
+    style={{
+      width: "420px",
+      maxWidth: "90%",
+      height: "auto",
+      display: "block",
+    }}
+  />
 </button>
       </main>
     </>
