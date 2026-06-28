@@ -289,7 +289,7 @@ return (
     src="/images/spellcardguide.png"
     alt="スペルカード名鑑"
     style={{
-      width: "50px",
+      width: "500x",
       maxWidth: "90%",
       height: "auto",
       display: "block",
