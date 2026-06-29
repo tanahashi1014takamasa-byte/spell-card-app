@@ -31,6 +31,7 @@ export default function Home() {
   const [zoomImage, setZoomImage] = useState<string | null>(null);
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
+  const [bgmStarted, setBgmStarted] = useState(false);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -40,8 +41,11 @@ export default function Home() {
     bgmRef.current = bgm;
 
     const startBgm = () => {
-      bgm.play().catch(() => {});
-    };
+  if (bgmStarted) return;
+
+  bgmRef.current?.play().catch(() => {});
+  setBgmStarted(true);
+};
 
     document.addEventListener("click", startBgm, { once: true });
 
