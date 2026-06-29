@@ -37,11 +37,18 @@ export default function Home() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
 
   const [guideText, setGuideText] = useState("");
-   useEffect(() => {
+  useEffect(() => {
   fetch("/text/スペルカード名鑑.txt")
-    .then((res) => res.text())
+    .then((res) => {
+      console.log("status:", res.status);
+      return res.text();
+    })
     .then((text) => {
+      console.log("text:", text);
       setGuideText(text);
+    })
+    .catch((err) => {
+      console.log("fetch error:", err);
     });
 }, []);
   
