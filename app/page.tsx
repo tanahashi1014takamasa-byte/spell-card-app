@@ -32,6 +32,7 @@ export default function Home() {
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
+  const [isRuleOpen, setIsRuleOpen] = useState(false);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -122,7 +123,6 @@ export default function Home() {
 return (
   <>
     {zoomImage && (
-
       
   <div
     style={{
@@ -134,6 +134,10 @@ return (
       alignItems: "center",
       zIndex: 9999,
     }}
+
+
+
+
     onClick={closeZoom}
   >
     {zoomImage.endsWith(".mp4") ? (
@@ -162,6 +166,37 @@ return (
 )}
   </div>
 )}
+
+{isRuleOpen && (
+  <div
+    onClick={() => setIsRuleOpen(false)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: "#222",
+        color: "#fff",
+        padding: "30px",
+        borderRadius: "12px",
+        maxWidth: "600px",
+        width: "90%",
+        whiteSpace: "pre-line",
+      }}
+    >
+      ここにルールを書きます。
+    </div>
+  </div>
+)}
+
 
     {/* ★ここに追加 */}
     {isZooming && (
@@ -303,9 +338,11 @@ return (
   <img
     src="/images/rule_book.png"
     alt="rule_book"
+    onClick={() => setIsRuleOpen(true)}
     style={{
       width: "500px",
       height: "auto",
+      cursor: "pointer",
     }}
   />
 </div>
