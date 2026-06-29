@@ -201,6 +201,7 @@ return (
         <button
   onClick={() => {
     bgmRef.current?.play().catch(() => {});
+    drawCards();
   }}
   style={{
     padding: "16px 32px",
