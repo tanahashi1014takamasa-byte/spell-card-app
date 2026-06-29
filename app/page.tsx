@@ -350,16 +350,16 @@ return (
 />
 {guideText && (
   <p
-    style={{
-      marginTop: "20px",
-      color: "white",
-      fontSize: "18px",
-      lineHeight: "1.8",
-      whiteSpace: "pre-wrap",
-    }}
-  >
-    {guideText}
-  </p>
+  style={{
+    marginTop: "20px",
+    color: "white",
+    fontSize: "18px",
+    lineHeight: "1.8",
+    whiteSpace: "pre-wrap",
+  }}
+>
+  {guideText}
+</p>
 )}
 
 </div>
