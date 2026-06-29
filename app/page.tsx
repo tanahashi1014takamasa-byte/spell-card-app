@@ -35,16 +35,8 @@ export default function Home() {
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
-
   const [guideText, setGuideText] = useState("");
-  useEffect(() => {
-  fetch("/text/スペルカード名鑑.txt")
-    .then((res) => res.text())
-    .then((text) => {
-      setGuideText(text);
-      setIsGuideOpen(true); // ← これ追加
-    });
-}, []);
+  
   
 
   useEffect(() => {
@@ -338,35 +330,29 @@ return (
 
 <div>
   <img
-    src="/images/spellcard-guide.png"
-    alt="spellcard-guide"
-  />
-  
+  src="/images/spellcard-guide.png"
+  alt="spellcard-guide"
+  onClick={() => {
+    setIsGuideOpen((prev) => {
+      const next = !prev;
 
-  {isGuideOpen && (
-    <p style={{ whiteSpace: "pre-wrap", color: "white" }}>
-      {guideText}
-    </p>
-  )}
-</div>
+      if (next && !guideText) {
+        fetch("/text/スペルカード名鑑.txt")
+          .then((res) => res.text())
+          .then((text) => {
+            setGuideText(text);
+          });
+      }
 
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
+      return next;
+    });
   }}
->
-  <img
-    src="/images/rule_book.png"
-    alt="rule_book"
-    onClick={() => setIsRuleOpen(true)}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
+  style={{
+    cursor: "pointer",
+    width: "500px",
+    height: "auto",
+  }}
+/>
 </div>
 
       </main>
