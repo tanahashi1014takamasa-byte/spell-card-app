@@ -34,6 +34,7 @@ export default function Home() {
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
+  const [showGuideText, setShowGuideText] = useState(false);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -334,16 +335,41 @@ return (
     src="/images/spellcard-guide.png"
     alt="spellcard-guide"
     onClick={() => {
-    // あとでここに処理を書く
+   setShowGuideText(!showGuideText);
   }}
 
     style={{
       width: "500px",
       height: "auto",
-      cursor: "pointer",
+      
     }}
   />
 </div>
+
+<img
+  src="/images/spellcard-guide.png"
+  alt="spellcard-guide"
+  onClick={() => {
+    setShowGuideText(!showGuideText);
+  }}
+  style={{
+    width: "500px",
+    height: "auto",
+  }}
+/>
+
+{showGuideText && (
+  <p
+    style={{
+      marginTop: "20px",
+      color: "white",
+      fontSize: "20px",
+      lineHeight: "1.8",
+    }}
+  >
+    スペルカードの説明をここに書きます。
+  </p>
+)}
 
 <div
   style={{
