@@ -361,7 +361,7 @@ return (
       lineHeight: "1.8",
     }}
   >
-    スペルカードの説明をここに書きます。
+    {guideText}
   </p>
 )}
 
