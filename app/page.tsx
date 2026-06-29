@@ -35,6 +35,7 @@ export default function Home() {
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
   const [showGuideText, setShowGuideText] = useState(false);
+  const [guideText, setGuideText] = useState("");
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -334,9 +335,13 @@ return (
   <img
     src="/images/spellcard-guide.png"
     alt="spellcard-guide"
-    onClick={() => {
-   setShowGuideText(!showGuideText);
-  }}
+    onClick={async () => {
+  const response = await fetch("/text/カース.txt");
+  const text = await response.text();
+
+  setGuideText(text);
+  setShowGuideText(!showGuideText);
+}}
 
     style={{
       width: "500px",
