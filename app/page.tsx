@@ -35,7 +35,15 @@ export default function Home() {
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
-   const [guideText, setGuideText] = useState("");
+
+  const [guideText, setGuideText] = useState("");
+   useEffect(() => {
+  fetch("/text/スペルカード名鑑.txt")
+    .then((res) => res.text())
+    .then((text) => {
+      setGuideText(text);
+    });
+}, []);
   
 
   useEffect(() => {
@@ -331,19 +339,8 @@ return (
   <img
     src="/images/spellcard-guide.png"
     alt="spellcard-guide"
-    onClick={() => {
-      if (!isGuideOpen) {
-        fetch("/text/スペルカード名鑑.txt")
-          .then((response) => response.text())
-          .then((text) => {
-            setGuideText(text);
-            setIsGuideOpen(true);
-          });
-      } else {
-        setIsGuideOpen(false);
-      }
-    }}
   />
+  
 
   {isGuideOpen && (
     <p style={{ whiteSpace: "pre-wrap", color: "white" }}>
