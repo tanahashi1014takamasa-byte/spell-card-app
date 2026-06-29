@@ -33,6 +33,7 @@ export default function Home() {
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
+  const [ruleText, setRuleText] = useState("");
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -53,6 +54,17 @@ export default function Home() {
       bgm.pause();
     };
   }, []);
+
+  useEffect(() => {
+  fetch("/chiikawa.txt")
+    .then((response) => response.text())
+    .then((text) => {
+      setRuleText(text);
+    })
+    .catch((error) => {
+      console.error("ルールの読み込みに失敗しました", error);
+    });
+}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -192,7 +204,7 @@ return (
         whiteSpace: "pre-line",
       }}
     >
-      ここにルールを書きます。
+      {ruleText}
     </div>
   </div>
 )}
