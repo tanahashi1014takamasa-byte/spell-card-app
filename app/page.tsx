@@ -287,6 +287,23 @@ return (
   />
 </div>
 
+<div
+  style={{
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+  }}
+>
+  <img
+    src="/images/rule_book.png"
+    alt="rule_book"
+    style={{
+      width: "500px",
+      height: "auto",
+    }}
+  />
+</div>
+
       </main>
     </>
 );
