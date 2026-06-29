@@ -32,13 +32,10 @@ export default function Home() {
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
-
+  const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
   const [guideText, setGuideText] = useState("");
-
-  const [activePanel, setActivePanel] =
-  useState<"rule" | "guide" | "none">("none");
-
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
   
 
   useEffect(() => {
@@ -185,9 +182,9 @@ return (
   </div>
 )}
 
-{isOpen && (
+{isRuleOpen && (
   <div
-    onClick={() => setIsOpen(false)}
+    onClick={() => setIsRuleOpen(false)}
     style={{
       position: "fixed",
       inset: 0,
@@ -198,8 +195,19 @@ return (
       zIndex: 9999,
     }}
   >
-    <div onClick={(e) => e.stopPropagation()}>
-      {guideText}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: "#222",
+        color: "#fff",
+        padding: "30px",
+        borderRadius: "12px",
+        maxWidth: "600px",
+        width: "90%",
+        whiteSpace: "pre-line",
+      }}
+    >
+      {ruleText}
     </div>
   </div>
 )}
@@ -322,67 +330,44 @@ return (
 <div
   style={{
     marginTop: "60px",
-    display: "flex",
     justifyContent: "center",
   }}
 >
   <img
-    src="/images/spellcard-guide.png"
-    alt="spellcard-guide"
-    onClick={() => {
-      fetch("/text/スペルカード名鑑.txt")
-        .then((response) => response.text())
-        .then((text) => {
-          setGuideText(text);
-          setActivePanel("guide");
-        });
-    }}
+  src="/images/spellcard-guide.png"
+  alt="spellcard-guide"
+  onClick={() => {
+  if (!isGuideOpen) {
+    fetch("/text/スペルカード名鑑.txt")
+      .then((response) => response.text())
+      .then((text) => {
+        setGuideText(text);
+        setIsGuideOpen(true);
+      });
+  } else {
+    setIsGuideOpen(false);
+  }
+}}
+  style={{
+    width: "500px",
+    height: "auto",
+  }}
+/>
+{isGuideOpen && (
+  <p
     style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-
- {activePanel === "guide" && (
-  <div
-    onClick={() => setActivePanel("none")}
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.85)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999,
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
     }}
   >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        background: "#111",
-        padding: "20px",
-        borderRadius: "12px",
-        maxWidth: "80vw",
-        maxHeight: "80vh",
-        overflowY: "auto",
-        border: "1px solid #444",
-      }}
-    >
-      <pre
-        style={{
-          color: "white",
-          fontSize: "14px",
-          lineHeight: "1.8",
-          whiteSpace: "pre-wrap",
-          margin: 0,
-        }}
-      >
-        {guideText}
-      </pre>
-    </div>
-  </div>
+    {guideText}
+  </p>
 )}
+
+</div>
 
 <div
   style={{
@@ -391,16 +376,16 @@ return (
     justifyContent: "center",
   }}
 >
- <img
-  src="/images/rule_book.png"
-  alt="rule_book"
-  onClick={() => setActivePanel("rule")}
-  style={{
-    width: "500px",
-    height: "auto",
-    cursor: "pointer",
-  }}
-/>
+  <img
+    src="/images/rule_book.png"
+    alt="rule_book"
+    onClick={() => setIsRuleOpen(true)}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
 </div>
 
       </main>
