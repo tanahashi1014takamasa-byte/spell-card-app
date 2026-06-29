@@ -333,9 +333,14 @@ return (
   <img
     src="/images/spellcard-guide.png"
     alt="spellcard-guide"
+    onClick={() => {
+    // あとでここに処理を書く
+  }}
+
     style={{
       width: "500px",
       height: "auto",
+      cursor: "pointer",
     }}
   />
 </div>
