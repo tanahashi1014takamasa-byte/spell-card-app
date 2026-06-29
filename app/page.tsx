@@ -33,6 +33,10 @@ export default function Home() {
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
+  const [ruleText, setRuleText] = useState("");
+  const [guideText, setGuideText] = useState("");
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
+  
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -53,6 +57,17 @@ export default function Home() {
       bgm.pause();
     };
   }, []);
+
+  useEffect(() => {
+  fetch("/chiikawa.txt")
+    .then((response) => response.text())
+    .then((text) => {
+      setRuleText(text);
+    })
+    .catch((error) => {
+      console.error("ルールの読み込みに失敗しました", error);
+    });
+}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -192,7 +207,7 @@ return (
         whiteSpace: "pre-line",
       }}
     >
-      ここにルールを書きます。
+      {ruleText}
     </div>
   </div>
 )}
@@ -319,13 +334,39 @@ return (
   }}
 >
   <img
-    src="/images/spellcard-guide.png"
-    alt="spellcard-guide"
+  src="/images/spellcard-guide.png"
+  alt="spellcard-guide"
+  onClick={() => {
+  if (!isGuideOpen) {
+    fetch("/text/スペルカード名鑑.txt")
+      .then((response) => response.text())
+      .then((text) => {
+        setGuideText(text);
+        setIsGuideOpen(true);
+      });
+  } else {
+    setIsGuideOpen(false);
+  }
+}}
+  style={{
+    width: "500px",
+    height: "auto",
+  }}
+/>
+{isGuideOpen && (
+  <p
     style={{
-      width: "500px",
-      height: "auto",
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
     }}
-  />
+  >
+    {guideText}
+  </p>
+)}
+
 </div>
 
 <div
