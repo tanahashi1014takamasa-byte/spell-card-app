@@ -33,11 +33,6 @@ export default function Home() {
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
-  const [ruleText, setRuleText] = useState("");
-  const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [guideText, setGuideText] = useState("");
-  
-  
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -58,17 +53,6 @@ export default function Home() {
       bgm.pause();
     };
   }, []);
-
-  useEffect(() => {
-  fetch("/chiikawa.txt")
-    .then((response) => response.text())
-    .then((text) => {
-      setRuleText(text);
-    })
-    .catch((error) => {
-      console.error("ルールの読み込みに失敗しました", error);
-    });
-}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -208,7 +192,7 @@ return (
         whiteSpace: "pre-line",
       }}
     >
-      {ruleText}
+      ここにルールを書きます。
     </div>
   </div>
 )}
@@ -328,31 +312,39 @@ return (
           />
         </div>
 
-<div>
-  <img
-  src="/images/spellcard-guide.png"
-  alt="spellcard-guide"
-  onClick={() => {
-    setIsGuideOpen((prev) => {
-      const next = !prev;
-
-      if (next && !guideText) {
-        fetch("/text/スペルカード名鑑.txt")
-          .then((res) => res.text())
-          .then((text) => {
-            setGuideText(text);
-          });
-      }
-
-      return next;
-    });
-  }}
+<div
   style={{
-    cursor: "pointer",
-    width: "500px",
-    height: "auto",
+    marginTop: "60px",
+    justifyContent: "center",
   }}
-/>
+>
+  <img
+    src="/images/spellcard-guide.png"
+    alt="spellcard-guide"
+    style={{
+      width: "500px",
+      height: "auto",
+    }}
+  />
+</div>
+
+<div
+  style={{
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+  }}
+>
+  <img
+    src="/images/rule_book.png"
+    alt="rule_book"
+    onClick={() => setIsRuleOpen(true)}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
 </div>
 
       </main>
