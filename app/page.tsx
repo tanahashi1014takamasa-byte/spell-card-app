@@ -346,17 +346,6 @@ return (
   />
 </div>
 
-<img
-  src="/images/spellcard-guide.png"
-  alt="spellcard-guide"
-  onClick={() => {
-    setShowGuideText(!showGuideText);
-  }}
-  style={{
-    width: "500px",
-    height: "auto",
-  }}
-/>
 
 {showGuideText && (
   <p
