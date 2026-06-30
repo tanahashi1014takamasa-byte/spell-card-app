@@ -352,41 +352,45 @@ return (
     height: "auto",
   }}
 />
-{isGuideOpen && (
-  <p
+</div>
+
+{isRuleOpen && (
+  <div
+    onClick={() => setIsRuleOpen(false)}
     style={{
-      marginTop: "20px",
-      color: "white",
-      fontSize: "18px",
-      lineHeight: "1.8",
-      whiteSpace: "pre-wrap",
-     textAlign: "left",
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      paddingTop: "40px",
+      zIndex: 9999,
     }}
   >
-    {guideText}
-  </p>
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: "#222",
+        color: "#fff",
+        padding: "30px",
+        borderRadius: "12px",
+        width: "90%",
+        maxWidth: "600px",
+
+        // ★スクロールの本体
+        maxHeight: "80vh",
+        overflowY: "auto",
+
+        // 見やすさ
+        whiteSpace: "pre-wrap",
+        lineHeight: "1.8",
+      }}
+    >
+      {ruleText}
+    </div>
+  </div>
 )}
-
-</div>
-
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-  }}
->
-  <img
-    src="/images/rule_book.png"
-    alt="rule_book"
-    onClick={() => setIsRuleOpen(true)}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
 
 <div
   style={{
