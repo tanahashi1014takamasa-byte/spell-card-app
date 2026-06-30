@@ -59,16 +59,6 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-  fetch("/chiikawa.txt")
-    .then((response) => response.text())
-    .then((text) => {
-      setRuleText(text);
-    })
-    .catch((error) => {
-      console.error("ルールの読み込みに失敗しました", error);
-    });
-}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -369,21 +359,50 @@ return (
 <div
   style={{
     marginTop: "60px",
-    display: "flex",
     justifyContent: "center",
   }}
 >
   <img
-    src="/images/rule_book.png"
-    alt="rule_book"
-    onClick={() => setIsRuleOpen(true)}
+  src="/images/rule_book.png"
+  alt="rule_book"
+  onClick={() => {
+  if (!isGuideOpen) {
+    fetch("/text/chiikawa.txt")
+      .then((response) => response.text())
+      .then((text) => {
+        setGuideText(text);
+        setIsGuideOpen(true);
+      });
+  } else {
+    setIsGuideOpen(false);
+  }
+}}
+  style={{
+    width: "500px",
+    height: "auto",
+  }}
+/>
+{isGuideOpen && (
+  <p
     style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
+     textAlign: "left",
     }}
-  />
+  >
+    {guideText}
+  </p>
+)}
+
 </div>
+
+
+
+
+
 
 <div
   style={{
