@@ -71,10 +71,9 @@ export default function Home() {
     return res.text();
   })
   .then((text) => {
-    console.log("chiikawa.txt内容:", text);
-    setRuleText(text);
-    setIsRuleOpen(true);
-  });
+  setIsRuleOpen(true);
+  setRuleText(text);
+});
       } else {
         setIsRuleOpen(false);
       }
