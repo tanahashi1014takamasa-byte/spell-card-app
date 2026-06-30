@@ -361,6 +361,7 @@ return (
       fontSize: "18px",
       lineHeight: "1.8",
       whiteSpace: "pre-wrap",
+     textAlign: "left",
     }}
   >
     {guideText}
