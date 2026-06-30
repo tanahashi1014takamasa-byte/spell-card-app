@@ -173,35 +173,7 @@ return (
   </div>
 )}
 
-{isRuleOpen && (
-  <div
-    onClick={() => setIsRuleOpen(false)}
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.85)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999,
-    }}
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        background: "#222",
-        color: "#fff",
-        padding: "30px",
-        borderRadius: "12px",
-        maxWidth: "600px",
-        width: "90%",
-        whiteSpace: "pre-line",
-      }}
-    >
-      {ruleText}
-    </div>
-  </div>
-)}
+
 
 
     {/* ★ここに追加 */}
