@@ -24,15 +24,32 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        style={{
+          margin: 0,
+          minHeight: "100vh",
+          overflowY: "auto",
+          background: "#111",
+        }}
+      >
+        <div
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
