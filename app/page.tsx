@@ -221,33 +221,40 @@ return (
   </div>
 )}
 
-{isRuleOpen && (
-  <div
-    onClick={() => setIsRuleOpen(false)}
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9999,
+
+<div style={{ marginTop: "60px", textAlign: "center" }}>
+  <img
+    src="/images/rule_book.png"
+    onClick={() => {
+      if (!isRuleOpen) {
+        fetch("/chiikawa.txt")
+          .then((res) => res.text())
+          .then((text) => {
+            setRuleText(text);
+            setIsRuleOpen(true);
+          });
+      } else {
+        setIsRuleOpen(false);
+      }
     }}
-  >
+    style={{ width: "500px", cursor: "pointer" }}
+  />
+
+  {isRuleOpen && ruleText && (
     <div
-      onClick={(e) => e.stopPropagation()}
       style={{
-        background: "#222",
-        color: "#fff",
-        padding: "30px",
-        borderRadius: "12px",
+        marginTop: "20px",
+        color: "white",
+        whiteSpace: "pre-wrap",
+        textAlign: "left",
         maxWidth: "600px",
-        width: "90%",
-        whiteSpace: "pre-line",
+        marginInline: "auto",
       }}
     >
       {ruleText}
     </div>
-  </div>
-)}
-
+  )}
+</div>
 
     {/* ★ここに追加 */}
     {isZooming && (
