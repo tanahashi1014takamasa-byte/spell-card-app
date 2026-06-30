@@ -194,6 +194,9 @@ return (
       justifyContent: "center",
       alignItems: "center",
       zIndex: 9999,
+
+      maxHeight: "80vh",
+    overflowY: "auto",
     }}
   >
     <div
