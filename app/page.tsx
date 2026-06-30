@@ -66,11 +66,15 @@ export default function Home() {
     onClick={() => {
       if (!isRuleOpen) {
         fetch("/chiikawa.txt")
-          .then((res) => res.text())
-          .then((text) => {
-            setRuleText(text);
-            setIsRuleOpen(true);
-          });
+  .then((res) => {
+    console.log("status:", res.status);
+    return res.text();
+  })
+  .then((text) => {
+    console.log("chiikawa.txt内容:", text);
+    setRuleText(text);
+    setIsRuleOpen(true);
+  });
       } else {
         setIsRuleOpen(false);
       }
