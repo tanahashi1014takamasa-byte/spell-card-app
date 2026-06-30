@@ -339,20 +339,7 @@ return (
     height: "auto",
   }}
 />
-{isGuideOpen && (
-  <p
-    style={{
-      marginTop: "20px",
-      color: "white",
-      fontSize: "18px",
-      lineHeight: "1.8",
-      whiteSpace: "pre-wrap",
-     textAlign: "left",
-    }}
-  >
-    {guideText}
-  </p>
-)}
+
 
 </div>
 
