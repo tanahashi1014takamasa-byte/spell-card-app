@@ -59,7 +59,16 @@ export default function Home() {
     };
   }, []);
 
-  
+  useEffect(() => {
+  fetch("/chiikawa.txt")
+    .then((response) => response.text())
+    .then((text) => {
+      setRuleText(text);
+    })
+    .catch((error) => {
+      console.error("ルールの読み込みに失敗しました", error);
+    });
+}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
