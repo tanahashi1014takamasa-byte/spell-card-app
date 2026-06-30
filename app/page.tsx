@@ -313,6 +313,7 @@ return (
           />
         </div>
 
+{/* ====================== ① スペルカード名鑑 ====================== */}
 <div
   style={{
     marginTop: "60px",
@@ -320,29 +321,48 @@ return (
   }}
 >
   <img
-  src="/images/spellcard-guide.png"
-  alt="spellcard-guide"
-  onClick={() => {
-  if (!isGuideOpen) {
-    fetch("/text/スペルカード名鑑.txt")
-      .then((response) => response.text())
-      .then((text) => {
-        setGuideText(text);
-        setIsGuideOpen(true);
-      });
-  } else {
-    setIsGuideOpen(false);
-  }
-}}
-  style={{
-    width: "500px",
-    height: "auto",
-  }}
-/>
+    src="/images/spellcard-guide.png"
+    alt="spellcard-guide"
+    onClick={() => {
+      if (!isGuideOpen) {
+        fetch("/text/スペルカード名鑑.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            setGuideText(text);
+            setIsGuideOpen(true);
+          });
+      } else {
+        setIsGuideOpen(false);
+      }
+    }}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
 
-
+  {/* ①のテキスト（名鑑用） */}
+  {isGuideOpen && (
+    <p
+      style={{
+        marginTop: "20px",
+        color: "white",
+        fontSize: "18px",
+        lineHeight: "1.8",
+        whiteSpace: "pre-wrap",
+        textAlign: "left",
+        maxWidth: "500px",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
+      {guideText}
+    </p>
+  )}
 </div>
 
+{/* ====================== ② ルールブック ====================== */}
 <div
   style={{
     marginTop: "60px",
@@ -350,40 +370,45 @@ return (
   }}
 >
   <img
-  src="/images/rule_book.png"
-  alt="rule_book"
-  onClick={() => {
-  if (!isGuideOpen) {
-    fetch("/text/chiikawa.txt")
-      .then((response) => response.text())
-      .then((text) => {
-        setGuideText(text);
-        setIsGuideOpen(true);
-      });
-  } else {
-    setIsGuideOpen(false);
-  }
-}}
-  style={{
-    width: "500px",
-    height: "auto",
-  }}
-/>
-{isGuideOpen && (
-  <p
-    style={{
-      marginTop: "20px",
-      color: "white",
-      fontSize: "18px",
-      lineHeight: "1.8",
-      whiteSpace: "pre-wrap",
-     textAlign: "left",
+    src="/images/rule_book.png"
+    alt="rule_book"
+    onClick={() => {
+      if (!isRuleOpen) {
+        fetch("/text/chiikawa.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            setRuleText(text);
+            setIsRuleOpen(true);
+          });
+      } else {
+        setIsRuleOpen(false);
+      }
     }}
-  >
-    {guideText}
-  </p>
-)}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
 
+  {/* ②のテキスト（ルールブック用） */}
+  {isRuleOpen && (
+    <p
+      style={{
+        marginTop: "20px",
+        color: "white",
+        fontSize: "18px",
+        lineHeight: "1.8",
+        whiteSpace: "pre-wrap",
+        textAlign: "left",
+        maxWidth: "500px",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
+      {ruleText}
+    </p>
+  )}
 </div>
 
 
