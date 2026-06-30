@@ -238,6 +238,7 @@ return (
         background: "#111",
         minHeight: "100vh",
         color: "white",
+         overflowY: "auto",
       }}
     >
       
