@@ -59,16 +59,45 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-  fetch("/chiikawa.txt")
-    .then((response) => response.text())
-    .then((text) => {
-      setRuleText(text);
-    })
-    .catch((error) => {
-      console.error("ルールの読み込みに失敗しました", error);
-    });
-}, []);
+  <img
+  src="/images/rule_book.png"
+  alt="rule_book"
+  onClick={() => {
+    if (!isRuleOpen) {
+      fetch("/chiikawa.txt")
+        .then((res) => res.text())
+        .then((text) => {
+          setRuleText(text);
+          setIsRuleOpen(true);
+        })
+        .catch((error) => {
+          console.error("ルールの読み込みに失敗しました", error);
+        });
+    } else {
+      setIsRuleOpen(false);
+    }
+  }}
+  style={{
+    width: "500px",
+    height: "auto",
+    cursor: "pointer",
+  }}
+/>
+
+{isRuleOpen && (
+  <p
+    style={{
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
+      textAlign: "left",
+    }}
+  >
+    {ruleText}
+  </p>
+)}
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
