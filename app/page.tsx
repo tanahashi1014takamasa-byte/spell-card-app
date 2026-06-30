@@ -59,45 +59,46 @@ export default function Home() {
     };
   }, []);
 
+<div style={{ marginTop: "60px", textAlign: "center" }}>
   <img
-  src="/images/rule_book.png"
-  alt="rule_book"
-  onClick={() => {
-    if (!isRuleOpen) {
-      fetch("/chiikawa.txt")
-        .then((res) => res.text())
-        .then((text) => {
-          setRuleText(text);
-          setIsRuleOpen(true);
-        })
-        .catch((error) => {
-          console.error("ルールの読み込みに失敗しました", error);
-        });
-    } else {
-      setIsRuleOpen(false);
-    }
-  }}
-  style={{
-    width: "500px",
-    height: "auto",
-    cursor: "pointer",
-  }}
-/>
-
-{isRuleOpen && (
-  <p
-    style={{
-      marginTop: "20px",
-      color: "white",
-      fontSize: "18px",
-      lineHeight: "1.8",
-      whiteSpace: "pre-wrap",
-      textAlign: "left",
+    src="/images/rule_book.png"
+    alt="rule_book"
+    onClick={() => {
+      if (!isRuleOpen) {
+        fetch("/chiikawa.txt")
+          .then((res) => res.text())
+          .then((text) => {
+            setRuleText(text);
+            setIsRuleOpen(true);
+          });
+      } else {
+        setIsRuleOpen(false);
+      }
     }}
-  >
-    {ruleText}
-  </p>
-)}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
+
+  {isRuleOpen && ruleText && (
+    <div
+      style={{
+        marginTop: "20px",
+        color: "white",
+        fontSize: "18px",
+        lineHeight: "1.8",
+        whiteSpace: "pre-wrap",
+        textAlign: "left",
+        maxWidth: "600px",
+        marginInline: "auto",
+      }}
+    >
+      {ruleText}
+    </div>
+  )}
+</div>
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
