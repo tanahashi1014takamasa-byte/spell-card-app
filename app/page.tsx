@@ -248,25 +248,20 @@ return (
   SPELL CARD
 </h1>
 
-        <button
+       <img
+  src="/images/なんとかなれ.png"
+  alt="なんとかなれー!!"
   onClick={() => {
     bgmRef.current?.play().catch(() => {});
     drawCards();
   }}
   style={{
-    padding: "16px 32px",
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#fff",
-    background: "linear-gradient(135deg, #333, #111)",
-    border: "2px solid #666",
-    borderRadius: "12px",
+    width: "500px",
+    height: "auto",
     cursor: "pointer",
     marginTop: "20px",
   }}
->
-  なんとかなれーッ！！
-</button>
+/>
 
         <div
           style={{
