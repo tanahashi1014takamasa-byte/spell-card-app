@@ -59,49 +59,16 @@ export default function Home() {
     };
   }, []);
 
-<div style={{ marginTop: "60px", textAlign: "center" }}>
-  <img
-    src="/images/rule_book.png"
-    alt="rule_book"
-    onClick={() => {
-      if (!isRuleOpen) {
-        fetch("/chiikawa.txt")
-  .then((res) => {
-    console.log("status:", res.status);
-    return res.text();
-  })
-  .then((text) => {
-  setIsRuleOpen(true);
-  setRuleText(text);
-});
-      } else {
-        setIsRuleOpen(false);
-      }
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-
-  {isRuleOpen && ruleText && (
-    <div
-      style={{
-        marginTop: "20px",
-        color: "white",
-        fontSize: "18px",
-        lineHeight: "1.8",
-        whiteSpace: "pre-wrap",
-        textAlign: "left",
-        maxWidth: "600px",
-        marginInline: "auto",
-      }}
-    >
-      {ruleText}
-    </div>
-  )}
-</div>
+  useEffect(() => {
+  fetch("/chiikawa.txt")
+    .then((response) => response.text())
+    .then((text) => {
+      setRuleText(text);
+    })
+    .catch((error) => {
+      console.error("ルールの読み込みに失敗しました", error);
+    });
+}, []);
 
   const flipSound = () => {
     const audio = new Audio("/sounds/flip.mp3");
@@ -109,15 +76,10 @@ export default function Home() {
     audio.play();
   };
 
- const closeZoom = () => {
-  const current = zoomImage;
-
+  const closeZoom = () => {
   setZoomImage(null);
   setIsHomeRun(false);
-
-  if (current !== "/videos/bambi.mp4") {
-    bgmRef.current?.play().catch(() => {});
-  }
+  bgmRef.current?.play().catch(() => {});
 };
 
   const drawCards = () => {
@@ -221,40 +183,36 @@ return (
   </div>
 )}
 
-
-<div style={{ marginTop: "60px", textAlign: "center" }}>
-  <img
-    src="/images/rule_book.png"
-    onClick={() => {
-      if (!isRuleOpen) {
-        fetch("/chiikawa.txt")
-          .then((res) => res.text())
-          .then((text) => {
-            setRuleText(text);
-            setIsRuleOpen(true);
-          });
-      } else {
-        setIsRuleOpen(false);
-      }
+{isRuleOpen && (
+  <div
+    onClick={() => setIsRuleOpen(false)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.85)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
     }}
-    style={{ width: "500px", cursor: "pointer" }}
-  />
-
-  {isRuleOpen && ruleText && (
+  >
     <div
+      onClick={(e) => e.stopPropagation()}
       style={{
-        marginTop: "20px",
-        color: "white",
-        whiteSpace: "pre-wrap",
-        textAlign: "left",
+        background: "#222",
+        color: "#fff",
+        padding: "30px",
+        borderRadius: "12px",
         maxWidth: "600px",
-        marginInline: "auto",
+        width: "90%",
+        whiteSpace: "pre-line",
       }}
     >
       {ruleText}
     </div>
-  )}
-</div>
+  </div>
+)}
+
 
     {/* ★ここに追加 */}
     {isZooming && (
@@ -275,7 +233,6 @@ return (
         background: "#111",
         minHeight: "100vh",
         color: "white",
-         overflowY: "auto",
       }}
     >
       
@@ -380,7 +337,6 @@ return (
     fetch("/text/スペルカード名鑑.txt")
       .then((response) => response.text())
       .then((text) => {
-         console.log("ruleText:", text);
         setGuideText(text);
         setIsGuideOpen(true);
       });
