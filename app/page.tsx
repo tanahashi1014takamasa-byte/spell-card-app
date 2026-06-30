@@ -384,6 +384,25 @@ return (
   />
 </div>
 
+<div
+  style={{
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "40px",
+  }}
+>
+  <img
+    src="/images/kisarazu1.png"
+    alt="木更津キャッツアイ"
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
+</div>
+
       </main>
     </>
 );
