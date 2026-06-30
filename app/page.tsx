@@ -36,6 +36,7 @@ export default function Home() {
   const [ruleText, setRuleText] = useState("");
   const [guideText, setGuideText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [isBambiOpen, setIsBambiOpen] = useState(false);
   
 
   useEffect(() => {
@@ -395,6 +396,7 @@ return (
   <img
     src="/images/kisarazu1.png"
     alt="木更津キャッツアイ"
+    onClick={() => setZoomImage("/videos/bambi.mp4")}
     style={{
       width: "500px",
       height: "auto",
