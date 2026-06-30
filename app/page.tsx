@@ -222,9 +222,6 @@ return (
   <div
     onClick={() => setIsRuleOpen(false)}
     style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.85)",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -373,6 +370,7 @@ return (
     fetch("/text/スペルカード名鑑.txt")
       .then((response) => response.text())
       .then((text) => {
+         console.log("ruleText:", text);
         setGuideText(text);
         setIsGuideOpen(true);
       });
