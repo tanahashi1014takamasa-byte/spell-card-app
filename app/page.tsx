@@ -76,10 +76,15 @@ export default function Home() {
     audio.play();
   };
 
-  const closeZoom = () => {
+ const closeZoom = () => {
+  const current = zoomImage;
+
   setZoomImage(null);
   setIsHomeRun(false);
-  bgmRef.current?.play().catch(() => {});
+
+  if (current !== "/videos/bambi.mp4") {
+    bgmRef.current?.play().catch(() => {});
+  }
 };
 
   const drawCards = () => {
