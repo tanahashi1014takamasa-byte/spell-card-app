@@ -37,6 +37,7 @@ export default function Home() {
   const [guideText, setGuideText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBambiOpen, setIsBambiOpen] = useState(false);
+  const [resumeBgm, setResumeBgm] = useState(true);
   
 
   useEffect(() => {
@@ -66,10 +67,15 @@ export default function Home() {
     audio.play();
   };
 
-  const closeZoom = () => {
+ const closeZoom = () => {
   setZoomImage(null);
   setIsHomeRun(false);
-  bgmRef.current?.play().catch(() => {});
+
+  if (resumeBgm) {
+    bgmRef.current?.play().catch(() => {});
+  }
+
+  setResumeBgm(true);
 };
 
   const drawCards = () => {
@@ -399,7 +405,10 @@ return (
   <img
     src="/images/kisarazu1.png"
     alt="木更津キャッツアイ"
-    onClick={() => setZoomImage("/videos/bambi.mp4")}
+    onClick={() => {
+  setResumeBgm(false);
+  setZoomImage("/videos/bambi.mp4");
+}}
     style={{
       width: "500px",
       height: "auto",
