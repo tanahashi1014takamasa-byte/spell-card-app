@@ -440,6 +440,29 @@ return (
     }}
   />
 </div>
+
+<div
+  style={{
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "40px",
+  }}
+>
+  <img
+    src="/images/木更津バーナー②.png"
+    alt="木更津バーナー②"
+    onClick={() => {
+      setResumeBgm(false);
+      setZoomImage("/videos/円陣②.mp4");
+    }}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
+</div>
       </main>
     </>
 );
