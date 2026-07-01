@@ -486,6 +486,29 @@ return (
     }}
   />
 </div>
+
+<div
+  style={{
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "40px",
+  }}
+>
+  <img
+    src="/images/木更津バーナー④.png"
+    alt="木更津バーナー④"
+    onClick={() => {
+      setResumeBgm(false);
+      setZoomImage("/videos/木更津キャッツアイのテーマ.mp4");
+    }}
+    style={{
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
+  />
+</div>
       </main>
     </>
 );
