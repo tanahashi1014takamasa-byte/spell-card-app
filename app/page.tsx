@@ -283,8 +283,8 @@ return (
           }}
         >
           <img
-            src="/images/yah.png"
-            alt="yah"
+            src="/images/cso.png"
+            alt="cso"
             style={{
               width: "420px",
               height: "auto",
