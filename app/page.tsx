@@ -545,7 +545,7 @@ return (
   <img
     src="/images/キャプテンロゴ.png"
     alt="キャプテンロゴ"
-    onClick={() => setShowTaniguchi(true)}
+    onClick={() => setShowTaniguchi(!showTaniguchi)}
     style={{
       width: "500px",
       height: "auto",
