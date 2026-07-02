@@ -38,6 +38,7 @@ export default function Home() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBambiOpen, setIsBambiOpen] = useState(false);
   const [resumeBgm, setResumeBgm] = useState(true);
+  const [showTaniguchi, setShowTaniguchi] = useState(false);
   
 
   useEffect(() => {
@@ -551,6 +552,25 @@ return (
     }}
   />
 </div>
+
+{showTaniguchi && (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "flex-start",
+      marginTop: "40px",
+    }}
+  >
+    <img
+      src="/images/taniguchi.png"
+      alt="谷口"
+      style={{
+        width: "150px",
+        height: "150px",
+      }}
+    />
+  </div>
+)}
 
       </main>
     </>
