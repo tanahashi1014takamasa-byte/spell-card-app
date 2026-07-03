@@ -587,7 +587,26 @@ return (
   >
     {taniguchiText}
   </div>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "40px",
+  }}
+>
+  <img
+    src="/images/marui.png"
+    alt="丸井"
+    style={{
+      width: "150px",
+      height: "150px",
+    }}
+  />
 </div>
+
+</div>
+
 
   
 )}
