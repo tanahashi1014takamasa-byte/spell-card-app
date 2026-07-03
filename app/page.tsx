@@ -40,6 +40,7 @@ export default function Home() {
   const [resumeBgm, setResumeBgm] = useState(true);
   const [showTaniguchi, setShowTaniguchi] = useState(false);
   const [taniguchiText, setTaniguchiText] = useState("");
+  const [maruiText, setMaruiText] = useState("");
   
 
   useEffect(() => {
@@ -84,6 +85,12 @@ useEffect(() => {
   fetch("/text/taniguchi.txt")
     .then(res => res.text())
     .then(setTaniguchiText);
+}, []);
+
+useEffect(() => {
+  fetch("/text/marui.txt")
+    .then((res) => res.text())
+    .then(setMaruiText);
 }, []);
 
   const drawCards = () => {
@@ -599,6 +606,17 @@ return (
         marginTop: "40px",
       }}
     >
+
+<div
+  style={{
+    flex: 1,
+    marginRight: "20px",
+    wordBreak: "break-word",
+  }}
+>
+  {maruiText}
+</div>
+
       <img
         src="/images/marui.png"
         alt="丸井"
