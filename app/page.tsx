@@ -699,22 +699,8 @@ return (
     }}
   />
 </div>
-<div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "40px",
-  }}
->
-  <img
-    src="/images/wani.png"
-    alt="ワニ"
-    style={{
-      width: "150px",
-      height: "auto",
-    }}
-  />
-</div>
+
+src="/images/wani.png"
 
   </>
 )}
