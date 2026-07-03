@@ -562,22 +562,32 @@ return (
 </div>
 
 {showTaniguchi && (
+ <div
+  style={{
+    display: "flex",
+    justifyContent: "flex-start",
+    marginTop: "40px",
+  }}
+>
+  <img
+    src="/images/taniguchi.png"
+    alt="谷口"
+    style={{
+      width: "150px",
+      height: "150px",
+    }}
+  />
+
   <div
     style={{
-      display: "flex",
-      justifyContent: "flex-start",
-      marginTop: "40px",
+      flex: 1,
+      marginLeft: "20px",
+      wordBreak: "break-word",
     }}
   >
-    <img
-      src="/images/taniguchi.png"
-      alt="谷口"
-      style={{
-        width: "150px",
-        height: "150px",
-      }}
-    />
+    {taniguchiText}
   </div>
+</div>
 
   
 )}
