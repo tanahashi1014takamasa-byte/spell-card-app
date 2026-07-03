@@ -670,35 +670,34 @@ return (
     {igarashiText}
   </div>
 
- {/* 近藤 */}
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        marginTop: "40px",
-      }}
-    >
+  </div>   // ← イガラシ終了
 
+ {/* 近藤 */}
 <div
   style={{
-    flex: 1,
-    marginRight: "20px",
-    wordBreak: "break-word",
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "40px",
   }}
 >
-  {kondoText}
-</div>
+  <div
+    style={{
+      flex: 1,
+      marginRight: "20px",
+      wordBreak: "break-word",
+    }}
+  >
+    {kondoText}
+  </div>
 
-      <img
-        src="/images/kondo.png"
-        alt="近藤"
-        style={{
-          width: "150px",
-          height: "150px",
-        }}
-      />
-    </div>
-
+  <img
+    src="/images/kondo.png"
+    alt="近藤"
+    style={{
+      width: "150px",
+      height: "150px",
+    }}
+  />
 </div>
   </>
 )}
