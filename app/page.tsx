@@ -39,6 +39,7 @@ export default function Home() {
   const [isBambiOpen, setIsBambiOpen] = useState(false);
   const [resumeBgm, setResumeBgm] = useState(true);
   const [showTaniguchi, setShowTaniguchi] = useState(false);
+  const [taniguchiText, setTaniguchiText] = useState("");
   
 
   useEffect(() => {
@@ -78,6 +79,12 @@ export default function Home() {
 
   setResumeBgm(true);
 };
+
+useEffect(() => {
+  fetch("/texts/taniguchi.txt")
+    .then(res => res.text())
+    .then(setTaniguchiText);
+}, []);
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -555,22 +562,15 @@ return (
 </div>
 
 {showTaniguchi && (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "flex-start",
-      marginTop: "40px",
-    }}
-  >
-    <img
-      src="/images/taniguchi.png"
-      alt="谷口"
-      style={{
-        width: "150px",
-        height: "150px",
-      }}
-    />
+ <div style={{ display: "flex" }}>
+  <img src="/images/taniguchi.png" />
+
+  <div style={{ flex: 1, marginLeft: "20px" }}>
+    {taniguchiText}
   </div>
+</div>
+
+  
 )}
 
       </main>
