@@ -626,6 +626,23 @@ return (
         }}
       />
     </div>
+
+    <div
+  style={{
+    display: "flex",
+    justifyContent: "flex-start",
+    marginTop: "40px",
+  }}
+>
+  <img
+    src="/images/igarashi.png"
+    alt="イガラシ"
+    style={{
+      width: "150px",
+      height: "150px",
+    }}
+  />
+</div>
   </>
 )}
 
