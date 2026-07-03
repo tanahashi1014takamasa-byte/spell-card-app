@@ -633,8 +633,16 @@ return (
         }}
       />
     </div>
-    
-     <img
+
+    {/* イガラシ */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "flex-start",
+    marginTop: "40px",
+  }}
+>
+  <img
     src="/images/igarashi.png"
     alt="イガラシ"
     style={{
@@ -643,16 +651,15 @@ return (
     }}
   />
 
-    <div
-  style={{
-    display: "flex",
-    justifyContent: "flex-start",
-    marginTop: "40px",
-  }}
->
-
-  
- 
+  <div
+    style={{
+      flex: 1,
+      marginLeft: "20px",
+      wordBreak: "break-word",
+    }}
+  >
+    {igarashiText}
+  </div>
 </div>
   </>
 )}
