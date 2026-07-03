@@ -587,19 +587,7 @@ return (
   >
     {taniguchiText}
   </div>
-
-<img
-    src="/images/marui.png"
-    alt="丸井"
-    style={{
-      width: "150px",
-      height: "150px",
-    }}
-    />
-
 </div>
-
-
 
   
 )}
