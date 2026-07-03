@@ -81,7 +81,7 @@ export default function Home() {
 };
 
 useEffect(() => {
-  fetch("/texts/taniguchi.txt")
+  fetch("/text/taniguchi.txt")
     .then(res => res.text())
     .then(setTaniguchiText);
 }, []);
