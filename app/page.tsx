@@ -550,65 +550,65 @@ return (
   }}
 >
   <img
-    src="/images/キャプテンロゴ.png"
-    alt="キャプテンロゴ"
-    onClick={() => setShowTaniguchi(!showTaniguchi)}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
+  src="/images/キャプテンロゴ.png"
+  alt="キャプテンロゴ"
+  onClick={() => setShowTaniguchi(!showTaniguchi)}
+  style={{
+    width: "500px",
+    height: "auto",
+    cursor: "pointer",
+  }}
+/>
 </div>
 
 {showTaniguchi && (
- <div
-  style={{
-    display: "flex",
-    justifyContent: "flex-start",
-    marginTop: "40px",
-  }}
->
-  <img
-    src="/images/taniguchi.png"
-    alt="谷口"
-    style={{
-      width: "150px",
-      height: "150px",
-    }}
-  />
+  <>
+    {/* 谷口 */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        marginTop: "40px",
+      }}
+    >
+      <img
+        src="/images/taniguchi.png"
+        alt="谷口"
+        style={{
+          width: "150px",
+          height: "150px",
+        }}
+      />
 
-  <div
-    style={{
-      flex: 1,
-      marginLeft: "20px",
-      wordBreak: "break-word",
-    }}
-  >
-    {taniguchiText}
-  </div>
+      <div
+        style={{
+          flex: 1,
+          marginLeft: "20px",
+          wordBreak: "break-word",
+        }}
+      >
+        {taniguchiText}
+      </div>
+    </div>
 
-<div
-  style={{
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "40px",
-  }}
->
-  <img
-    src="/images/marui.png"
-    alt="丸井"
-    style={{
-      width: "150px",
-      height: "150px",
-    }}
-  />
-</div>
-
-</div>
-
-
-  
+    {/* 丸井 */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: "40px",
+      }}
+    >
+      <img
+        src="/images/marui.png"
+        alt="丸井"
+        style={{
+          width: "150px",
+          height: "150px",
+        }}
+      />
+    </div>
+  </>
 )}
 
       </main>
