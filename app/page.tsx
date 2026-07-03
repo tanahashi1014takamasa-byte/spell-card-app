@@ -42,6 +42,8 @@ export default function Home() {
   const [taniguchiText, setTaniguchiText] = useState("");
   const [maruiText, setMaruiText] = useState("");
   const [igarashiText, setIgarashiText] = useState("");
+　const [kondoText, setKondoText] = useState("");
+  
   
 
   useEffect(() => {
@@ -99,6 +101,13 @@ useEffect(() => {
     .then((res) => res.text())
     .then(setIgarashiText);
 }, []);
+
+useEffect(() => {
+  fetch("/text/kondo.txt")
+    .then((res) => res.text())
+    .then(setKondoText);
+}, []);
+
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -660,6 +669,36 @@ return (
   >
     {igarashiText}
   </div>
+
+ {/* 近藤 */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: "40px",
+      }}
+    >
+
+<div
+  style={{
+    flex: 1,
+    marginRight: "20px",
+    wordBreak: "break-word",
+  }}
+>
+  {kondoText}
+</div>
+
+      <img
+        src="/images/kondo.png"
+        alt="近藤"
+        style={{
+          width: "150px",
+          height: "150px",
+        }}
+      />
+    </div>
+
 </div>
   </>
 )}
