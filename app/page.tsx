@@ -711,7 +711,7 @@ return (
   }}
 >
   <img
-    src="/images/wani.png"
+    src="/images/wani①.png"
     alt="ワニ"
     style={{
   width: "100%",
