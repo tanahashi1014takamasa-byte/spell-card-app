@@ -714,9 +714,10 @@ return (
     src="/images/wani.png"
     alt="ワニ"
     style={{
-      width: "150px",
-      height: "auto",
-    }}
+  width: "100%",
+  maxWidth: "500px",
+  height: "auto",
+}}
   />
 </div>
 
