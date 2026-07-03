@@ -701,22 +701,19 @@ return (
 </div>
 <div
   style={{
-    marginTop: "60px",
     display: "flex",
     justifyContent: "center",
-    marginBottom: "40px",
+    marginTop: "40px",
   }}
 >
   <img
-  src="/images/wani.png"
-  alt=""
-  onClick={() => setShowTaniguchi(!showTaniguchi)}
-  style={{
-    width: "500px",
-    height: "auto",
-    cursor: "pointer",
-  }}
-/>
+    src="/images/wani.png"
+    alt="ワニ"
+    style={{
+      width: "150px",
+      height: "auto",
+    }}
+  />
 </div>
 
   </>
