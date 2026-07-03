@@ -670,7 +670,7 @@ return (
     {igarashiText}
   </div>
 
-  </div>   // ← イガラシ終了
+  </div>   
 
  {/* 近藤 */}
 <div
