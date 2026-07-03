@@ -41,6 +41,7 @@ export default function Home() {
   const [showTaniguchi, setShowTaniguchi] = useState(false);
   const [taniguchiText, setTaniguchiText] = useState("");
   const [maruiText, setMaruiText] = useState("");
+  const [igarashiText, setIgarashiText] = useState("");
   
 
   useEffect(() => {
@@ -91,6 +92,12 @@ useEffect(() => {
   fetch("/text/marui.txt")
     .then((res) => res.text())
     .then(setMaruiText);
+}, []);
+
+useEffect(() => {
+  fetch("/text/igarashi.txt")
+    .then((res) => res.text())
+    .then(setIgarashiText);
 }, []);
 
   const drawCards = () => {
@@ -634,6 +641,16 @@ return (
     marginTop: "40px",
   }}
 >
+<div
+  style={{
+    flex: 1,
+    marginLeft: "20px",
+    wordBreak: "break-word",
+  }}
+>
+  {igarashiText}
+</div>
+
   <img
     src="/images/igarashi.png"
     alt="イガラシ"
