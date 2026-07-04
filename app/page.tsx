@@ -235,18 +235,15 @@ return (
       }}
     >
       
-        <h1
+        <img
+  src="/images/spell-card-logo.png"
+  alt="SPELL CARD"
   style={{
-    fontFamily: "var(--font-cinzel)",
-    fontSize: "38px",
-    letterSpacing: "3px",
-    color: "#f5f5f5",
+    width: "700px", // 好きなサイズ
+    height: "auto",
     marginBottom: "20px",
-    textShadow: "0 0 10px rgba(255,255,255,0.15)",
   }}
->
-  SPELL CARD
-</h1>
+/>
 
        <img
   src="/images/なんとかなれ2.png"
