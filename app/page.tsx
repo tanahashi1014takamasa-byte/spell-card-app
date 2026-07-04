@@ -236,7 +236,7 @@ return (
     >
       
         <img
-  src="/images/spell-card-logo.png"
+  src="/images/spell-card-logo①.png"
   alt="SPELL CARD"
   style={{
     width: "700px", // 好きなサイズ
