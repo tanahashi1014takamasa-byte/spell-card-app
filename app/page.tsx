@@ -44,6 +44,7 @@ export default function Home() {
   const [igarashiText, setIgarashiText] = useState("");
 　const [kondoText, setKondoText] = useState("");
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
+  const [isWaniOpen, setIsWaniOpen] = useState(false);
   
   
 
@@ -709,9 +710,9 @@ return (
   }}
 >
   <img
-    src={waniImage}
+    src={isWaniOpen ? "/images/wani②.png" : "/images/wani③.png"}
     alt="ワニ"
-    onClick={() => setWaniImage("/images/wani②.png")}
+    onClick={() => setIsWaniOpen(!isWaniOpen)}
     style={{
       width: "100%",
       maxWidth: "500px",
