@@ -43,6 +43,7 @@ export default function Home() {
   const [maruiText, setMaruiText] = useState("");
   const [igarashiText, setIgarashiText] = useState("");
 　const [kondoText, setKondoText] = useState("");
+  const [waniImage, setWaniImage] = useState("/images/wani③.png");
   
   
 
@@ -708,13 +709,15 @@ return (
   }}
 >
   <img
-    src="/images/wani②.png"
+    src={waniImage}
     alt="ワニ"
+    onClick={() => setWaniImage("/images/wani②.png")}
     style={{
-  width: "100%",
-  maxWidth: "500px",
-  height: "auto",
-}}
+      width: "100%",
+      maxWidth: "500px",
+      height: "auto",
+      cursor: "pointer",
+    }}
   />
 </div>
 
