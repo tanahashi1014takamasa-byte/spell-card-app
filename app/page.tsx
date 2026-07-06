@@ -47,15 +47,8 @@ export default function Home() {
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSourceOpen, setIsSourceOpen] = useState(false);
-  const [codeText, setCodeText] = useState("");
   
-   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-
-    if (isSourceOpen) {
-      setIsSourceOpen(false);
-    }
-  };
+  
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -117,12 +110,6 @@ useEffect(() => {
   fetch("/text/kondo.txt")
     .then((res) => res.text())
     .then(setKondoText);
-}, []);
-
-useEffect(() => {
-  fetch("/text/code.txt")
-    .then((res) => res.text())
-    .then(setCodeText);
 }, []);
 
 
@@ -231,32 +218,12 @@ return (
 
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
-  </button>
- {isSourceOpen && (
-  <div
-  style={{
-    position: "fixed",
-    inset: 0,
-    background: "rgba(0,0,0,0.9)",
-    zIndex: 9999,
-    padding: "20px",
-    overflowY: "auto",
-  }}
-  onClick={() => setIsSourceOpen(false)}
->
-    <pre
-      style={{
-        color: "white",
-        whiteSpace: "pre-wrap",
-        marginTop: "10px",
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {codeText}
-    </pre>
+  {isSourceOpen && (
+  <div>
+    📄 Home.tsx
   </div>
 )}
-
+</button>
 <br /><br />
 
 <button>📂 開発ログ</button>
