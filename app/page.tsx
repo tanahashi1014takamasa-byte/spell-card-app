@@ -219,7 +219,7 @@ return (
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
   {isSourceOpen && (
-  <div>
+  <div style={{ marginTop: "8px" }}>
   📄 Home.tsx
   </div>
 )}
