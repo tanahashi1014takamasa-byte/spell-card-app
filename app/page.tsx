@@ -46,8 +46,8 @@ export default function Home() {
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSourceOpen, setIsSourceOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
+  const [activePanel, setActivePanel] = useState<null | "menu" | "source">(null);
   
   
 
@@ -223,22 +223,28 @@ return (
 <button>📂 ターミナル履歴</button>
 <br /><br />
 
-<button onClick={() => setIsSourceOpen(!isSourceOpen)}>
-  📂 ソースコード
- {isSourceOpen && (
- <pre
-  style={{
-    color: "white",
-    whiteSpace: "pre-wrap",
-    marginTop: "10px",
-    maxHeight: "70vh",
-    overflowY: "auto",
-  }}
+<button
+  onClick={() =>
+    setActivePanel(activePanel === "source" ? null : "source")
+  }
 >
-  {codeText}
-</pre>
-)}
+  📂 ソースコード
 </button>
+  
+ {activePanel === "source" && (
+  <pre
+    style={{
+      color: "white",
+      whiteSpace: "pre-wrap",
+      marginTop: "10px",
+      maxHeight: "70vh",
+      overflowY: "auto",
+    }}
+  >
+    {codeText}
+  </pre>
+)}
+
 <br /><br />
 
 <button>📂 開発ログ</button>
