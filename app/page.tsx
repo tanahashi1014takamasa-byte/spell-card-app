@@ -179,21 +179,21 @@ return (
 
    <>
     <button
-  onClick={() => setActivePanel("menu")}
-  style={{
-    position: "fixed",
-    top: "20px",
-    right: "20px",
-    background: "transparent",
-    border: "none",
-    color: "white",
-    fontSize: "36px",
-    cursor: "pointer",
-    zIndex: 10000,
-  }}
->
-  ☰
-</button>
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      style={{
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        fontSize: "36px",
+        cursor: "pointer",
+        zIndex: 10000,
+      }}
+    >
+      ☰
+    </button>
 
     {isMenuOpen && (
   <div
@@ -231,20 +231,17 @@ return (
   📂 ソースコード
 </button>
   
-{activePanel === "menu" && (
+{activePanel === "source" && (
   <div
     style={{
       position: "fixed",
-      top: 0,
-      right: 0,
-      width: "250px",
-      height: "fit-content",
-      background: "#222",
-      color: "white",
-      padding: "20px",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
       zIndex: 9999,
-      boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
+      padding: "20px",
+      overflowY: "auto",
     }}
+    onClick={() => setActivePanel(null)}
   >
     {/* ×ボタン */}
     <button
