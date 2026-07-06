@@ -202,8 +202,7 @@ return (
       boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
-    <h2>📂メニュー</h2>
-
+    
 <button>📂 制作目的</button>
 <br /><br />
 
