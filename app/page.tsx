@@ -245,21 +245,21 @@ return (
   >
     {/* ×ボタン */}
     <button
-      onClick={() => setActivePanel(null)}
-      style={{
-        position: "absolute",
-        top: "15px",
-        right: "20px",
-        fontSize: "28px",
-        color: "white",
-        background: "transparent",
-        border: "none",
-        cursor: "pointer",
-        zIndex: 10000,
-      }}
-    >
-      ✕
-    </button>
+  onClick={() => setActivePanel(null)}
+  style={{
+    position: "sticky",
+    top: "0",
+    display: "block",
+    margin: "0 auto 10px auto",
+    fontSize: "28px",
+    color: "white",
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+  }}
+>
+  ✕
+</button>
 
     {/* コード表示 */}
     <pre
