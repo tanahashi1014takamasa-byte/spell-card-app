@@ -218,6 +218,11 @@ return (
 
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
+  {isSourceOpen && (
+  <div>
+    📄 Home.tsx
+  </div>
+)}
 </button>
 <br /><br />
 
