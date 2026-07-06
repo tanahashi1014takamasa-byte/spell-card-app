@@ -226,7 +226,7 @@ return (
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
  {isSourceOpen && (
-  <pre
+ <pre
   style={{
     color: "white",
     whiteSpace: "pre-wrap",
