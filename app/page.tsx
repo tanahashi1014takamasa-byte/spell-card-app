@@ -49,11 +49,7 @@ export default function Home() {
   const [isSourceOpen, setIsSourceOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
   
-  useEffect(() => {
-  fetch("/text/code.txt")
-    .then((res) => res.text())
-    .then(setCodeText);
-}, []);
+  
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -115,6 +111,12 @@ useEffect(() => {
   fetch("/text/kondo.txt")
     .then((res) => res.text())
     .then(setKondoText);
+}, []);
+
+useEffect(() => {
+  fetch("/text/code.txt")
+    .then((res) => res.text())
+    .then(setCodeText);
 }, []);
 
 
