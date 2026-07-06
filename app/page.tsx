@@ -47,8 +47,13 @@ export default function Home() {
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSourceOpen, setIsSourceOpen] = useState(false);
+  const [codeText, setCodeText] = useState("");
   
-  
+  useEffect(() => {
+  fetch("/text/code.txt")
+    .then((res) => res.text())
+    .then(setCodeText);
+}, []);
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -218,10 +223,18 @@ return (
 
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
-  {isSourceOpen && (
-  <div>
-    📄 Home.tsx
-  </div>
+ {isSourceOpen && (
+  <pre
+  style={{
+    color: "white",
+    whiteSpace: "pre-wrap",
+    marginTop: "10px",
+    maxHeight: "70vh",
+    overflowY: "auto",
+  }}
+>
+  {codeText}
+</pre>
 )}
 </button>
 <br /><br />
