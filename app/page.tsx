@@ -194,7 +194,7 @@ return (
       top: 0,
       right: 0,
       width: "250px",
-      height: "100vh",
+      height: "fit-content",
       background: "#222",
       color: "white",
       padding: "20px",
