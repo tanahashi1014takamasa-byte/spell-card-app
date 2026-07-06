@@ -227,14 +227,16 @@ return (
   📂 ソースコード
   {isSourceOpen && (
   <pre
-    style={{
-      color: "white",
-      whiteSpace: "pre-wrap",
-      marginTop: "10px",
-    }}
-  >
-    {codeText}
-  </pre>
+  style={{
+    color: "white",
+    whiteSpace: "pre-wrap",
+    marginTop: "10px",
+    maxHeight: "70vh",
+    overflowY: "auto",
+  }}
+>
+  {codeText}
+</pre>
 )}
 </button>
 <br /><br />
