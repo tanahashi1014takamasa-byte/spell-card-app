@@ -186,6 +186,33 @@ return (
     >
       ☰
     </button>
+
+    {isMenuOpen && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      right: 0,
+      width: "250px",
+      height: "100vh",
+      background: "#222",
+      color: "white",
+      padding: "20px",
+      zIndex: 9999,
+      boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
+    }}
+  >
+    <h2>メニュー</h2>
+
+    <button>📖 ルールブック</button>
+    <br /><br />
+
+    <button>📚 キャラ図鑑</button>
+    <br /><br />
+
+    <button>💻 開発資料</button>
+  </div>
+)}
   
     {zoomImage && (
       
