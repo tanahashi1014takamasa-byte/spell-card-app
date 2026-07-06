@@ -190,16 +190,16 @@ return (
     {isMenuOpen && (
   <div
     style={{
-    display: "block",
-    width: "100%",
-    padding: "10px 15px",
-    marginBottom: "10px",
-    background: "transparent",
-    border: "none",
-    color: "white",
-    fontSize: "20px",
-    textAlign: "left",
-    cursor: "pointer",
+      position: "fixed",
+      top: 0,
+      right: 0,
+      width: "250px",
+      height: "fit-content",
+      background: "#222",
+      color: "white",
+      padding: "20px",
+      zIndex: 9999,
+      boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
     <h2>⚾ メニュー ⚾</h2>
