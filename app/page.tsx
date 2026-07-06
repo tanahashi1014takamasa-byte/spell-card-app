@@ -220,8 +220,7 @@ return (
   📂 ソースコード
   {isSourceOpen && (
   <div>
-    <br /><br />
-    📄 Home.tsx
+  📄 Home.tsx
   </div>
 )}
 </button>
