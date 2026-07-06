@@ -225,20 +225,32 @@ return (
 
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
-  {isSourceOpen && (
-  <pre
-  style={{
-    color: "white",
-    whiteSpace: "pre-wrap",
-    marginTop: "10px",
-    maxHeight: "70vh",
-    overflowY: "auto",
-  }}
->
-  {codeText}
-</pre>
+  </button>
+ {isSourceOpen && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.9)",
+      zIndex: 9999,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+    onClick={() => setIsSourceOpen(false)}
+  >
+    <pre
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "10px",
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {codeText}
+    </pre>
+  </div>
 )}
-</button>
+
 <br /><br />
 
 <button>📂 開発ログ</button>
