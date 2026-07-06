@@ -49,7 +49,13 @@ export default function Home() {
   const [isSourceOpen, setIsSourceOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
   
-  
+   const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+
+    if (isSourceOpen) {
+      setIsSourceOpen(false);
+    }
+  };
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -228,16 +234,16 @@ return (
   </button>
  {isSourceOpen && (
   <div
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.9)",
-      zIndex: 9999,
-      padding: "20px",
-      overflowY: "auto",
-    }}
-    onClick={() => setIsSourceOpen(false)}
-  >
+  style={{
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.9)",
+    zIndex: 9999,
+    padding: "20px",
+    overflowY: "auto",
+  }}
+  onClick={() => setIsSourceOpen(false)}
+>
     <pre
       style={{
         color: "white",
