@@ -47,6 +47,7 @@ export default function Home() {
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSourceOpen, setIsSourceOpen] = useState(false);
+  const [codeText, setCodeText] = useState("");
   
   
 
@@ -110,6 +111,12 @@ useEffect(() => {
   fetch("/text/kondo.txt")
     .then((res) => res.text())
     .then(setKondoText);
+}, []);
+
+useEffect(() => {
+  fetch("/text/code.txt")
+    .then((res) => res.text())
+    .then(setCodeText);
 }, []);
 
 
@@ -219,9 +226,15 @@ return (
 <button onClick={() => setIsSourceOpen(!isSourceOpen)}>
   📂 ソースコード
   {isSourceOpen && (
-  <div style={{ marginTop: "8px" }}>
-  📄 Home.tsx
-  </div>
+  <pre
+    style={{
+      color: "white",
+      whiteSpace: "pre-wrap",
+      marginTop: "10px",
+    }}
+  >
+    {codeText}
+  </pre>
 )}
 </button>
 <br /><br />
