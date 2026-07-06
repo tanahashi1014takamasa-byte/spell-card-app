@@ -46,6 +46,7 @@ export default function Home() {
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSourceOpen, setIsSourceOpen] = useState(false);
   
   
 
@@ -215,7 +216,9 @@ return (
 <button>📂 ターミナル履歴</button>
 <br /><br />
 
-<button>📂 ソースコード</button>
+<button onClick={() => setIsSourceOpen(!isSourceOpen)}>
+  📂 ソースコード
+</button>
 <br /><br />
 
 <button>📂 開発ログ</button>
