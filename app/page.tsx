@@ -243,6 +243,24 @@ return (
     }}
     onClick={() => setActivePanel(null)}
   >
+    {/* ×ボタン */}
+    <button
+      onClick={() => setActivePanel(null)}
+      style={{
+        position: "fixed",
+        top: "15px",
+        right: "20px",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        zIndex: 10000,
+      }}
+    >
+      ✕
+    </button>
+
     <pre
       style={{
         color: "white",
