@@ -202,23 +202,18 @@ return (
       boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
-    
-<button>📂 制作目的</button>
-<br /><br />
 
-<button>📂 開発環境</button>
-<br /><br />
+<button style={{ marginBottom: "10px" }}>📂 制作目的</button>
 
-<button>📂 使用技術</button>
-<br /><br />
+<button style={{ marginBottom: "10px" }}>📂 開発環境</button>
 
-<button>📂 ターミナル履歴</button>
-<br /><br />
+<button style={{ marginBottom: "10px" }}>📂 使用技術</button>
 
-<button>📂 ソースコード</button>
-<br /><br />
+<button style={{ marginBottom: "10px" }}>📂 ターミナル履歴</button>
 
-<button>📂 開発ログ</button>
+<button style={{ marginBottom: "10px" }}>📂 ソースコード</button>
+
+<button style={{ marginBottom: "10px" }}>📂 開発ログ</button>
   </div>
 )}
   
