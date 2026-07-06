@@ -232,17 +232,27 @@ return (
 </button>
   
  {activePanel === "source" && (
-  <pre
+  <div
     style={{
-      color: "white",
-      whiteSpace: "pre-wrap",
-      marginTop: "10px",
-      maxHeight: "70vh",
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 9999,
+      padding: "20px",
       overflowY: "auto",
     }}
+    onClick={() => setActivePanel(null)}
   >
-    {codeText}
-  </pre>
+    <pre
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {codeText}
+    </pre>
+  </div>
 )}
 
 <br /><br />
