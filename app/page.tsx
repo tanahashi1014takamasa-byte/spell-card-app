@@ -45,6 +45,7 @@ export default function Home() {
 　const [kondoText, setKondoText] = useState("");
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   
 
@@ -166,7 +167,26 @@ useEffect(() => {
 };
 
 return (
-  <>
+
+
+   <>
+    <button
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      style={{
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        fontSize: "36px",
+        cursor: "pointer",
+        zIndex: 10000,
+      }}
+    >
+      ☰
+    </button>
+  
     {zoomImage && (
       
   <div
