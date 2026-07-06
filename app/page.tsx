@@ -231,7 +231,7 @@ return (
   📂 ソースコード
 </button>
   
- {activePanel === "source" && (
+{activePanel === "source" && (
   <div
     style={{
       position: "fixed",
@@ -247,7 +247,7 @@ return (
     <button
       onClick={() => setActivePanel(null)}
       style={{
-        position: "fixed",
+        position: "absolute",
         top: "15px",
         right: "20px",
         fontSize: "28px",
@@ -261,12 +261,16 @@ return (
       ✕
     </button>
 
+    {/* コード表示 */}
     <pre
+      onClick={(e) => e.stopPropagation()}
       style={{
         color: "white",
         whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
       }}
-      onClick={(e) => e.stopPropagation()}
     >
       {codeText}
     </pre>
