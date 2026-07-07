@@ -224,9 +224,10 @@ return (
 <br /><br />
 
 <button
-  onClick={() =>
-    setActivePanel(activePanel === "source" ? null : "source")
-  }
+  onClick={() => {
+    setIsMenuOpen(false);
+    setActivePanel("source");
+  }}
 >
   📂 ソースコード
 </button>
