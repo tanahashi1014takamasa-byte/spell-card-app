@@ -192,7 +192,7 @@ return (
         color: "white",
         fontSize: "36px",
         cursor: "pointer",
-        zIndex: 10000,
+        zIndex: 10003,
       }}
     >
       ☰
