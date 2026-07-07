@@ -48,6 +48,13 @@ export default function MiniGamePage() {
 >
   入場する
 </button>
+
+{isEntered && (
+  <p>
+    入場しました！
+  </p>
+)}
+
     </main>
   );
 }
