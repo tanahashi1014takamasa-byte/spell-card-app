@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function MiniGamePage() {
   const [chips, setChips] = useState("");
+  const [isEntered, setIsEntered] = useState(false);
 
   return (
     <main
@@ -39,13 +40,14 @@ export default function MiniGamePage() {
       <br /><br />
 
       <button
-        style={{
-          fontSize: "24px",
-          padding: "10px 30px",
-        }}
-      >
-        入場する
-      </button>
+  onClick={() => setIsEntered(true)}
+  style={{
+    fontSize: "24px",
+    padding: "10px 30px",
+  }}
+>
+  入場する
+</button>
     </main>
   );
 }
