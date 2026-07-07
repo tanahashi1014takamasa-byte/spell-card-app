@@ -229,6 +229,14 @@ return (
   📂 ソースコード
 </button>
   
+
+
+<br /><br />
+
+<button>📂 開発ログ</button>
+  </div>
+)}
+
 {activePanel === "source" && (
   <div
     style={{
@@ -274,12 +282,6 @@ return (
     >
       {codeText}
     </pre>
-  </div>
-)}
-
-<br /><br />
-
-<button>📂 開発ログ</button>
   </div>
 )}
   
