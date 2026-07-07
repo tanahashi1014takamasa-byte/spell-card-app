@@ -206,7 +206,7 @@ return (
       background: "#222",
       color: "white",
       padding: "20px",
-      zIndex: 10001,
+      zIndex: 10002,
       boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
@@ -235,7 +235,7 @@ return (
       position: "fixed",
       inset: 0,
       background: "rgba(0,0,0,0.95)",
-      zIndex: 9999,
+      zIndex: 10001,
       padding: "20px",
       overflowY: "auto",
     }}
@@ -294,6 +294,7 @@ return (
       justifyContent: "center",
       alignItems: "center",
       zIndex: 9999,
+    
     }}
 
 
