@@ -179,9 +179,7 @@ return (
 
    <>
     <button
-  onClick={() => {
-    setIsMenuOpen(!isMenuOpen);
-  }}
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
   style={{
     position: "fixed",
     top: "20px",
@@ -244,7 +242,10 @@ return (
   >
     {/* ×ボタン */}
     <button
-  onClick={() => setActivePanel(null)}
+  onClick={() => {
+    setActivePanel(null);
+    setIsMenuOpen(false);
+  }}
   style={{
     position: "sticky",
     top: "0",
