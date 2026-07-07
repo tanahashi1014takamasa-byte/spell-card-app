@@ -178,8 +178,8 @@ return (
 
 
    <>
-    <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
+{activePanel !== "source" && (
+<button
       style={{
         position: "fixed",
         top: "20px",
@@ -194,6 +194,7 @@ return (
     >
       ☰
     </button>
+    )}
 
     {isMenuOpen && (
   <div
