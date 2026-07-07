@@ -217,9 +217,6 @@ return (
 <button>📂 開発環境</button>
 <br /><br />
 
-<button>📂 使用技術</button>
-<br /><br />
-
 <button>📂 ターミナル履歴</button>
 <br /><br />
 
