@@ -47,9 +47,12 @@ export default function Home() {
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
-  const [activePanel, setActivePanel] = useState<null | "menu" | "source">(null);
+  const [activePanel, setActivePanel] = useState<
+  null | "menu" | "source" | "development"
+>(null);
+  const [developmentText, setDevelopmentText] = useState("");
   
-  
+
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -117,6 +120,13 @@ useEffect(() => {
   fetch("/text/code.txt")
     .then((res) => res.text())
     .then(setCodeText);
+}, []);
+
+
+useEffect(() => {
+  fetch("/text/development.txt")
+    .then((res) => res.text())
+    .then(setDevelopmentText);
 }, []);
 
 
@@ -214,7 +224,14 @@ return (
 <button>📂 制作目的</button>
 <br /><br />
 
-<button>📂 開発環境</button>
+<button
+  onClick={() => {
+    setActivePanel("development");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 開発環境
+</button>
 <br /><br />
 
 <button>📂 ターミナル履歴</button>
@@ -281,6 +298,54 @@ return (
       }}
     >
       {codeText}
+    </pre>
+  </div>
+)}
+
+{activePanel === "development" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    {/* ×ボタン */}
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+
+    {/* 開発環境表示 */}
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {developmentText}
     </pre>
   </div>
 )}
