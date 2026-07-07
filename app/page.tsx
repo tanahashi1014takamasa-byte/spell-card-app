@@ -209,7 +209,7 @@ return (
       background: "#222",
       color: "white",
       padding: "20px",
-      zIndex: 9999,
+      zIndex: 10001,
       boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
@@ -227,9 +227,7 @@ return (
 <br /><br />
 
 <button
-  onClick={() => {
-    setActivePanel("source");
-  }}
+  onClick={() => setActivePanel("source")}
 >
   📂 ソースコード
 </button>
@@ -240,7 +238,7 @@ return (
       position: "fixed",
       inset: 0,
       background: "rgba(0,0,0,0.95)",
-      zIndex: 10001,
+      zIndex: 9999,
       padding: "20px",
       overflowY: "auto",
     }}
