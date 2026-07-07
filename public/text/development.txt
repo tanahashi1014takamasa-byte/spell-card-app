@@ -17,7 +17,8 @@
 
 役割：開発環境を作る
 
-・ JavaScript（TypeScript）をパソコンで動かせるようにする
+・ JavaScript（TypeScript）をパソコンで
+   動かせるようにする
 ・ npmコマンドが使えるようになる
 
 
@@ -25,23 +26,25 @@
 
 役割：コードを書く
 
-ここでプログラムを書いてアプリを作る。
+ここでプログラムを書いてアプリを作る
 
 
 ③ TypeScript（タイプスクリプト）
 
 役割：プログラミング言語
 
-書いていたコードそのもの。
+書いていたコードそのもの
 
-例　const [isHomeRun,setIsHomeRun]=useState(false);
+例　const [isHomeRun,setIsHomeRun]
+                 =useState(false);
 
 
 ④ React（リアクト）
 
 役割：画面を作る
 
-TypeScriptで書きながら、書いていたコードのほとんどはReact
+TypeScriptで書きながら
+書いていたコードのほとんどはReact
 
 ・ボタン
 ・画像
@@ -54,7 +57,8 @@ TypeScriptで書きながら、書いていたコードのほとんどはReact
 
 役割：Reactアプリ全体を管理する
 
-Reactだけでは面倒なこと（下記記載）を全部まとめてくれる。
+Reactだけでは面倒なこと（下記記載）を
+全部まとめてくれる
 
 ・ページ管理
 ・フォルダ構成
@@ -83,8 +87,10 @@ Reactだけでは面倒なこと（下記記載）を全部まとめてくれる
 ⑧ Vercel（バーセル）
 
 役割：Webサイトを公開する
-GitHubへコードを送るとVercelが自動で読み込んで
-世界中からアクセスできるWebサイトとして公開してくれる。
+GitHubへコードを送るとVercelが
+自動で読み込んで
+世界中からアクセスできるWebサイトとして
+公開してくれる
 
 
 【実際の開発の流れ】
