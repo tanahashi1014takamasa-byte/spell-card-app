@@ -179,7 +179,10 @@ return (
 
    <>
     <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      onClick={() => {
+  setIsMenuOpen(!isMenuOpen);
+  setActivePanel(null);
+}}
       style={{
         position: "fixed",
         top: "20px",
