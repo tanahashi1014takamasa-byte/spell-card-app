@@ -251,6 +251,10 @@ return (
 <br /><br />
 
 <button>📂 開発ログ</button>
+
+<br /><br />
+
+<button>📂 Baseball Note</button>
   </div>
 )}
 
