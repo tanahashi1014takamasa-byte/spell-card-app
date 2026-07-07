@@ -17,8 +17,8 @@
 
 役割：開発環境を作る
 
-・ JavaScript（TypeScript）をパソコンで
-   動かせるようにする
+・ JavaScript（TypeScript）を
+   パソコンで動かせるようにする
 ・ npmコマンドが使えるようになる
 
 
@@ -128,3 +128,70 @@ TypeScript（タイプスクリプト）を書く
 ↓
 
 ⑦ Vercel（バーセル）で公開
+
+
+
+
+【Vercel公開手順】
+
+① 変更内容を保存
+
+② ターミナルでプロジェクトフォルダを開く
+
+③ GitHubへ反映
+
+git add .
+git commit -m "release"
+git push
+
+④ Vercelが自動でデプロイを開始
+
+⑤ 数十秒～数分待つ
+
+⑥ 公開サイトを開いて動作確認
+
+
+
+【Vercel デプロイ時の表示】
+
+● Building...
+ビルド中。完了するまで待つ。
+
+● Ready
+デプロイ成功。サイト公開完了。
+
+● Error
+デプロイ失敗。ログを確認して原因を修正する。
+
+● Queued
+デプロイ待機中。
+
+● Canceled
+デプロイがキャンセルされた。
+
+● Deploying
+公開処理中。
+
+● Production
+現在公開中の最新バージョン。
+
+● Preview
+プレビュー用デプロイ。動作確認用。
+
+● Commit
+GitHubへ送信したコミット。
+
+● Build Logs
+ビルドの詳細ログ。エラー原因を確認できる。
+
+● Functions
+サーバー側処理のログ。
+
+● Source
+デプロイ元のGitHubリポジトリ。
+
+● Duration
+ビルドにかかった時間。
+
+● Inspect
+デプロイ内容やログの詳細を確認する。
