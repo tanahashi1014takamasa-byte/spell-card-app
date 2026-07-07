@@ -241,7 +241,6 @@ return (
       padding: "20px",
       overflowY: "auto",
     }}
-    onClick={() => setActivePanel(null)}
   >
     {/* ×ボタン */}
     <button
