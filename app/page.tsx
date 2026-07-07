@@ -237,7 +237,7 @@ return (
       position: "fixed",
       inset: 0,
       background: "rgba(0,0,0,0.95)",
-      zIndex: 9999,
+      zIndex: 10001,
       padding: "20px",
       overflowY: "auto",
     }}
