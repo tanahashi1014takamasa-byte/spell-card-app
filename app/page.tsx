@@ -228,7 +228,6 @@ return (
 
 <button
   onClick={() => {
-    setIsMenuOpen(false);
     setActivePanel("source");
   }}
 >
