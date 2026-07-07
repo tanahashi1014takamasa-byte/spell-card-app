@@ -179,24 +179,23 @@ return (
 
    <>
     <button
-      onClick={() => {
-  setIsMenuOpen(!isMenuOpen);
-  setActivePanel(null);
-}}
-      style={{
-        position: "fixed",
-        top: "20px",
-        right: "20px",
-        background: "transparent",
-        border: "none",
-        color: "white",
-        fontSize: "36px",
-        cursor: "pointer",
-        zIndex: 10003,
-      }}
-    >
-      ☰
-    </button>
+  onClick={() => {
+    setIsMenuOpen(!isMenuOpen);
+  }}
+  style={{
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    background: "transparent",
+    border: "none",
+    color: "white",
+    fontSize: "36px",
+    cursor: "pointer",
+    zIndex: 10003,
+  }}
+>
+  ☰
+</button>
 
     {isMenuOpen && (
   <div
