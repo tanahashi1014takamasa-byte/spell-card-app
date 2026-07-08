@@ -234,9 +234,6 @@ return (
 </button>
 <br /><br />
 
-<button>📂 ターミナル履歴</button>
-<br /><br />
-
 <button
   onClick={() => {
     setActivePanel("source");
@@ -246,12 +243,6 @@ return (
   📂 ソースコード
 </button>
   
-
-
-<br /><br />
-
-<button>📂 開発ログ</button>
-
 <br /><br />
 
 <button>📂 Baseball Note</button>
