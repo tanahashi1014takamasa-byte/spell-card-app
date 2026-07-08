@@ -50,6 +50,15 @@ export default function MiniGamePage() {
           <p>
             所持金：0円
           </p>
+
+          <img
+  src="/images/wani⑩.png"
+  alt="ワニ"
+  style={{
+    width: "150px",
+    marginTop: "40px",
+  }}
+/>
         </>
       )}
     </main>
