@@ -275,8 +275,6 @@ return (
 >
   📂 Baseball Note
 </button>
-
-<br /><br />
   </div>
 )}
 
