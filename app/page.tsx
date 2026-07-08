@@ -227,7 +227,9 @@ return (
     }}
   >
     
-<button>📂 制作目的</button>
+<button onClick={() => setActivePanel("production")}>
+  📂 制作目的
+</button>
 <br /><br />
 
 <button
