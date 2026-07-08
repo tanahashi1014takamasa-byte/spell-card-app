@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
-
   const [waniX, setWaniX] = useState(0);
 
   return (
@@ -63,7 +62,35 @@ export default function MiniGamePage() {
   }}
 />
         </>
+        
       )}
+      <div
+  style={{
+    marginTop: "40px",
+    display: "flex",
+    gap: "50px",
+  }}
+>
+  <button
+    onClick={() => setWaniX(waniX - 20)}
+    style={{
+      fontSize: "30px",
+      padding: "10px 25px",
+    }}
+  >
+    ←
+  </button>
+
+  <button
+    onClick={() => setWaniX(waniX + 20)}
+    style={{
+      fontSize: "30px",
+      padding: "10px 25px",
+    }}
+  >
+    →
+  </button>
+</div>
     </main>
   );
 }
