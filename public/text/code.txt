@@ -46,9 +46,15 @@ export default function Home() {
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSourceOpen, setIsSourceOpen] = useState(false);
+  const [codeText, setCodeText] = useState("");
+  const [activePanel, setActivePanel] = useState<
+  "menu" | "source" | "development" | "production" | "baseballnote" | null
+>(null);
+  const [developmentText, setDevelopmentText] = useState("");
+  const [productionText, setProductionText] = useState("");
+  const [baseballNoteText, setBaseballNoteText] = useState("");
   
-  
+
 
   useEffect(() => {
     const bgm = new Audio("/sounds/Neraiuchi.mp3");
@@ -112,6 +118,32 @@ useEffect(() => {
     .then(setKondoText);
 }, []);
 
+useEffect(() => {
+  fetch("/text/code.txt")
+    .then((res) => res.text())
+    .then(setCodeText);
+}, []);
+
+
+useEffect(() => {
+  fetch("/text/development.txt")
+    .then((res) => res.text())
+    .then(setDevelopmentText);
+}, []);
+
+
+useEffect(() => {
+  fetch("/text/production.txt")
+    .then((res) => res.text())
+    .then(setProductionText);
+}, []);
+
+
+useEffect(() => {
+  fetch("/text/baseballnote.txt")
+    .then((res) => res.text())
+    .then(setBaseballNoteText);
+}, []);
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -172,21 +204,21 @@ return (
 
    <>
     <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      style={{
-        position: "fixed",
-        top: "20px",
-        right: "20px",
-        background: "transparent",
-        border: "none",
-        color: "white",
-        fontSize: "36px",
-        cursor: "pointer",
-        zIndex: 10000,
-      }}
-    >
-      ☰
-    </button>
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+  style={{
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    background: "transparent",
+    border: "none",
+    color: "white",
+    fontSize: "36px",
+    cursor: "pointer",
+    zIndex: 10003,
+  }}
+>
+  ☰
+</button>
 
     {isMenuOpen && (
   <div
@@ -199,34 +231,240 @@ return (
       background: "#222",
       color: "white",
       padding: "20px",
-      zIndex: 9999,
+      zIndex: 10002,
       boxShadow: "-2px 0 10px rgba(0,0,0,0.5)",
     }}
   >
     
-<button>📂 制作目的</button>
-<br /><br />
-
-<button>📂 開発環境</button>
-<br /><br />
-
-<button>📂 使用技術</button>
-<br /><br />
-
-<button>📂 ターミナル履歴</button>
-<br /><br />
-
-<button onClick={() => setIsSourceOpen(!isSourceOpen)}>
-  📂 ソースコード
-  {isSourceOpen && (
-  <div style={{ marginTop: "8px" }}>
-  📄 Home.tsx
-  </div>
-)}
+<button
+  onClick={() => {
+    setActivePanel("production");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 制作目的
 </button>
 <br /><br />
 
-<button>📂 開発ログ</button>
+<button
+  onClick={() => {
+    setActivePanel("development");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 開発環境
+</button>
+<br /><br />
+
+<button
+  onClick={() => {
+    setActivePanel("source");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 ソースコード
+</button>
+  
+<br /><br />
+
+<button
+  onClick={() => {
+    setActivePanel("baseballnote");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 Baseball Note
+</button>
+  </div>
+)}
+
+{activePanel === "production" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    {/* ×ボタン */}
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+    
+    {/* 制作目的表示 */}
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {productionText}
+    </pre>
+  </div>
+)}
+
+{activePanel === "source" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    {/* ×ボタン */}
+    <button
+  onClick={() => {
+    setActivePanel(null);
+    setIsMenuOpen(false);
+  }}
+  style={{
+    position: "sticky",
+    top: "0",
+    display: "block",
+    margin: "0 auto 10px auto",
+    fontSize: "28px",
+    color: "white",
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+  }}
+>
+  ✕
+</button>
+
+    {/* コード表示 */}
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {codeText}
+    </pre>
+  </div>
+)}
+
+{activePanel === "development" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    {/* ×ボタン */}
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+
+    {/* 開発環境表示 */}
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {developmentText}
+    </pre>
+  </div>
+)}
+
+{activePanel === "baseballnote" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {baseballNoteText}
+    </pre>
   </div>
 )}
   
@@ -241,6 +479,7 @@ return (
       justifyContent: "center",
       alignItems: "center",
       zIndex: 9999,
+    
     }}
 
 
@@ -772,17 +1011,43 @@ return (
     marginTop: "40px",
   }}
 >
-  <img
-    src={isWaniOpen ? "/images/wani②.png" : "/images/wani③.png"}
-    alt="ワニ"
-    onClick={() => setIsWaniOpen(!isWaniOpen)}
+  <div
     style={{
+      position: "relative",
       width: "100%",
       maxWidth: "500px",
-      height: "auto",
-      cursor: "pointer",
     }}
-  />
+  >
+    <img
+      src={isWaniOpen ? "/images/wani②.png" : "/images/wani③.png"}
+      alt="ワニ"
+      onClick={() => setIsWaniOpen(!isWaniOpen)}
+      style={{
+        width: "100%",
+        height: "auto",
+        cursor: "pointer",
+        display: "block",
+      }}
+    />
+
+    {isWaniOpen && (
+      <button
+        onClick={() => {
+          window.location.href = "https://spell-card-app.vercel.app/mini-game";
+        }}
+        style={{
+          position: "absolute",
+          left: "18%",
+          bottom: "3%",
+          width: "14%",
+          height: "10%",
+          opacity: 0,
+          border: "none",
+          cursor: "pointer",
+        }}
+      />
+    )}
+  </div>
 </div>
 
       </main>
