@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function MiniGamePage() {
   const [chips, setChips] = useState("");
   const [isEntered, setIsEntered] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
   return (
     <main
@@ -17,8 +18,12 @@ export default function MiniGamePage() {
       }}
     >
       {isEntered ? (
-        <div>
-          <h1>🎆 夏祭りミニゲーム屋</h1>
+  isGameStarted ? (
+    <div>
+      <h1>おばはんのファミコンワールド</h1>
+    </div>
+  ) : (
+    <div>
 
           <img
       src="/images/nishida.png"
@@ -44,7 +49,22 @@ export default function MiniGamePage() {
           <p>
             所持チップ：{chips}枚
           </p>
+
+
+          <button
+  onClick={() => setIsGameStarted(true)}
+  style={{
+    fontSize: "24px",
+    padding: "10px 30px",
+    marginTop: "20px",
+  }}
+>
+  ゲーム開始
+</button>
         </div>
+
+        
+)
       ) : (
         <div>
           <h1>🎆 夏祭りミニゲーム</h1>
@@ -67,6 +87,10 @@ export default function MiniGamePage() {
           <span style={{ fontSize: "24px" }}>
             枚
           </span>
+
+          <br />
+
+
 
           <br /><br />
 
