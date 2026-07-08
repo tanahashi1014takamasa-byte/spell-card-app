@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
 
+  const [waniX, setWaniX] = useState(0);
+
   return (
     <main
       style={{
@@ -57,6 +59,7 @@ export default function MiniGamePage() {
   style={{
     width: "150px",
     marginTop: "40px",
+    transform: `translateX(${waniX}px)`
   }}
 />
         </>
