@@ -915,9 +915,9 @@ return (
         style={{
           position: "absolute",
           left: "18%",
-          bottom: "5%",
+          bottom: "3%",
           width: "14%",
-          height: "18%",
+          height: "10%",
           opacity: 0,
           border: "none",
           cursor: "pointer",
