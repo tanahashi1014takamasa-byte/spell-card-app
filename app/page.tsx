@@ -287,6 +287,20 @@ return (
       ✕
     </button>
 
+    <pre
+  style={{
+    color: "white",
+    whiteSpace: "pre-wrap",
+    textAlign: "left",
+    maxWidth: "900px",
+    margin: "0 auto",
+    fontSize: "18px",
+    lineHeight: "1.8",
+  }}
+>
+  {productionText}
+</pre>
+
     {/* 制作目的 */}
     <pre
       onClick={(e) => e.stopPropagation()}
