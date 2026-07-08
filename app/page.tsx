@@ -48,10 +48,10 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
   const [activePanel, setActivePanel] = useState<
-  null | "menu" | "source" | "development"
+  null | "menu" | "source" | "development" | "production"
 >(null);
   const [developmentText, setDevelopmentText] = useState("");
-  
+  const [productionText, setProductionText] = useState("");
 
 
   useEffect(() => {
@@ -127,6 +127,12 @@ useEffect(() => {
   fetch("/text/development.txt")
     .then((res) => res.text())
     .then(setDevelopmentText);
+}, []);
+
+useEffect(() => {
+  fetch("/text/production.txt")
+    .then((res) => res.text())
+    .then(setProductionText);
 }, []);
 
 
@@ -249,6 +255,54 @@ return (
   </div>
 )}
 
+{activePanel === "production" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    {/* ×ボタン */}
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+
+    {/* 制作目的 */}
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {productionText}
+    </pre>
+  </div>
+)}
+
 {activePanel === "source" && (
   <div
     style={{
@@ -344,6 +398,8 @@ return (
     </pre>
   </div>
 )}
+
+
   
     {zoomImage && (
       
