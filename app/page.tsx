@@ -48,10 +48,11 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [codeText, setCodeText] = useState("");
   const [activePanel, setActivePanel] = useState<
-  "menu" | "source" | "development" | "production" | null
+  "menu" | "source" | "development" | "production" | "baseballnote" | null
 >(null);
   const [developmentText, setDevelopmentText] = useState("");
   const [productionText, setProductionText] = useState("");
+  const [baseballNoteText, setBaseballNoteText] = useState("");
   
 
 
@@ -137,6 +138,12 @@ useEffect(() => {
     .then(setProductionText);
 }, []);
 
+
+useEffect(() => {
+  fetch("/text/baseballnote.txt")
+    .then((res) => res.text())
+    .then(setBaseballNoteText);
+}, []);
 
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -260,7 +267,16 @@ return (
   
 <br /><br />
 
-<button>📂 Baseball Note</button>
+<button
+  onClick={() => {
+    setActivePanel("baseballnote");
+    setIsMenuOpen(false);
+  }}
+>
+  📂 Baseball Note
+</button>
+
+<br /><br />
   </div>
 )}
 
@@ -404,6 +420,52 @@ return (
       }}
     >
       {developmentText}
+    </pre>
+  </div>
+)}
+
+{activePanel === "baseballnote" && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.95)",
+      zIndex: 10001,
+      padding: "20px",
+      overflowY: "auto",
+    }}
+  >
+    <button
+      onClick={() => {
+        setActivePanel(null);
+        setIsMenuOpen(false);
+      }}
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        margin: "0 auto 10px auto",
+        fontSize: "28px",
+        color: "white",
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      ✕
+    </button>
+
+    <pre
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        color: "white",
+        whiteSpace: "pre-wrap",
+        marginTop: "40px",
+        maxHeight: "85vh",
+        overflowY: "auto",
+      }}
+    >
+      {baseballNoteText}
     </pre>
   </div>
 )}
