@@ -888,17 +888,43 @@ return (
     marginTop: "40px",
   }}
 >
-  <img
-    src={isWaniOpen ? "/images/wani②.png" : "/images/wani③.png"}
-    alt="ワニ"
-    onClick={() => setIsWaniOpen(!isWaniOpen)}
+  <div
     style={{
+      position: "relative",
       width: "100%",
       maxWidth: "500px",
-      height: "auto",
-      cursor: "pointer",
     }}
-  />
+  >
+    <img
+      src={isWaniOpen ? "/images/wani②.png" : "/images/wani③.png"}
+      alt="ワニ"
+      onClick={() => setIsWaniOpen(!isWaniOpen)}
+      style={{
+        width: "100%",
+        height: "auto",
+        cursor: "pointer",
+        display: "block",
+      }}
+    />
+
+    {isWaniOpen && (
+      <button
+        onClick={() => {
+          window.location.href = "https://spell-card-app.vercel.app/mini-game";
+        }}
+        style={{
+          position: "absolute",
+          left: "18%",
+          bottom: "5%",
+          width: "14%",
+          height: "18%",
+          opacity: 0,
+          border: "none",
+          cursor: "pointer",
+        }}
+      />
+    )}
+  </div>
 </div>
 
       </main>
