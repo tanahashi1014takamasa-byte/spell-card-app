@@ -28,6 +28,16 @@ export default function MiniGamePage() {
       }))
     );
 
+    useEffect(() => {
+  if (!started) return;
+
+  const timer = setInterval(() => {
+    setTime((prev) => prev - 1);
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [started]);
+
 setFallingItems((prev) =>
   prev.filter((item) => {
     const hit =
@@ -74,15 +84,6 @@ const newItem = {
   y: 0,
 };
 
-useEffect(() => {
-  if (!started) return;
-
-  const timer = setInterval(() => {
-    setTime((prev) => prev - 1);
-  }, 1000);
-
-  return () => clearInterval(timer);
-}, [started]);
 
     setFallingItems((prev) => [
       ...prev,
