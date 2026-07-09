@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
+  const [itemImage, setItemImage] = useState("/images/10.png");
+  const [itemX, setItemX] = useState(150);
+  const [itemY, setItemY] = useState(100);
+
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setItemY((prev) => prev + 5);
+  }, 50);
+
+  return () => clearInterval(timer);
+}, []);
 
   return (
     <main
@@ -71,6 +82,17 @@ export default function MiniGamePage() {
           >
             所持金：0円
           </p>
+
+          <img
+  src={itemImage}
+  alt="落下物"
+  style={{
+    width: "40px",
+    position: "fixed",
+    top: `${itemY}px`,
+    left: `${itemX}px`,
+  }}
+/>
 
           {/* 左右キー */}
           <div
