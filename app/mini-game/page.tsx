@@ -17,6 +17,7 @@ export default function MiniGamePage() {
         alignItems: "center",
         flexDirection: "column",
         fontFamily: "monospace",
+        overflow: "hidden",
       }}
     >
       {!started ? (
@@ -30,15 +31,14 @@ export default function MiniGamePage() {
             EXTRA INNING
           </h1>
 
-
           <img
-  src="/images/wani⑩.png"
-  alt="ワニ"
-  style={{
-    width: "150px",
-    marginBottom: "40px",
-  }}
-/>
+            src="/images/wani⑩.png"
+            alt="ワニ"
+            style={{
+              width: "150px",
+              marginBottom: "40px",
+            }}
+          />
 
           <button
             onClick={() => setStarted(true)}
@@ -54,62 +54,74 @@ export default function MiniGamePage() {
         </>
       ) : (
         <>
-          <h1>EXTRA INNING</h1>
+          <h1
+            style={{
+              position: "absolute",
+              top: "20px",
+            }}
+          >
+            EXTRA INNING
+          </h1>
 
-          <p>GAME START</p>
-
-          <p>
+          <p
+            style={{
+              position: "absolute",
+              top: "80px",
+            }}
+          >
             所持金：0円
           </p>
 
-          
+          {/* 左右キー */}
+          <div
+            style={{
+              position: "fixed",
+              bottom: "80px",
+              left: "0",
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0 20px",
+            }}
+          >
+            <button
+              onClick={() => setWaniX(waniX - 20)}
+              style={{
+                width: "90px",
+                height: "60px",
+                fontSize: "35px",
+                fontFamily: "monospace",
+                cursor: "pointer",
+              }}
+            >
+              ◀
+            </button>
 
-        <div
-  style={{
-    marginTop: "100px",
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "0 20px",
-  }}
->
-  <button
-    onClick={() => setWaniX(waniX - 20)}
-    style={{
-      width: "90px",
-      height: "60px",
-      fontSize: "35px",
-      fontFamily: "monospace",
-      cursor: "pointer",
-    }}
-  >
-    ◀
-  </button>
+            <button
+              onClick={() => setWaniX(waniX + 20)}
+              style={{
+                width: "90px",
+                height: "60px",
+                fontFamily: "monospace",
+                fontSize: "35px",
+                cursor: "pointer",
+              }}
+            >
+              ▶
+            </button>
+          </div>
 
-  <button
-    onClick={() => setWaniX(waniX + 20)}
-    style={{
-      width: "90px",
-      height: "60px",
-      fontSize: "35px",
-      fontFamily: "monospace",
-      cursor: "pointer",
-    }}
-  >
-    ▶
-  </button>
-</div>
-
-<img
-  src="/images/wani⑩.png"
-  alt="ワニ"
-  style={{
-    width: "70px",
-    marginTop: "250px",
-    transform: `translateX(${waniX}px)`,
-  }}
-/>
-
+          {/* ワニ */}
+          <img
+            src="/images/wani⑩.png"
+            alt="ワニ"
+            style={{
+              width: "70px",
+              position: "fixed",
+              bottom: "20px",
+              transform: `translateX(${waniX}px)`,
+            }}
+          />
         </>
       )}
     </main>
