@@ -6,6 +6,7 @@ export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
+  const [time, setTime] = useState(30);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -26,6 +27,16 @@ export default function MiniGamePage() {
         y: item.y + 5,
       }))
     );
+
+    useEffect(() => {
+  if (!started) return;
+
+  const timer = setInterval(() => {
+    setTime((prev) => prev - 1);
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [started]);
 
 setFallingItems((prev) =>
   prev.filter((item) => {
