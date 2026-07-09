@@ -163,7 +163,12 @@ const newItem = {
             所持金：{money}円
           </p>
 
-          <p>
+          <p
+  style={{
+    position: "absolute",
+    top: "120px",
+  }}
+>
   残り時間：{time}秒
 </p>
 
