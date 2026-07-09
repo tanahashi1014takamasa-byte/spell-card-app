@@ -87,7 +87,14 @@ useEffect(() => {
   if (!started) return;
 
   const timer = setInterval(() => {
-    setTime((prev) => prev - 1);
+    setTime((prev) => {
+      if (prev <= 0) {
+        clearInterval(timer); // タイマー停止
+        return 0;             // 0より下に行かない
+      }
+
+      return prev - 1;
+    });
   }, 1000);
 
   return () => clearInterval(timer);
