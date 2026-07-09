@@ -166,7 +166,7 @@ const newItem = {
           <p
   style={{
     position: "absolute",
-    top: "120px",
+    top: "100px",
   }}
 >
   残り時間：{time}秒
