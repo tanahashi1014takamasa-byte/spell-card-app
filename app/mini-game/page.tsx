@@ -7,6 +7,7 @@ export default function MiniGamePage() {
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
   const [time, setTime] = useState(30);
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -89,9 +90,10 @@ useEffect(() => {
   const timer = setInterval(() => {
     setTime((prev) => {
       if (prev <= 0) {
-        clearInterval(timer); // タイマー停止
-        return 0;             // 0より下に行かない
-      }
+    clearInterval(timer);
+    setIsTimeUp(true);
+    return 0;
+}
 
       return prev - 1;
     });
@@ -142,6 +144,8 @@ useEffect(() => {
             }}
           />
 
+          
+
          <button
   onClick={() => {
     setStarted(true);
@@ -188,8 +192,26 @@ useEffect(() => {
 >
   残り時間：{time}秒
 </p>
-
-         {fallingItems.map((item) => (
+{isTimeUp && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "rgba(0,0,0,0.4)",
+      fontSize: "72px",
+      fontWeight: "bold",
+      color: "red",
+      textShadow: "3px 3px 6px black",
+      zIndex: 9999,
+    }}
+  >
+    TIME UP!!
+  </div>
+)}
+         {fallingItems.map((item) => (   
   <img
     key={item.id}
     src={item.image}
