@@ -28,7 +28,7 @@ setFallingItems((prev) =>
   prev.filter((item) => {
     const hit =
       item.y > window.innerHeight - 250 &&
-      Math.abs(item.x - (waniX + 150)) < 60;
+      Math.abs(item.x - (waniX + 150)) < 100;
 
     if (hit) {
       if (item.image === "/images/10.png") {
