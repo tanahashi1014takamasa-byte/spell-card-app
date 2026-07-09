@@ -62,15 +62,7 @@ export default function MiniGamePage() {
             所持金：0円
           </p>
 
-          <img
-            src="/images/wani⑩.png"
-            alt="ワニ"
-            style={{
-              width: "70px",
-              marginTop: "40px",
-              transform: `translateX(${waniX}px)`,
-            }}
-          />
+          
 
           <div
             style={{
@@ -99,6 +91,17 @@ export default function MiniGamePage() {
               →
             </button>
           </div>
+
+<img
+            src="/images/wani⑩.png"
+            alt="ワニ"
+            style={{
+              width: "70px",
+              marginTop: "40px",
+              transform: `translateX(${waniX}px)`,
+            }}
+          />
+
         </>
       )}
     </main>
