@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
+  const [money, setMoney] = useState(0);
   const [fallingItems, setFallingItems] = useState<
   {
     id: number;
@@ -22,6 +23,25 @@ export default function MiniGamePage() {
         y: item.y + 5,
       }))
     );
+
+setFallingItems((prev) =>
+  prev.filter((item) => {
+    const hit =
+      item.y > window.innerHeight - 250 &&
+      Math.abs(item.x - (waniX + 150)) < 60;
+
+    if (hit) {
+      if (item.image === "/images/10.png") {
+        setMoney((m) => m + 10);
+      } else {
+        setMoney((m) => m - 10);
+      }
+    }
+
+    return !hit;
+  })
+);
+
   }, 50);
 
   return () => clearInterval(timer);
@@ -122,7 +142,7 @@ const newItem = {
               top: "80px",
             }}
           >
-            所持金：0円
+            所持金：{money}円
           </p>
 
          {fallingItems.map((item) => (
