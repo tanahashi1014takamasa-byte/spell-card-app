@@ -64,11 +64,13 @@ export default function MiniGamePage() {
 
           
 
-         <div
+        <div
   style={{
-    marginTop: "40px",
+    marginTop: "100px",
+    width: "100%",
     display: "flex",
-    gap: "40px",
+    justifyContent: "space-between",
+    padding: "0 20px",
   }}
 >
   <button
