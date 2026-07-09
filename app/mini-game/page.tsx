@@ -194,22 +194,24 @@ useEffect(() => {
 </p>
 {isTimeUp && (
   <div
-    style={{
-      position: "fixed",
-      inset: 0,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "rgba(0,0,0,0.4)",
-      fontSize: "72px",
-      fontWeight: "bold",
-      color: "red",
-      textShadow: "3px 3px 6px black",
-      zIndex: 9999,
-    }}
-  >
-    TIME UP!!
-  </div>
+  style={{
+    position: "fixed",
+    inset: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "rgba(0,0,0,0.4)",
+    fontSize: "72px",
+    fontWeight: "bold",
+    color: "red",
+    textShadow: "3px 3px 6px black",
+    whiteSpace: "nowrap",
+    textAlign: "center",
+    zIndex: 9999,
+  }}
+>
+  TIME UP!!
+</div>
 )}
          {fallingItems.map((item) => (   
   <img
