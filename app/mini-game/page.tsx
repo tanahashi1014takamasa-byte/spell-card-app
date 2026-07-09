@@ -104,6 +104,8 @@ useEffect(() => {
 }, [started]);
 
 useEffect(() => {
+
+    console.log("isTimeUp:", isTimeUp);
   if (!isTimeUp) return;
 
   if (applauseRef.current) {
