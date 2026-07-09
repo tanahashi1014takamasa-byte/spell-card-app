@@ -35,7 +35,7 @@ export default function MiniGamePage() {
   src="/images/wani⑩.png"
   alt="ワニ"
   style={{
-    width: "80px",
+    width: "150px",
     marginBottom: "40px",
   }}
 />
@@ -66,7 +66,7 @@ export default function MiniGamePage() {
             src="/images/wani⑩.png"
             alt="ワニ"
             style={{
-              width: "150px",
+              width: "70px",
               marginTop: "40px",
               transform: `translateX(${waniX}px)`,
             }}
