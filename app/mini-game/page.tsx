@@ -35,7 +35,7 @@ export default function MiniGamePage() {
   src="/images/wani⑩.png"
   alt="ワニ"
   style={{
-    width: "150px",
+    width: "250px",
     marginBottom: "40px",
   }}
 />
@@ -74,8 +74,8 @@ export default function MiniGamePage() {
             <button
               onClick={() => setWaniX(waniX - 20)}
               style={{
-                fontSize: "30px",
-                padding: "10px 25px",
+                fontSize: "50px",
+                padding: "5px 35px",
               }}
             >
               ←
@@ -84,8 +84,8 @@ export default function MiniGamePage() {
             <button
               onClick={() => setWaniX(waniX + 20)}
               style={{
-                fontSize: "30px",
-                padding: "10px 25px",
+                fontSize: "50px",
+                padding: "5px 35px",
               }}
             >
               →
