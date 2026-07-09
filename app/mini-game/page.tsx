@@ -76,7 +76,7 @@ export default function MiniGamePage() {
           <div
             style={{
               position: "fixed",
-              bottom: "130px",
+              bottom: "40px",
               left: "0",
               width: "100%",
               display: "flex",
@@ -85,18 +85,18 @@ export default function MiniGamePage() {
             }}
           >
             <button
-  onClick={() => setWaniX(waniX - 20)}
-  style={{
-    width: "90px",
-    height: "60px",
-    fontSize: "35px",
-    fontFamily: "monospace",
-    cursor: "pointer",
-    transition: "0.1s",
-  }}
->
-  ◀
-</button>
+              onClick={() => setWaniX(waniX - 20)}
+              style={{
+                width: "90px",
+                height: "60px",
+                fontSize: "35px",
+                fontFamily: "monospace",
+                cursor: "pointer",
+              }}
+            >
+              ◀
+            </button>
+
             <button
               onClick={() => setWaniX(waniX + 20)}
               style={{
@@ -118,7 +118,7 @@ export default function MiniGamePage() {
             style={{
               width: "70px",
               position: "fixed",
-              bottom: "20px",
+              bottom: "120px",
               transform: `translateX(${waniX}px)`,
             }}
           />
