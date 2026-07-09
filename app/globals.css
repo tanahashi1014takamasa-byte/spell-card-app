@@ -91,3 +91,7 @@ body {
     transform: scale(1);
   }
 }
+
+.gameButton:active {
+  transform: translateY(5px);
+}
