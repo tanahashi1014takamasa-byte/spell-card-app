@@ -2,20 +2,21 @@
 
 import { useState, useEffect, useRef } from "react";
 
-const bgmRef = useRef<HTMLAudioElement | null>(null);
-
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
+
+  const bgmRef = useRef<HTMLAudioElement | null>(null);
+
   const [fallingItems, setFallingItems] = useState<
-  {
-    id: number;
-    image: string;
-    x: number;
-    y: number;
-  }[]
->([]);
+    {
+      id: number;
+      image: string;
+      x: number;
+      y: number;
+    }[]
+  >([]);
 
   useEffect(() => {
   const timer = setInterval(() => {
@@ -101,6 +102,8 @@ const newItem = {
   src="/sounds/Kabukicho.mp3"
   loop
 />
+
+        
       {!started ? (
         <>
           <h1
