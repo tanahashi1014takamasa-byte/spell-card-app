@@ -6,11 +6,10 @@ export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(30);
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
-  const applauseRef = useRef<HTMLAudioElement | null>(null);
 
   const [fallingItems, setFallingItems] = useState<
     {
@@ -89,30 +88,19 @@ useEffect(() => {
   if (!started) return;
 
   const timer = setInterval(() => {
-  setTime((prev) => {
-   if (prev <= 0) {
-  clearInterval(timer);
-  setIsTimeUp(true);
-  return 0;
+    setTime((prev) => {
+      if (prev <= 0) {
+    clearInterval(timer);
+    setIsTimeUp(true);
+    return 0;
 }
 
-    return prev - 1;
-  });
-}, 1000);
+      return prev - 1;
+    });
+  }, 1000);
 
   return () => clearInterval(timer);
 }, [started]);
-
-useEffect(() => {
-
-    console.log("isTimeUp:", isTimeUp);
-  if (!isTimeUp) return;
-
-  if (applauseRef.current) {
-    applauseRef.current.currentTime = 0;
-    applauseRef.current.play();
-  }
-}, [isTimeUp]);
 
   return (
     <main
@@ -133,13 +121,6 @@ useEffect(() => {
   ref={bgmRef}
   src="/sounds/Kabukicho.mp3"
   loop
-
-  
-/>
-
-<audio
-  ref={applauseRef}
-  src="/sounds/スタジアムの拍手1.mp3"
 />
 
         
@@ -164,14 +145,20 @@ useEffect(() => {
           />
 
           
-<button
+
+         <button
   onClick={() => {
     setStarted(true);
 
     if (bgmRef.current) {
       bgmRef.current.play();
     }
-
+  }}
+  style={{
+    fontSize: "25px",
+    padding: "15px 40px",
+    cursor: "pointer",
+    fontFamily: "monospace",
   }}
 >
   ▶ PLAY
@@ -214,10 +201,10 @@ useEffect(() => {
     justifyContent: "center",
     alignItems: "center",
     background: "rgba(0,0,0,0.4)",
-    fontSize: "56px",
+    fontSize: "72px",
     fontWeight: "bold",
-    color: "#ff3333",
-    textShadow: "4px 4px 0px black",
+    color: "red",
+    textShadow: "3px 3px 6px black",
     whiteSpace: "nowrap",
     textAlign: "center",
     zIndex: 9999,
