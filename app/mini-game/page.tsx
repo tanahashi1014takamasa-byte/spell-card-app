@@ -30,6 +30,16 @@ export default function MiniGamePage() {
             EXTRA INNING
           </h1>
 
+
+          <img
+  src="/images/wani⑩.png"
+  alt="ワニ"
+  style={{
+    width: "150px",
+    marginBottom: "40px",
+  }}
+/>
+
           <button
             onClick={() => setStarted(true)}
             style={{
