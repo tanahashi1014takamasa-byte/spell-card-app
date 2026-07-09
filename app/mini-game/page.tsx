@@ -53,44 +53,44 @@ export default function MiniGamePage() {
           </p>
 
           <img
-  src="/images/wani⑩.png"
-  alt="ワニ"
-  style={{
-    width: "150px",
-    marginTop: "40px",
-    transform: `translateX(${waniX}px)`
-  }}
-/>
-        </>
-        
-      )}
-      <div
-  style={{
-    marginTop: "40px",
-    display: "flex",
-    gap: "50px",
-  }}
->
-  <button
-    onClick={() => setWaniX(waniX - 20)}
-    style={{
-      fontSize: "30px",
-      padding: "10px 25px",
-    }}
-  >
-    ←
-  </button>
+            src="/images/wani⑩.png"
+            alt="ワニ"
+            style={{
+              width: "150px",
+              marginTop: "40px",
+              transform: `translateX(${waniX}px)`,
+            }}
+          />
 
-  <button
-    onClick={() => setWaniX(waniX + 20)}
-    style={{
-      fontSize: "30px",
-      padding: "10px 25px",
-    }}
-  >
-    →
-  </button>
-</div>
+          <div
+            style={{
+              marginTop: "40px",
+              display: "flex",
+              gap: "50px",
+            }}
+          >
+            <button
+              onClick={() => setWaniX(waniX - 20)}
+              style={{
+                fontSize: "30px",
+                padding: "10px 25px",
+              }}
+            >
+              ←
+            </button>
+
+            <button
+              onClick={() => setWaniX(waniX + 20)}
+              style={{
+                fontSize: "30px",
+                padding: "10px 25px",
+              }}
+            >
+              →
+            </button>
+          </div>
+        </>
+      )}
     </main>
   );
 }
