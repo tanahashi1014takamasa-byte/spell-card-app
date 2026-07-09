@@ -28,16 +28,6 @@ export default function MiniGamePage() {
       }))
     );
 
-    useEffect(() => {
-  if (!started) return;
-
-  const timer = setInterval(() => {
-    setTime((prev) => prev - 1);
-  }, 1000);
-
-  return () => clearInterval(timer);
-}, [started]);
-
 setFallingItems((prev) =>
   prev.filter((item) => {
     const hit =
@@ -172,6 +162,10 @@ const newItem = {
           >
             所持金：{money}円
           </p>
+
+          <p>
+  残り時間：{time}秒
+</p>
 
          {fallingItems.map((item) => (
   <img
