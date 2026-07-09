@@ -74,19 +74,11 @@ const newItem = {
   y: 0,
 };
 
-
 useEffect(() => {
   if (!started) return;
 
   const timer = setInterval(() => {
-    setTime((prev) => {
-      if (prev <= 1) {
-        clearInterval(timer);
-        return 0;
-      }
-
-      return prev - 1;
-    });
+    setTime((prev) => prev - 1);
   }, 1000);
 
   return () => clearInterval(timer);
