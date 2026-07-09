@@ -10,6 +10,7 @@ export default function MiniGamePage() {
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
+  const applauseRef = useRef<HTMLAudioElement | null>(null);
 
   const [fallingItems, setFallingItems] = useState<
     {
@@ -88,16 +89,22 @@ useEffect(() => {
   if (!started) return;
 
   const timer = setInterval(() => {
-    setTime((prev) => {
-      if (prev <= 0) {
-    clearInterval(timer);
-    setIsTimeUp(true);
-    return 0;
+  setTime((prev) => {
+    if (prev <= 0) {
+      clearInterval(timer);
+      setIsTimeUp(true);
+
+      if (applauseRef.current) {
+  applauseRef.current.currentTime = 0;
+  applauseRef.current.play();
 }
 
-      return prev - 1;
-    });
-  }, 1000);
+      return 0;
+    }
+
+    return prev - 1;
+  });
+}, 1000);
 
   return () => clearInterval(timer);
 }, [started]);
@@ -121,6 +128,13 @@ useEffect(() => {
   ref={bgmRef}
   src="/sounds/Kabukicho.mp3"
   loop
+
+  
+/>
+
+<audio
+  ref={applauseRef}
+  src="/sounds/スタジアムの拍手1.mp3"
 />
 
         
