@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const bgmRef = useRef<HTMLAudioElement | null>(null);
 
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
@@ -93,6 +95,12 @@ const newItem = {
         overflow: "hidden",
       }}
     >
+
+        <audio
+  ref={bgmRef}
+  src="/sounds/Kabukicho.mp3"
+  loop
+/>
       {!started ? (
         <>
           <h1
@@ -113,17 +121,23 @@ const newItem = {
             }}
           />
 
-          <button
-            onClick={() => setStarted(true)}
-            style={{
-              fontSize: "25px",
-              padding: "15px 40px",
-              cursor: "pointer",
-              fontFamily: "monospace",
-            }}
-          >
-            ▶ PLAY
-          </button>
+         <button
+  onClick={() => {
+    setStarted(true);
+
+    if (bgmRef.current) {
+      bgmRef.current.play();
+    }
+  }}
+  style={{
+    fontSize: "25px",
+    padding: "15px 40px",
+    cursor: "pointer",
+    fontFamily: "monospace",
+  }}
+>
+  ▶ PLAY
+</button>
         </>
       ) : (
         <>
