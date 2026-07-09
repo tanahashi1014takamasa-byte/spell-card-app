@@ -6,7 +6,7 @@ export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
@@ -201,10 +201,10 @@ useEffect(() => {
     justifyContent: "center",
     alignItems: "center",
     background: "rgba(0,0,0,0.4)",
-    fontSize: "72px",
+    fontSize: "56px",
     fontWeight: "bold",
-    color: "red",
-    textShadow: "3px 3px 6px black",
+    color: "#ff3333",
+    textShadow: "4px 4px 0px black",
     whiteSpace: "nowrap",
     textAlign: "center",
     zIndex: 9999,
