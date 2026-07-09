@@ -35,7 +35,7 @@ export default function MiniGamePage() {
   src="/images/wani⑩.png"
   alt="ワニ"
   style={{
-    width: "150px",
+    width: "80px",
     marginBottom: "40px",
   }}
 />
