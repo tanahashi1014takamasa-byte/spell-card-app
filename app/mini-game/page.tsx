@@ -5,32 +5,14 @@ import { useState, useEffect } from "react";
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
-  const [fallingItems, setFallingItems] = useState([
+  const [fallingItems, setFallingItems] = useState<
   {
-    id: 1,
-    image: "/images/10.png",
-    x: 100,
-    y: 0,
-  },
-  {
-    id: 2,
-    image: "/images/gum.png",
-    x: 200,
-    y: -150,
-  },
-  {
-    id: 3,
-    image: "/images/tabaco.png",
-    x: 300,
-    y: -300,
-  },
-  {
-    id: 4,
-    image: "/images/beer.png",
-    x: 250,
-    y: -150,
-  },
-]);
+    id: number;
+    image: string;
+    x: number;
+    y: number;
+  }[]
+>([]);
 
   useEffect(() => {
   const timer = setInterval(() => {
@@ -43,6 +25,24 @@ export default function MiniGamePage() {
   }, 50);
 
   return () => clearInterval(timer);
+}, []);
+
+useEffect(() => {
+  const spawnTimer = setInterval(() => {
+    const newItem = {
+      id: Date.now(),
+      image: "/images/gum.png",
+      x: Math.floor(Math.random() * 300),
+      y: 0,
+    };
+
+    setFallingItems((prev) => [
+      ...prev,
+      newItem,
+    ]);
+  }, 1000);
+
+  return () => clearInterval(spawnTimer);
 }, []);
 
   return (
