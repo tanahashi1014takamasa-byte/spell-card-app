@@ -74,7 +74,7 @@ export default function MiniGamePage() {
             <button
               onClick={() => setWaniX(waniX - 20)}
               style={{
-                fontSize: "30px",
+                fontSize: "60x",
                 padding: "10px 25px",
               }}
             >
@@ -84,7 +84,7 @@ export default function MiniGamePage() {
             <button
               onClick={() => setWaniX(waniX + 20)}
               style={{
-                fontSize: "30px",
+                fontSize: "60x",
                 padding: "10px 25px",
               }}
             >
