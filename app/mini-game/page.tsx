@@ -5,13 +5,41 @@ import { useState, useEffect } from "react";
 export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
-  const [itemImage, setItemImage] = useState("/images/10.png");
-  const [itemX, setItemX] = useState(150);
-  const [itemY, setItemY] = useState(100);
+  const [fallingItems, setFallingItems] = useState([
+  {
+    id: 1,
+    image: "/images/10.png",
+    x: 100,
+    y: 0,
+  },
+  {
+    id: 2,
+    image: "/images/gum.png",
+    x: 200,
+    y: -150,
+  },
+  {
+    id: 3,
+    image: "/images/tabaco.png",
+    x: 300,
+    y: -300,
+  },
+  {
+    id: 4,
+    image: "/images/beer.png",
+    x: 400,
+    y: -450,
+  },
+]);
 
   useEffect(() => {
   const timer = setInterval(() => {
-    setItemY((prev) => prev + 5);
+    setFallingItems((prev) =>
+      prev.map((item) => ({
+        ...item,
+        y: item.y + 5,
+      }))
+    );
   }, 50);
 
   return () => clearInterval(timer);
@@ -83,16 +111,19 @@ export default function MiniGamePage() {
             所持金：0円
           </p>
 
-          <img
-  src={itemImage}
-  alt="落下物"
-  style={{
-    width: "40px",
-    position: "fixed",
-    top: `${itemY}px`,
-    left: `${itemX}px`,
-  }}
-/>
+         {fallingItems.map((item) => (
+  <img
+    key={item.id}
+    src={item.image}
+    alt="落下物"
+    style={{
+      width: "40px",
+      position: "fixed",
+      top: `${item.y}px`,
+      left: `${item.x}px`,
+    }}
+  />
+))}
 
           {/* 左右キー */}
           <div
