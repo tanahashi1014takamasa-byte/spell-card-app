@@ -76,7 +76,7 @@ export default function MiniGamePage() {
           <div
             style={{
               position: "fixed",
-              bottom: "100px",
+              bottom: "130px",
               left: "0",
               width: "100%",
               display: "flex",
