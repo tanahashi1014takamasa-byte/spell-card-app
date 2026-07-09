@@ -29,12 +29,26 @@ export default function MiniGamePage() {
 
 useEffect(() => {
   const spawnTimer = setInterval(() => {
-    const newItem = {
-      id: Date.now(),
-      image: "/images/gum.png",
-      x: Math.floor(Math.random() * 300),
-      y: 0,
-    };
+    const random = Math.random();
+
+let image = "/images/gum.png";
+
+if (random < 0.4) {
+  image = "/images/gum.png";
+} else if (random < 0.7) {
+  image = "/images/beer.png";
+} else if (random < 0.95) {
+  image = "/images/tabaco.png";
+} else {
+  image = "/images/10.png";
+}
+
+const newItem = {
+  id: Date.now(),
+  image,
+  x: Math.floor(Math.random() * 300),
+  y: 0,
+};
 
     setFallingItems((prev) => [
       ...prev,
