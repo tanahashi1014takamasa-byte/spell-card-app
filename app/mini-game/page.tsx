@@ -159,20 +159,17 @@ useEffect(() => {
           />
 
           
-
-         <button
+<button
   onClick={() => {
     setStarted(true);
 
     if (bgmRef.current) {
       bgmRef.current.play();
     }
-  }}
-  style={{
-    fontSize: "25px",
-    padding: "15px 40px",
-    cursor: "pointer",
-    fontFamily: "monospace",
+
+    if (applauseRef.current) {
+      applauseRef.current.play();
+    }
   }}
 >
   ▶ PLAY
