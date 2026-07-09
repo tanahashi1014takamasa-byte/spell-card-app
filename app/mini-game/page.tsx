@@ -90,17 +90,11 @@ useEffect(() => {
 
   const timer = setInterval(() => {
   setTime((prev) => {
-    if (prev <= 0) {
-      clearInterval(timer);
-      setIsTimeUp(true);
-
-      if (applauseRef.current) {
-  applauseRef.current.currentTime = 0;
-  applauseRef.current.play();
+   if (prev <= 0) {
+  clearInterval(timer);
+  setIsTimeUp(true);
+  return 0;
 }
-
-      return 0;
-    }
 
     return prev - 1;
   });
@@ -108,6 +102,15 @@ useEffect(() => {
 
   return () => clearInterval(timer);
 }, [started]);
+
+useEffect(() => {
+  if (!isTimeUp) return;
+
+  if (applauseRef.current) {
+    applauseRef.current.currentTime = 0;
+    applauseRef.current.play();
+  }
+}, [isTimeUp]);
 
   return (
     <main
@@ -167,9 +170,6 @@ useEffect(() => {
       bgmRef.current.play();
     }
 
-    if (applauseRef.current) {
-      applauseRef.current.play();
-    }
   }}
 >
   ▶ PLAY
