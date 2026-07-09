@@ -27,8 +27,8 @@ export default function MiniGamePage() {
   {
     id: 4,
     image: "/images/beer.png",
-    x: 400,
-    y: -450,
+    x: 250,
+    y: -150,
   },
 ]);
 
