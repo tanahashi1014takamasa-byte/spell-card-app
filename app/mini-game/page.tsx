@@ -228,17 +228,19 @@ useEffect(() => {
 </div>
 )}
 
-<img
-  src="/images/nishida.png"
-  alt="西田"
-  style={{
-    position: "fixed",
-    right: "50px",
-    bottom: "100px",
-    width: "150px",
-    zIndex: 10000,
-  }}
-/>
+{isTimeUp && (
+  <img
+    src="/images/nishida.png"
+    alt="西田"
+    style={{
+      position: "fixed",
+      right: "50px",
+      bottom: "100px",
+      width: "150px",
+      zIndex: 10000,
+    }}
+  />
+)}
 
          {fallingItems.map((item) => (   
   <img
