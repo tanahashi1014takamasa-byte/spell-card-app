@@ -255,8 +255,9 @@ useEffect(() => {
   <div
     style={{
       position: "fixed",
-      left: "180px",
-      bottom: "250px",
+      left: "50%",
+      bottom: "50%",
+      transform: "translate(-50%, -50%)",
       background: "black",
       color: "white",
       padding: "12px 18px",
@@ -275,10 +276,10 @@ useEffect(() => {
     src="/images/nishida.png"
     alt="西田"
     style={{
-      position: "fixed",
-      left: "50px",
-      bottom: "100px",
-      width: "150px",
+    width: "200px",
+    position: "fixed",
+    left: "50px",
+    bottom: "50px",
       animation: "nishidaAppear 0.8s ease-out",
     }}
   />
