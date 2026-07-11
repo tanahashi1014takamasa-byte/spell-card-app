@@ -278,7 +278,7 @@ useEffect(() => {
     style={{
     width: "200px",
     position: "fixed",
-    left: "50px",
+    left: "20px",
     bottom: "50px",
       animation: "nishidaAppear 0.8s ease-out",
     }}
