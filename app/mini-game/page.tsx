@@ -14,7 +14,6 @@ export default function MiniGamePage() {
   const [nishidaMessage, setNishidaMessage] = useState("");
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
-  const timeupRef = useRef<HTMLAudioElement | null>(null);
 
   const nishidaMessages = [
   "目つぶってやっとんけ？笑",
@@ -122,15 +121,6 @@ useEffect(() => {
 useEffect(() => {
   if (!isTimeUp) return;
 
-  if (bgmRef.current) {
-    bgmRef.current.pause();
-    bgmRef.current.currentTime = 0;
-  }
-
-  if (timeupRef.current) {
-    timeupRef.current.play();
-  }
-
   const timer = setTimeout(() => {
     setIsNishidaScene(true);
 
@@ -171,11 +161,6 @@ useEffect(() => {
   ref={bgmRef}
   src="/sounds/Kabukicho.mp3"
   loop
-/>
-
-<audio
-  ref={timeupRef}
-  src="/sounds/timeup.mp3"
 />
 
         
