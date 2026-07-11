@@ -10,6 +10,7 @@ export default function MiniGamePage() {
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showNishida, setShowNishida] = useState(false);
   const [isNishidaScene, setIsNishidaScene] = useState(false);
+  const [isFadeOut, setIsFadeOut] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -111,8 +112,13 @@ useEffect(() => {
   if (!isTimeUp) return;
 
   const timer = setTimeout(() => {
+  setIsFadeOut(true);
+
+  setTimeout(() => {
     setIsNishidaScene(true);
-  }, 3000);
+  }, 500);
+
+}, 3000);
 
   return () => clearTimeout(timer);
 }, [isTimeUp]);
@@ -232,6 +238,17 @@ useEffect(() => {
 >
   TIME UP!!
 </div>
+)}
+
+{isFadeOut && !isNishidaScene && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "black",
+      zIndex: 15000,
+    }}
+  />
 )}
 
 {isNishidaScene && (
