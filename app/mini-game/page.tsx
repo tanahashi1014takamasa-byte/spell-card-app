@@ -10,7 +10,7 @@ export default function MiniGamePage() {
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showNishida, setShowNishida] = useState(false);
   const [isNishidaScene, setIsNishidaScene] = useState(false);
-  const [isFadeOut, setIsFadeOut] = useState(false);
+  const [showCharacter, setShowCharacter] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -112,13 +112,13 @@ useEffect(() => {
   if (!isTimeUp) return;
 
   const timer = setTimeout(() => {
-  setIsFadeOut(true);
-
-  setTimeout(() => {
     setIsNishidaScene(true);
-  }, 500);
 
-}, 3000);
+    setTimeout(() => {
+      setShowNishida(true);
+    }, 1000);
+
+  }, 3000);
 
   return () => clearTimeout(timer);
 }, [isTimeUp]);
@@ -226,7 +226,7 @@ useEffect(() => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "rgba(0,0,0,0.4)",
+    background: "transparent",
     fontSize: "50px",
     fontWeight: "bold",
     color: "red",
@@ -238,17 +238,6 @@ useEffect(() => {
 >
   TIME UP!!
 </div>
-)}
-
-{isFadeOut && !isNishidaScene && (
-  <div
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "black",
-      zIndex: 15000,
-    }}
-  />
 )}
 
 {isNishidaScene && (
@@ -281,15 +270,16 @@ useEffect(() => {
     </div>
 
     <img
-      src="/images/nishida.png"
-      alt="西田"
-      style={{
-        position: "fixed",
-        left: "50px",
-        bottom: "100px",
-        width: "150px",
-      }}
-    />
+  src="/images/nishida.png"
+  alt="西田"
+  style={{
+    position: "fixed",
+    left: "50px",
+    bottom: "100px",
+    width: "150px",
+    animation: "nishidaAppear 0.8s ease-out",
+  }}
+/>
   </div>
 )}
 
