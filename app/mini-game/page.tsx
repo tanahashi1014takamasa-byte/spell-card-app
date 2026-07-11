@@ -245,7 +245,6 @@ useEffect(() => {
   style={{
     position: "fixed",
     inset: 0,
-    backgroundImage: 'url("/images/nishida-room.png")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
