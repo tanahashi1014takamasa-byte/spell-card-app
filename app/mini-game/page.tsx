@@ -9,6 +9,7 @@ export default function MiniGamePage() {
   const [time, setTime] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showNishida, setShowNishida] = useState(false);
+  const [isNishidaScene, setIsNishidaScene] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -110,7 +111,7 @@ useEffect(() => {
   if (!isTimeUp) return;
 
   const timer = setTimeout(() => {
-    setShowNishida(true);
+    setIsNishidaScene(true);
   }, 3000);
 
   return () => clearTimeout(timer);
@@ -228,7 +229,7 @@ useEffect(() => {
 </div>
 )}
 
-{showNishida && (
+{isNishidaScene && (
   <>
     <div
   style={{
