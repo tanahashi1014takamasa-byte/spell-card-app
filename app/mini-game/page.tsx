@@ -231,13 +231,16 @@ useEffect(() => {
 
 {isNishidaScene && (
   <div
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "#111",
-      zIndex: 20000,
-    }}
-  >
+  style={{
+    position: "fixed",
+    inset: 0,
+    backgroundImage: 'url("/images/nishida-room.png")',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    zIndex: 20000,
+  }}
+>
     <div
       style={{
         position: "fixed",
