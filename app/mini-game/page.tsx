@@ -228,7 +228,7 @@ useEffect(() => {
 </div>
 )}
 
-{isTimeUp && (
+{showNishida && (
   <img
     src="/images/nishida.png"
     alt="西田"
