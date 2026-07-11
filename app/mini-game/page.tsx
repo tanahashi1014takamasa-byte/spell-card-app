@@ -122,10 +122,13 @@ useEffect(() => {
 useEffect(() => {
   if (!isTimeUp) return;
 
-  // BGM停止
   if (bgmRef.current) {
     bgmRef.current.pause();
     bgmRef.current.currentTime = 0;
+  }
+
+  if (timeupRef.current) {
+    timeupRef.current.play();
   }
 
   const timer = setTimeout(() => {
