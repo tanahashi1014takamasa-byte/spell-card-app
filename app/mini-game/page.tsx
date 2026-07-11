@@ -252,37 +252,37 @@ useEffect(() => {
     zIndex: 20000,
   }}
 >
-   {showNishida && (
-<div
-  style={{
-    position: "fixed",
-    left: "180px",
-    bottom: "250px",
-    background: "black",
-    color: "white",
-    padding: "12px 18px",
-    border: "4px solid white",
-    fontSize: "20px",
-    fontWeight: "bold",
-    fontFamily: "monospace",
-  }}
->
-  目つぶってやっとんけ？笑
-</div>
+  {showNishida && (
+  <div
+    style={{
+      position: "fixed",
+      left: "180px",
+      bottom: "250px",
+      background: "black",
+      color: "white",
+      padding: "12px 18px",
+      border: "4px solid white",
+      fontSize: "20px",
+      fontWeight: "bold",
+      fontFamily: "monospace",
+    }}
+  >
+    目つぶってやっとんけ？笑
+  </div>
 )}
 
-    {showNishida && (
-<img
-  src="/images/nishida.png"
-  alt="西田"
-  style={{
-    position: "fixed",
-    left: "50px",
-    bottom: "100px",
-    width: "150px",
-    animation: "nishidaAppear 0.8s ease-out",
-  }}
-/>
+   {showNishida && (
+  <img
+    src="/images/nishida.png"
+    alt="西田"
+    style={{
+      position: "fixed",
+      left: "50px",
+      bottom: "100px",
+      width: "150px",
+      animation: "nishidaAppear 0.8s ease-out",
+    }}
+  />
 )}
   </div>
 )}
