@@ -69,15 +69,8 @@ if (random < 0.4) {
   image = "/images/10.png";
 }
 
-useEffect(() => {
-  if (!isTimeUp) return;
 
-  const timer = setTimeout(() => {
-    setShowNishida(true);
-  }, 3000);
 
-  return () => clearTimeout(timer);
-}, [isTimeUp]);
 
 const newItem = {
   id: Date.now(),
@@ -104,14 +97,24 @@ useEffect(() => {
     clearInterval(timer);
     setIsTimeUp(true);
     return 0;
-}
-
+  }
       return prev - 1;
     });
   }, 1000);
 
   return () => clearInterval(timer);
 }, [started]);
+
+
+useEffect(() => {
+  if (!isTimeUp) return;
+
+  const timer = setTimeout(() => {
+    setShowNishida(true);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, [isTimeUp]);
 
   return (
     <main
@@ -225,7 +228,6 @@ useEffect(() => {
 </div>
 )}
 
-
 {showNishida && (
   <img
     src="/images/nishida.png"
@@ -239,7 +241,6 @@ useEffect(() => {
     }}
   />
 )}
-
 
          {fallingItems.map((item) => (   
   <img
