@@ -229,17 +229,36 @@ useEffect(() => {
 )}
 
 {showNishida && (
-  <img
-    src="/images/nishida.png"
-    alt="西田"
-    style={{
-      position: "fixed",
-      left: "50px",
-      bottom: "100px",
-      width: "150px",
-      zIndex: 10000,
-    }}
-  />
+  <>
+    <div
+      style={{
+        position: "fixed",
+        left: "180px",
+        bottom: "250px",
+        background: "white",
+        color: "black",
+        padding: "15px 20px",
+        borderRadius: "20px",
+        fontSize: "20px",
+        fontWeight: "bold",
+        zIndex: 10001,
+      }}
+    >
+      目つぶってやっとんけ？笑
+    </div>
+
+    <img
+      src="/images/nishida.png"
+      alt="西田"
+      style={{
+        position: "fixed",
+        left: "50px",
+        bottom: "100px",
+        width: "150px",
+        zIndex: 10000,
+      }}
+    />
+  </>
 )}
 
          {fallingItems.map((item) => (   
