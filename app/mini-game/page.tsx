@@ -234,7 +234,7 @@ useEffect(() => {
   style={{
     position: "fixed",
     inset: 0,
-    backgroundImage: 'url("/images/nishida-room①.png")',
+    backgroundImage: 'url("/images/nishida-room.png")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -259,7 +259,7 @@ useEffect(() => {
     </div>
 
     <img
-      src="/images/nishida①.png"
+      src="/images/nishida.png"
       alt="西田"
       style={{
         position: "fixed",
