@@ -234,7 +234,7 @@ useEffect(() => {
     alt="西田"
     style={{
       position: "fixed",
-      right: "50px",
+      left: "50px",
       bottom: "100px",
       width: "150px",
       zIndex: 10000,
