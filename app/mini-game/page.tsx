@@ -256,7 +256,7 @@ useEffect(() => {
   <div
     style={{
   position: "fixed",
-  left: "120px",
+  left: "150px",
   bottom: "250px",
   background: "black",
   color: "white",
