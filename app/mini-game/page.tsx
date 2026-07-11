@@ -252,24 +252,27 @@ useEffect(() => {
     zIndex: 20000,
   }}
 >
-    <div
-      style={{
-        position: "fixed",
-        left: "180px",
-        bottom: "250px",
-        background: "black",
-        color: "white",
-        padding: "12px 18px",
-        border: "4px solid white",
-        fontSize: "20px",
-        fontWeight: "bold",
-        fontFamily: "monospace",
-      }}
-    >
-      目つぶってやっとんけ？笑
-    </div>
+   {showNishida && (
+<div
+  style={{
+    position: "fixed",
+    left: "180px",
+    bottom: "250px",
+    background: "black",
+    color: "white",
+    padding: "12px 18px",
+    border: "4px solid white",
+    fontSize: "20px",
+    fontWeight: "bold",
+    fontFamily: "monospace",
+  }}
+>
+  目つぶってやっとんけ？笑
+</div>
+)}
 
-    <img
+    {showNishida && (
+<img
   src="/images/nishida.png"
   alt="西田"
   style={{
@@ -280,6 +283,7 @@ useEffect(() => {
     animation: "nishidaAppear 0.8s ease-out",
   }}
 />
+)}
   </div>
 )}
 
