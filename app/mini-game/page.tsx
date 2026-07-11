@@ -245,6 +245,7 @@ useEffect(() => {
   style={{
     position: "fixed",
     inset: 0,
+    backgroundImage: 'url("/images/nishida-room.png")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -255,9 +256,8 @@ useEffect(() => {
   <div
     style={{
       position: "fixed",
-      left: "80px",
-      bottom: "50%",
-      transform: "translate(-50%, -50%)",
+      left: "180px",
+      bottom: "250px",
       background: "black",
       color: "white",
       padding: "12px 18px",
@@ -276,10 +276,10 @@ useEffect(() => {
     src="/images/nishida.png"
     alt="西田"
     style={{
-    width: "200px",
-    position: "fixed",
-    left: "20px",
-    bottom: "50px",
+      position: "fixed",
+      left: "50px",
+      bottom: "100px",
+      width: "150px",
       animation: "nishidaAppear 0.8s ease-out",
     }}
   />
