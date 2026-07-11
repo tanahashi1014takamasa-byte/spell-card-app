@@ -255,17 +255,17 @@ useEffect(() => {
   {showNishida && (
   <div
     style={{
-      position: "fixed",
-      left: "180px",
-      bottom: "250px",
-      background: "black",
-      color: "white",
-      padding: "12px 18px",
-      border: "4px solid white",
-      fontSize: "20px",
-      fontWeight: "bold",
-      fontFamily: "monospace",
-    }}
+  position: "fixed",
+  left: "180px",
+  bottom: "250px",
+  background: "black",
+  color: "white",
+  padding: "6px 10px",
+  border: "2px solid white",
+  fontSize: "14px",
+  fontWeight: "bold",
+  fontFamily: "monospace",
+}}
   >
     目つぶってやっとんけ？笑
   </div>
