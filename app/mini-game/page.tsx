@@ -231,21 +231,22 @@ useEffect(() => {
 {showNishida && (
   <>
     <div
-      style={{
-        position: "fixed",
-        left: "180px",
-        bottom: "250px",
-        background: "white",
-        color: "black",
-        padding: "15px 20px",
-        borderRadius: "20px",
-        fontSize: "20px",
-        fontWeight: "bold",
-        zIndex: 10001,
-      }}
-    >
-      目つぶってやっとんけ？笑
-    </div>
+  style={{
+    position: "fixed",
+    left: "180px",
+    bottom: "250px",
+    background: "black",
+    color: "white",
+    padding: "12px 18px",
+    border: "4px solid white",
+    fontSize: "20px",
+    fontWeight: "bold",
+    fontFamily: "monospace",
+    zIndex: 10001,
+  }}
+>
+  目つぶってやっとんけ？笑
+</div>
 
     <img
       src="/images/nishida.png"
