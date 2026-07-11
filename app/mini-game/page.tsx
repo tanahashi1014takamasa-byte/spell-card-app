@@ -255,7 +255,7 @@ useEffect(() => {
   <div
     style={{
       position: "fixed",
-      right: "10%",
+      right: "20px",
       bottom: "50%",
       transform: "translate(-50%, -50%)",
       background: "black",
