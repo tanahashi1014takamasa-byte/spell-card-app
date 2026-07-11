@@ -256,7 +256,7 @@ useEffect(() => {
   <div
     style={{
   position: "fixed",
-  left: "180px",
+  left: "120px",
   bottom: "250px",
   background: "black",
   color: "white",
@@ -277,7 +277,7 @@ useEffect(() => {
     alt="西田"
     style={{
       position: "fixed",
-      left: "50px",
+      left: "20px",
       bottom: "100px",
       width: "150px",
       animation: "nishidaAppear 0.8s ease-out",
