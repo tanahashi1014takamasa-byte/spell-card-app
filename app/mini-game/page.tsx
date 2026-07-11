@@ -8,6 +8,7 @@ export default function MiniGamePage() {
   const [money, setMoney] = useState(0);
   const [time, setTime] = useState(30);
   const [isTimeUp, setIsTimeUp] = useState(false);
+  const [showNishida, setShowNishida] = useState(false);
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
@@ -67,6 +68,16 @@ if (random < 0.4) {
 } else {
   image = "/images/10.png";
 }
+
+useEffect(() => {
+  if (!isTimeUp) return;
+
+  const timer = setTimeout(() => {
+    setShowNishida(true);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, [isTimeUp]);
 
 const newItem = {
   id: Date.now(),
@@ -213,6 +224,23 @@ useEffect(() => {
   TIME UP!!
 </div>
 )}
+
+
+{showNishida && (
+  <img
+    src="/images/nishida.png"
+    alt="西田"
+    style={{
+      position: "fixed",
+      right: "50px",
+      bottom: "100px",
+      width: "150px",
+      zIndex: 10000,
+    }}
+  />
+)}
+
+
          {fallingItems.map((item) => (   
   <img
     key={item.id}
