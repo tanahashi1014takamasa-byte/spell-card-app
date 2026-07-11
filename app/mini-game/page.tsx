@@ -11,8 +11,18 @@ export default function MiniGamePage() {
   const [showNishida, setShowNishida] = useState(false);
   const [isNishidaScene, setIsNishidaScene] = useState(false);
   const [showCharacter, setShowCharacter] = useState(false);
+  const [nishidaMessage, setNishidaMessage] = useState("");
 
   const bgmRef = useRef<HTMLAudioElement | null>(null);
+
+  const nishidaMessages = [
+  "目つぶってやっとんけ？笑",
+  "朝メシちゃんと食うてきたんか？",
+  "カスが……死ね",
+  "シケモクで脳みそのシワ作ったろか？",
+  "殺すでお前",
+  "１個落とすたびにお前の肋骨を折る",
+];
 
   const [fallingItems, setFallingItems] = useState<
     {
@@ -115,6 +125,10 @@ useEffect(() => {
     setIsNishidaScene(true);
 
     setTimeout(() => {
+      const randomMessage =
+        nishidaMessages[Math.floor(Math.random() * nishidaMessages.length)];
+
+      setNishidaMessage(randomMessage);
       setShowNishida(true);
     }, 1000);
 
@@ -267,7 +281,7 @@ useEffect(() => {
   fontFamily: "monospace",
 }}
   >
-    目つぶってやっとんけ？笑
+    {nishidaMessage}
   </div>
 )}
 
