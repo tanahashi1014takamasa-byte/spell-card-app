@@ -117,6 +117,11 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, [isTimeUp]);
 
+useEffect(() => {
+  const img = new Image();
+  img.src = "/images/nishida-room.png";
+}, []);
+
   return (
     <main
       style={{
@@ -216,7 +221,7 @@ useEffect(() => {
     justifyContent: "center",
     alignItems: "center",
     background: "rgba(0,0,0,0.4)",
-    fontSize: "72px",
+    fontSize: "50px",
     fontWeight: "bold",
     color: "red",
     textShadow: "3px 3px 6px black",
