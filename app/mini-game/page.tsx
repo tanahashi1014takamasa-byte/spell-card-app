@@ -6,7 +6,7 @@ export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(10);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showNishida, setShowNishida] = useState(false);
 
@@ -228,19 +228,17 @@ useEffect(() => {
 </div>
 )}
 
-{showNishida && (
-  <img
-    src="/images/nishida.png"
-    alt="西田"
-    style={{
-      position: "fixed",
-      right: "50px",
-      bottom: "100px",
-      width: "150px",
-      zIndex: 10000,
-    }}
-  />
-)}
+<img
+  src="/images/nishida.png"
+  alt="西田"
+  style={{
+    position: "fixed",
+    right: "50px",
+    bottom: "100px",
+    width: "150px",
+    zIndex: 10000,
+  }}
+/>
 
          {fallingItems.map((item) => (   
   <img
