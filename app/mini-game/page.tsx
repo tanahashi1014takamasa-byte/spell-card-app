@@ -230,24 +230,30 @@ useEffect(() => {
 )}
 
 {isNishidaScene && (
-  <>
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "#111",
+      zIndex: 20000,
+    }}
+  >
     <div
-  style={{
-    position: "fixed",
-    left: "180px",
-    bottom: "250px",
-    background: "black",
-    color: "white",
-    padding: "12px 18px",
-    border: "4px solid white",
-    fontSize: "20px",
-    fontWeight: "bold",
-    fontFamily: "monospace",
-    zIndex: 10001,
-  }}
->
-  目つぶってやっとんけ？笑
-</div>
+      style={{
+        position: "fixed",
+        left: "180px",
+        bottom: "250px",
+        background: "black",
+        color: "white",
+        padding: "12px 18px",
+        border: "4px solid white",
+        fontSize: "20px",
+        fontWeight: "bold",
+        fontFamily: "monospace",
+      }}
+    >
+      目つぶってやっとんけ？笑
+    </div>
 
     <img
       src="/images/nishida.png"
@@ -257,10 +263,9 @@ useEffect(() => {
         left: "50px",
         bottom: "100px",
         width: "150px",
-        zIndex: 10000,
       }}
     />
-  </>
+  </div>
 )}
 
          {fallingItems.map((item) => (   
