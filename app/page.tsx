@@ -1035,12 +1035,11 @@ return (
   <>
     <button
       onClick={() => {
-        setShowCanMenu(true);
-
       const sound = new Audio("/sounds/ニュースタイトル表示1.mp3");
-        sound.play();
+      sound.volume = 1.0;
+      sound.play();
 
-        setShowCanMenu(true);
+      setShowCanMenu(true);
 
       }}
       style={{
