@@ -102,9 +102,17 @@ const [chips, setChips] = useState(0);
               必要チップ：{prize.price}枚
             </p>
 
-            <button>
-              交換する
-            </button>
+            <button
+  onClick={() => {
+    if (chips >= prize.price) {
+      alert(`${prize.name} と交換できます！`);
+    } else {
+      alert("チップが足りません！");
+    }
+  }}
+>
+  交換する
+</button>
           </div>
         ))}
       </div>
