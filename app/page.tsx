@@ -1081,6 +1081,7 @@ return (
         </button>
 
         <button
+        style={{ marginTop: "10px" }}
           onClick={() => {
             window.location.href =
               "https://spell-card-app.vercel.app/exchange";
@@ -1090,6 +1091,7 @@ return (
         </button>
 
         <button
+        style={{ marginTop: "10px" }}
           onClick={() => {
             setShowCanMenu(false);
           }}
