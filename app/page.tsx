@@ -551,7 +551,7 @@ return (
 />
 
        <img
-  src="/images/なんとかなれ2.png"
+  src="/images/なんとかなれ３.png"
   alt="なんとかなれー!!"
   onClick={() => {
     bgmRef.current?.play().catch(() => {});
