@@ -17,10 +17,8 @@ export default function MiniGamePage() {
 
   const nishidaMessages = [
   "目つぶってやっとんけ？笑",
-  "朝メシちゃんと食うてきたんか？",
   "カスが……死ね",
   "シケモクで脳みそのシワ作ったろか？",
-  "殺すでお前",
   "１個落とすたびにお前の肋骨を折る",
 ];
 
