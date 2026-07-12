@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function ExchangePage() {
 
 const [chips, setChips] = useState(0);
+const [isStart, setIsStart] = useState(false);
     
   const prizes = [
     {
@@ -51,27 +52,37 @@ const [chips, setChips] = useState(0);
         🎁 景品交換
       </h1>
 
-<div
-  style={{
-    textAlign: "center",
-    marginBottom: "20px",
-  }}
->
-  <p>現在の所持チップ</p>
-
-  <input
-    type="number"
-    value={chips}
-    onChange={(e) => setChips(Number(e.target.value))}
+{!isStart ? (
+  <div
     style={{
-      width: "100px",
-      fontSize: "20px",
       textAlign: "center",
+      marginBottom: "30px",
     }}
-  />
+  >
+    <p>所持チップを入力してください</p>
 
-  <span> 枚</span>
-</div>
+    <input
+      type="number"
+      value={chips}
+      onChange={(e) => setChips(Number(e.target.value))}
+      style={{
+        width: "100px",
+        fontSize: "20px",
+        textAlign: "center",
+      }}
+    />
+
+    <span> 枚</span>
+
+    <br />
+    <br />
+
+    <button onClick={() => setIsStart(true)}>
+      決定
+    </button>
+  </div>
+) : (
+  <>
 
 
       <p
@@ -132,7 +143,11 @@ const [chips, setChips] = useState(0);
 </button>
           </div>
         ))}
-      </div>
+            </div>
+
+  </>
+)}
+
     </main>
   );
 }
