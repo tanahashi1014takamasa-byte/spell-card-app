@@ -63,15 +63,60 @@ const [gotPrize, setGotPrize] = useState("");
     <p>所持チップを入力してください</p>
 
     <input
-      type="number"
-      value={chips}
-      onChange={(e) => setChips(Number(e.target.value))}
-      style={{
-        width: "100px",
-        fontSize: "20px",
-        textAlign: "center",
+  type="text"
+  value={chips}
+  readOnly
+  style={{
+    width: "120px",
+    fontSize: "25px",
+    textAlign: "center",
+  }}
+/>
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 60px)",
+    gap: "10px",
+    justifyContent: "center",
+    marginTop: "20px",
+  }}
+>
+  {[1,2,3,4,5,6,7,8,9].map((num) => (
+    <button
+      key={num}
+      onClick={() => {
+        setChips(Number(String(chips) + num));
       }}
-    />
+    >
+      {num}
+    </button>
+  ))}
+
+  <button
+    onClick={() => {
+      setChips(0);
+    }}
+  >
+    C
+  </button>
+
+  <button
+    onClick={() => {
+      setChips(Number(String(chips) + "0"));
+    }}
+  >
+    0
+  </button>
+
+  <button
+    onClick={() => {
+      setChips(Number(String(chips).slice(0, -1)) || 0);
+    }}
+  >
+    ←
+  </button>
+</div>
 
     <span> 枚</span>
 
