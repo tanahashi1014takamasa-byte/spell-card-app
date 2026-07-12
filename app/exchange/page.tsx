@@ -93,6 +93,16 @@ const [isStart, setIsStart] = useState(false);
         交換する景品を選んでください
       </p>
 
+      <p
+  style={{
+    textAlign: "center",
+    fontSize: "20px",
+    marginBottom: "20px",
+  }}
+>
+  現在の所持チップ：{chips}枚
+</p>
+
       <div
         style={{
           display: "flex",
