@@ -104,14 +104,16 @@ const [chips, setChips] = useState(0);
             <h2>{prize.name}</h2>
 
             <img
-              src={prize.image}
-              alt={prize.name}
-              style={{
-                width: "150px",
-                height: "150px",
-                objectFit: "contain",
-              }}
-            />
+  src={prize.image}
+  alt={prize.name}
+  style={{
+    width: "150px",
+    height: "150px",
+    objectFit: "contain",
+    display: "block",
+    margin: "0 auto",
+  }}
+/>
 
             <p>
               必要チップ：{prize.price}枚
