@@ -6,7 +6,7 @@ export default function ExchangePage() {
 
 const [chips, setChips] = useState(0);
 const [isStart, setIsStart] = useState(false);
-const [message, setMessage] = useState("");
+const [gotPrize, setGotPrize] = useState("");
 
   const prizes = [
     {
@@ -126,7 +126,7 @@ const [message, setMessage] = useState("");
             
           >
 
-            {message && (
+           {gotPrize === prize.name && (
   <p
     style={{
       textAlign: "center",
@@ -134,7 +134,7 @@ const [message, setMessage] = useState("");
       marginTop: "20px",
     }}
   >
-    {message}
+    🎉 {prize.name} ゲット！おめでとうございます！
   </p>
 )}
             <h2>{prize.name}</h2>
@@ -159,9 +159,9 @@ const [message, setMessage] = useState("");
   onClick={() => {
     if (chips >= prize.price) {
   setChips(chips - prize.price);
-  setMessage(`🎉 ${prize.name} ゲット！おめでとうございます！`);
+  setGotPrize(prize.name);
 } else {
-  setMessage("チップが足りません！");
+  alert("チップが足りません！");
 }
   }}
 >
