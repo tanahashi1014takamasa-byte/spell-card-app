@@ -210,6 +210,10 @@ const [gotPrize, setGotPrize] = useState("");
     if (chips >= prize.price) {
   setChips(chips - prize.price);
   setGotPrize(prize.name);
+
+  const sound = new Audio("/sounds/コイン.mp3");
+  sound.volume = 0.3;
+  sound.play();
 } else {
   alert("チップが足りません！");
 }
