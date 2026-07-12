@@ -6,7 +6,7 @@ export default function MiniGamePage() {
   const [started, setStarted] = useState(false);
   const [waniX, setWaniX] = useState(0);
   const [money, setMoney] = useState(0);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(20);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showNishida, setShowNishida] = useState(false);
   const [isNishidaScene, setIsNishidaScene] = useState(false);
