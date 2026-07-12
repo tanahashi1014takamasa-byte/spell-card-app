@@ -1035,7 +1035,7 @@ return (
   <>
     <button
       onClick={() => {
-  const sound = new Audio("/sounds/ニュースタイトル表示1.mp3");
+  const sound = new Audio("/sounds/成功音.mp3");
   sound.play();
 
   setTimeout(() => {
