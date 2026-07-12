@@ -1035,13 +1035,14 @@ return (
   <>
     <button
       onClick={() => {
-      const sound = new Audio("/sounds/ニュースタイトル表示1.mp3");
-      sound.volume = 1.0;
-      sound.play();
+  const sound = new Audio("/sounds/ニュースタイトル表示1.mp3");
+  sound.play();
 
-      setShowCanMenu(true);
+  setTimeout(() => {
+    setShowCanMenu(true);
+  }, 300);
+}}
 
-      }}
       style={{
         position: "absolute",
         left: "18%",
