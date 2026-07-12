@@ -53,6 +53,7 @@ export default function Home() {
   const [developmentText, setDevelopmentText] = useState("");
   const [productionText, setProductionText] = useState("");
   const [baseballNoteText, setBaseballNoteText] = useState("");
+  const [showCanMenu, setShowCanMenu] = useState(false);
   
 
 
@@ -1031,22 +1032,68 @@ return (
     />
 
     {isWaniOpen && (
-      <button
-        onClick={() => {
-          window.location.href = "https://spell-card-app.vercel.app/mini-game";
-        }}
+  <>
+    <button
+      onClick={() => {
+        setShowCanMenu(true);
+      }}
+      style={{
+        position: "absolute",
+        left: "18%",
+        bottom: "3%",
+        width: "14%",
+        height: "10%",
+        opacity: 0,
+        border: "none",
+        cursor: "pointer",
+      }}
+    />
+
+    {showCanMenu && (
+      <div
         style={{
-          position: "absolute",
-          left: "18%",
-          bottom: "3%",
-          width: "14%",
-          height: "10%",
-          opacity: 0,
-          border: "none",
-          cursor: "pointer",
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "black",
+          border: "3px solid white",
+          padding: "20px",
+          zIndex: 9999,
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
         }}
-      />
+      >
+        <button
+          onClick={() => {
+            window.location.href =
+              "https://spell-card-app.vercel.app/mini-game";
+          }}
+        >
+          🎮 ミニゲーム
+        </button>
+
+        <button
+          onClick={() => {
+            window.location.href =
+              "https://spell-card-app.vercel.app/exchange";
+          }}
+        >
+          💴 景品交換はこちら
+        </button>
+
+        <button
+          onClick={() => {
+            setShowCanMenu(false);
+          }}
+        >
+          ❌ とじる
+        </button>
+      </div>
     )}
+  </>
+)}
   </div>
 </div>
 
