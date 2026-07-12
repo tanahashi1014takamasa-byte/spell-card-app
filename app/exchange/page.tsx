@@ -143,10 +143,11 @@ const [isStart, setIsStart] = useState(false);
             <button
   onClick={() => {
     if (chips >= prize.price) {
-      alert(`${prize.name} と交換できます！`);
-    } else {
-      alert("チップが足りません！");
-    }
+  setChips(chips - prize.price);
+  alert(`${prize.name} と交換しました！`);
+} else {
+  alert("チップが足りません！");
+}
   }}
 >
   交換する
