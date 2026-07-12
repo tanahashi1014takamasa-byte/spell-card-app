@@ -1080,7 +1080,7 @@ return (
               "https://spell-card-app.vercel.app/exchange";
           }}
         >
-          💴 景品交換はこちら
+          💴 景品交換
         </button>
 
         <button
