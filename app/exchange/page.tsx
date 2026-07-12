@@ -6,6 +6,7 @@ export default function ExchangePage() {
 
 const [chips, setChips] = useState(0);
 const [isStart, setIsStart] = useState(false);
+const [message, setMessage] = useState("");
     
   const prizes = [
     {
@@ -148,6 +149,19 @@ const [isStart, setIsStart] = useState(false);
 } else {
   alert("チップが足りません！");
 }
+
+{message && (
+  <p
+    style={{
+      textAlign: "center",
+      color: "yellow",
+      fontSize: "20px",
+    }}
+  >
+    {message}
+  </p>
+)}
+
   }}
 >
   交換する
