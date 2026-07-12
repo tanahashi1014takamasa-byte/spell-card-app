@@ -76,21 +76,26 @@ const [gotPrize, setGotPrize] = useState("");
 <div
   style={{
     display: "grid",
-    gridTemplateColumns: "repeat(3, 60px)",
-    gap: "10px",
+    gridTemplateColumns: "repeat(3, 90px)",
+    gap: "15px",
     justifyContent: "center",
     marginTop: "20px",
   }}
 >
   {[1,2,3,4,5,6,7,8,9].map((num) => (
     <button
-      key={num}
-      onClick={() => {
-        setChips(Number(String(chips) + num));
-      }}
-    >
-      {num}
-    </button>
+  key={num}
+  onClick={() => {
+    setChips(Number(String(chips) + num));
+  }}
+  style={{
+    width: "90px",
+    height: "70px",
+    fontSize: "30px",
+  }}
+>
+  {num}
+</button>
   ))}
 
   <button
