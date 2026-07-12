@@ -1036,6 +1036,7 @@ return (
     <button
       onClick={() => {
   const sound = new Audio("/sounds/成功音.mp3");
+  sound.volume = 0.5;
   sound.play();
 
   setTimeout(() => {
