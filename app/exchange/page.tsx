@@ -9,13 +9,28 @@ const [chips, setChips] = useState(0);
   const prizes = [
     {
       name: "アクリルスタンド１",
-      price: 300,
-      image: "/images/chi1.png",
+      price: 100,
+      image: "/images/A.png",
     },
     {
       name: "アクリルスタンド２",
-      price: 500,
-      image: "/images/chi2.png",
+      price: 150,
+      image: "/images/B.png",
+    },
+        {
+      name: "アクリルスタンド３",
+      price: 200,
+      image: "/images/C.png",
+    },
+        {
+      name: "アクリルスタンド４",
+      price: 200,
+      image: "/images/D.png",
+    },
+        {
+      name: "アクリルスタンド５",
+      price: 300,
+      image: "/images/E.png",
     },
   ];
 
