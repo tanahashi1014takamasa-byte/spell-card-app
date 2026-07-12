@@ -1,6 +1,11 @@
 "use client";
 
+import { useState } from "react";
+
 export default function ExchangePage() {
+
+const [chips, setChips] = useState(0);
+    
   const prizes = [
     {
       name: "アクリルスタンド１",
@@ -30,6 +35,29 @@ export default function ExchangePage() {
       >
         🎁 景品交換
       </h1>
+
+<div
+  style={{
+    textAlign: "center",
+    marginBottom: "20px",
+  }}
+>
+  <p>現在の所持チップ</p>
+
+  <input
+    type="number"
+    value={chips}
+    onChange={(e) => setChips(Number(e.target.value))}
+    style={{
+      width: "100px",
+      fontSize: "20px",
+      textAlign: "center",
+    }}
+  />
+
+  <span> 枚</span>
+</div>
+
 
       <p
         style={{
