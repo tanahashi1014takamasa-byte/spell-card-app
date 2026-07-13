@@ -619,7 +619,7 @@ return (
                 width: "40vw",
                 maxWidth: "300px",
                 aspectRatio: "63 / 88",
-                animation: "none",
+                animation: "cardPop 0.8s ease forwards",
               }}
               onClick={() => handleCardClick(index)}
             >
