@@ -534,13 +534,17 @@ return (
 />
 ) : (
   <img
-    src={zoomImage}
-    style={{
-      width: "85vw",
-      maxWidth: "500px",
-      borderRadius: "12px",
-    }}
-  />
+  src={zoomImage}
+  style={{
+    width: "85vw",
+    maxWidth: "500px",
+    borderRadius: "12px",
+    animation:
+      zoomImage === "/cards/四次元マンション.png"
+        ? "rareFlash 0.8s infinite"
+        : "none",
+  }}
+/>
 )}
   </div>
 )}
@@ -1154,6 +1158,7 @@ return (
       src={selectedCard.image}
       style={{
         width: "300px",
+        filter: "brightness(2)",
       }}
     />
   </div>
