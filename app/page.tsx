@@ -1154,9 +1154,7 @@ return (
       src={selectedCard.image}
       style={{
         width: "300px",
-        animation: selectedCard.rare
-      ? "rareFlash 0.8s infinite"
-      : "none",
+        animation: "rareFlash 0.8s infinite",
       }}
     />
   </div>
