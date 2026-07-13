@@ -17,16 +17,24 @@ const cards = [
   "/cards/ブラックチケット.png",
   "/cards/ボルテックス.png",
   "/cards/マグネットフォース.png",
+  "/cards/四次元マンション.png",
 ];
 
 type DrawnCard = {
   image: string;
   revealed: boolean;
+  rare?: boolean;
 };
 
 export default function Home() {
-  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [drawnCards, setDrawnCards] = useState<
+  {
+    image: string;
+    revealed: boolean;
+    rare?: boolean;
+  }[]
+>([]);
+  const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
   const [isHomeRun, setIsHomeRun] = useState(false);
@@ -54,6 +62,7 @@ export default function Home() {
   const [productionText, setProductionText] = useState("");
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
+  
   
 
 
@@ -150,11 +159,12 @@ useEffect(() => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
     setDrawnCards(
-      shuffled.slice(0, 2).map((card) => ({
-        image: card,
-        revealed: false,
-      }))
-    );
+  shuffled.slice(0, 2).map((card) => ({
+    image: card,
+    revealed: false,
+    rare: card === "/cards/四次元マンション.png",
+  }))
+);
 
     setSelectedCard(null);
   };
@@ -164,15 +174,18 @@ useEffect(() => {
 
   const card = drawnCards[index];
 
-  // ① 裏カード → めくるだけ
-  if (!card.revealed) {
-    flipSound();
+// ① 裏カード → めくるだけ
+if (!card.revealed) {
+  flipSound();
 
-    const updated = [...drawnCards];
-    updated[index].revealed = true;
-    setDrawnCards(updated);
-    return;
-  }
+  const updated = [...drawnCards];
+  updated[index].revealed = true;
+  setDrawnCards(updated);
+
+  return;
+}
+
+  
 
   // ② 表カード → 効果表示（ここが本体）
   const chance = Math.random();
@@ -204,6 +217,24 @@ return (
 
 
    <>
+
+<button
+      onClick={() => window.location.reload()}
+      style={{
+        position: "fixed",
+        top: "20px",
+        left: "20px",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        fontSize: "36px",
+        cursor: "pointer",
+        zIndex: 10003,
+      }}
+    >
+      ↻
+    </button>
+
     <button
   onClick={() => setIsMenuOpen(!isMenuOpen)}
   style={{
@@ -503,14 +534,17 @@ return (
 />
 ) : (
   <img
-    src={zoomImage}
-    style={{
-      width: "85vw",
-      maxWidth: "500px",
-      borderRadius: "12px",
-      animation: "zoomIn 0.2s ease-out",
-    }}
-  />
+  src={zoomImage}
+  style={{
+    width: "85vw",
+    maxWidth: "500px",
+    borderRadius: "12px",
+    animation:
+      zoomImage === "/cards/四次元マンション.png"
+        ? "rareFlash 0.8s infinite"
+        : "none",
+  }}
+/>
 )}
   </div>
 )}
@@ -599,6 +633,9 @@ return (
                 <img
                   src={card.image}
                   className="card-front"
+                  style={{
+    animation: card.rare ? "rareFlash 0.8s infinite" : "none",
+  }}
                 />
               </div>
             </div>
@@ -1104,7 +1141,28 @@ return (
 )}
   </div>
 </div>
-
+{selectedCard && (
+  <div
+    onClick={() => setSelectedCard(null)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.7)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <img
+      src={selectedCard.image}
+      style={{
+        width: "300px",
+        filter: "brightness(2)",
+      }}
+    />
+  </div>
+)}
       </main>
     </>
 );
