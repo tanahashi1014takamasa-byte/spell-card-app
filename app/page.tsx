@@ -1144,7 +1144,26 @@ return (
 )}
   </div>
 </div>
-
+{selectedCard && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.7)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <img
+      src={selectedCard.image}
+      style={{
+        width: "300px",
+      }}
+    />
+  </div>
+)}
       </main>
     </>
 );
