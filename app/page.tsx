@@ -545,7 +545,6 @@ return (
       width: "85vw",
       maxWidth: "500px",
       borderRadius: "12px",
-      animation: "zoomIn 0.2s ease-out",
     }}
   />
 )}
