@@ -1146,6 +1146,7 @@ return (
 </div>
 {selectedCard && (
   <div
+    onClick={() => setSelectedCard(null)}
     style={{
       position: "fixed",
       inset: 0,
