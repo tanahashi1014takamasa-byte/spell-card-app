@@ -18,8 +18,9 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Spell Card System",
+  title: "ちいかわストラックアウト",
   description: "Spell Card App",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
