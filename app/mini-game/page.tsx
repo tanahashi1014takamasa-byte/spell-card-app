@@ -19,7 +19,6 @@ export default function MiniGamePage() {
   "目つぶってやっとんけ？笑",
   "カスが……死ね",
   "シケモクで脳みそのシワ作ったろか？",
-  "１個落とすたびにお前の肋骨を折る",
 ];
 
   const [fallingItems, setFallingItems] = useState<
