@@ -174,23 +174,22 @@ useEffect(() => {
 
   const card = drawnCards[index];
 
-  // ① 裏カード → めくるだけ
-  if (!card.revealed) {
-    flipSound();
+// ① 裏カード → めくるだけ
+if (!card.revealed) {
+  flipSound();
 
-    const card = drawnCards[index];
+  // レアカードの場合は通常のめくり処理をしない
+  if (card.rare) {
+    setSelectedCard(card);
+    return;
+  }
 
-    const updated = [...drawnCards];
-    updated[index].revealed = true;
-setDrawnCards(updated);
+  const updated = [...drawnCards];
+  updated[index].revealed = true;
+  setDrawnCards(updated);
 
-if (card.rare) {
-  setSelectedCard(card);
   return;
 }
-
-return;
-  }
 
   
 
