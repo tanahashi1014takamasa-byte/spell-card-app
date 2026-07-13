@@ -55,6 +55,7 @@ export default function Home() {
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
   
+  
 
 
   useEffect(() => {
@@ -204,6 +205,24 @@ return (
 
 
    <>
+
+<button
+      onClick={() => window.location.reload()}
+      style={{
+        position: "fixed",
+        top: "20px",
+        left: "20px",
+        background: "transparent",
+        border: "none",
+        color: "white",
+        fontSize: "36px",
+        cursor: "pointer",
+        zIndex: 10003,
+      }}
+    >
+      ↻
+    </button>
+
     <button
   onClick={() => setIsMenuOpen(!isMenuOpen)}
   style={{
