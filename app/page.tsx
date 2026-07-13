@@ -545,6 +545,7 @@ return (
       width: "85vw",
       maxWidth: "500px",
       borderRadius: "12px",
+      animation: "zoomIn 0.2s ease-out",
     }}
   />
 )}
@@ -618,7 +619,7 @@ return (
                 width: "40vw",
                 maxWidth: "300px",
                 aspectRatio: "63 / 88",
-                animation: "cardPop 0.8s ease forwards",
+                animation: "none",
               }}
               onClick={() => handleCardClick(index)}
             >
