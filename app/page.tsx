@@ -23,6 +23,7 @@ const cards = [
 type DrawnCard = {
   image: string;
   revealed: boolean;
+  rare?: boolean;
 };
 
 export default function Home() {
@@ -33,7 +34,7 @@ export default function Home() {
     rare?: boolean;
   }[]
 >([]);
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
   const [isHomeRun, setIsHomeRun] = useState(false);
@@ -177,11 +178,21 @@ useEffect(() => {
   if (!card.revealed) {
     flipSound();
 
+    const card = drawnCards[index];
+
     const updated = [...drawnCards];
     updated[index].revealed = true;
-    setDrawnCards(updated);
-    return;
+setDrawnCards(updated);
+
+if (card.rare) {
+  setSelectedCard(card);
+  return;
+}
+
+return;
   }
+
+  
 
   // ② 表カード → 効果表示（ここが本体）
   const chance = Math.random();
