@@ -17,6 +17,7 @@ const cards = [
   "/cards/ブラックチケット.png",
   "/cards/ボルテックス.png",
   "/cards/マグネットフォース.png",
+  "/cards/四次元マンション.png",
 ];
 
 type DrawnCard = {
@@ -25,7 +26,13 @@ type DrawnCard = {
 };
 
 export default function Home() {
-  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
+  const [drawnCards, setDrawnCards] = useState<
+  {
+    image: string;
+    revealed: boolean;
+    rare?: boolean;
+  }[]
+>([]);
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
@@ -151,11 +158,12 @@ useEffect(() => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
     setDrawnCards(
-      shuffled.slice(0, 2).map((card) => ({
-        image: card,
-        revealed: false,
-      }))
-    );
+  shuffled.slice(0, 2).map((card) => ({
+    image: card,
+    revealed: false,
+    rare: card === "/cards/四次元マンション.png",
+  }))
+);
 
     setSelectedCard(null);
   };
@@ -618,6 +626,9 @@ return (
                 <img
                   src={card.image}
                   className="card-front"
+                  style={{
+    animation: card.rare ? "rareFlash 0.8s infinite" : "none",
+  }}
                 />
               </div>
             </div>
