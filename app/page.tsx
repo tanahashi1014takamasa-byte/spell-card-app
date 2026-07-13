@@ -1154,7 +1154,7 @@ return (
       src={selectedCard.image}
       style={{
         width: "300px",
-        animation: "rareFlash 0.8s infinite",
+        filter: "brightness(2)",
       }}
     />
   </div>
