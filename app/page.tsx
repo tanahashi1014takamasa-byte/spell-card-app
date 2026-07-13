@@ -539,10 +539,11 @@ return (
     width: "85vw",
     maxWidth: "500px",
     borderRadius: "12px",
-    animation:
-      zoomImage === "/cards/四次元マンション.png"
-        ? "rareFlash 0.8s infinite"
-        : "none",
+    animation: "none",
+filter:
+  zoomImage === "/cards/四次元マンション.png"
+    ? "brightness(2) drop-shadow(0 0 30px white)"
+    : "none",
   }}
 />
 )}
@@ -631,7 +632,7 @@ return (
                 />
 
                 <img
-  src={card.image}
+                 src={card.image}
   className="card-front"
   style={{
     animation:
