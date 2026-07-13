@@ -108,7 +108,3 @@ body {
     filter: brightness(1);
   }
 }
-
-.rareGlow {
-  filter: brightness(2);
-}

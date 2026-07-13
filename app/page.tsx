@@ -631,12 +631,9 @@ return (
                 />
 
                 <img
-                  src={card.image}
-                  className="card-front"
-                  style={{
-    animation: card.rare ? "rareFlash 0.8s infinite" : "none",
-  }}
-                />
+  src={card.image}
+  className={`card-front ${card.rare ? "rareGlow" : ""}`}
+/>
               </div>
             </div>
           ))}
