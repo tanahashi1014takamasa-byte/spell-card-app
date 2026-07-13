@@ -631,12 +631,15 @@ return (
                 />
 
                 <img
-                  src={card.image}
-                  className="card-front"
-                  style={{
-  animation: "none",
-}}
-                />
+  src={card.image}
+  className="card-front"
+  style={{
+    animation:
+      card.image === "/cards/四次元マンション.png"
+        ? "rareFlash 0.8s infinite"
+        : "none",
+  }}
+/>
               </div>
             </div>
           ))}
