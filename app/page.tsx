@@ -634,8 +634,8 @@ return (
                   src={card.image}
                   className="card-front"
                   style={{
-    animation: card.rare ? "rareFlash 0.8s infinite" : "none",
-  }}
+  animation: "none",
+}}
                 />
               </div>
             </div>
