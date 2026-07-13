@@ -178,12 +178,6 @@ useEffect(() => {
 if (!card.revealed) {
   flipSound();
 
-  // レアカードの場合は通常のめくり処理をしない
-  if (card.rare) {
-    setSelectedCard(card);
-    return;
-  }
-
   const updated = [...drawnCards];
   updated[index].revealed = true;
   setDrawnCards(updated);
