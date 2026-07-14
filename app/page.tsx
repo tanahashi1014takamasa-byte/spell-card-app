@@ -99,6 +99,12 @@ export default function Home() {
   const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
+  const [zoomCard, setZoomCard] = useState<{
+  image: string;
+  revealed: boolean;
+  rare?: boolean;
+  physicalPenalty?: boolean;
+} | null>(null);
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
@@ -112,7 +118,7 @@ export default function Home() {
   const [taniguchiText, setTaniguchiText] = useState("");
   const [maruiText, setMaruiText] = useState("");
   const [igarashiText, setIgarashiText] = useState("");
-　const [kondoText, setKondoText] = useState("");
+  const [kondoText, setKondoText] = useState("");
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -124,6 +130,7 @@ export default function Home() {
   const [productionText, setProductionText] = useState("");
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
+  
   
   
 
@@ -271,9 +278,11 @@ if (!card.revealed) {
   setIsZooming(true);
 
   setTimeout(() => {
-    setZoomImage(card.image);
-    setIsZooming(false);
-  }, 150);
+  setZoomImage(card.image);
+  setZoomCard(card);
+  setIsZooming(false);
+}, 150);
+
 };
 
 return (
