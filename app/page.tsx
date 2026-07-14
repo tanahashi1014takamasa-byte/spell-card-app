@@ -641,7 +641,8 @@ return (
 
 {showPhysicalText && (
   <div
-    style={{
+  onClick={() => setShowPhysicalText(false)}
+  style={{
       position: "fixed",
       top: "50%",
       left: "50%",
