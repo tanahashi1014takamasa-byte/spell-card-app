@@ -657,6 +657,8 @@ return (
       padding: "30px",
       borderRadius: "10px",
       zIndex: 20000,
+      whiteSpace: "pre-line",
+      maxWidth: "80%",
     }}
   >
     【制約と誓約】
