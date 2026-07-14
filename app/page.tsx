@@ -85,6 +85,7 @@ type DrawnCard = {
   revealed: boolean;
   rare?: boolean;
   physicalPenalty?: boolean;
+  homeRunChecked?: boolean;
 };
 
 export default function Home() {
@@ -94,6 +95,7 @@ export default function Home() {
     revealed: boolean;
     rare?: boolean;
     physicalPenalty?: boolean;
+    homeRunChecked?: boolean;
   }[]
 >([]);
   const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
@@ -274,6 +276,12 @@ if (!card.revealed) {
   
 
   // ② 表カード → 効果表示（ここが本体）
+if (!card.homeRunChecked) {
+
+  const updated = [...drawnCards];
+  updated[index].homeRunChecked = true;
+  setDrawnCards(updated);
+
   const chance = Math.random();
 
   if (chance < 0.04) {
@@ -288,6 +296,7 @@ if (!card.revealed) {
     setIsHomeRun(true);
     setZoomImage(randomVideo);
     return;
+     }
   }
 
   // ③ 通常拡大（効果を見る）
