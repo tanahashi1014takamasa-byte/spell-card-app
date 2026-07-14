@@ -284,7 +284,7 @@ if (!card.homeRunChecked) {
 
   const chance = Math.random();
 
-  if (chance < 0.04) {
+  if (chance < 0.03) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
