@@ -3,27 +3,88 @@
 import { useState, useEffect, useRef } from "react";
 
 const cards = [
-  "/cards/カース.png",
-  "/cards/グングニル.png",
-  "/cards/サムフリック.png",
-  "/cards/ショットガン.png",
-  "/cards/スチール.png",
-  "/cards/トマソン.png",
-  "/cards/ナパームガール.png",
-  "/cards/ノーリスト.png",
-  "/cards/パーム・ストライク.png",
-  "/cards/ファントム.png",
-  "/cards/ブラインド.png",
-  "/cards/ブラックチケット.png",
-  "/cards/ボルテックス.png",
-  "/cards/マグネットフォース.png",
-  "/cards/四次元マンション.png",
+  {
+    name: "カース",
+    image: "/cards/カース.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "グングニル",
+    image: "/cards/グングニル.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "サムフリック",
+    image: "/cards/サムフリック.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ショットガン",
+    image: "/cards/ショットガン.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "スチール",
+    image: "/cards/スチール.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "トマソン",
+    image: "/cards/トマソン.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ナパームガール",
+    image: "/cards/ナパームガール.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ノーリスト",
+    image: "/cards/ノーリスト.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "パーム・ストライク",
+    image: "/cards/パーム・ストライク.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ファントム",
+    image: "/cards/ファントム.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ブラインド",
+    image: "/cards/ブラインド.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ブラックチケット",
+    image: "/cards/ブラックチケット.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ボルテックス",
+    image: "/cards/ボルテックス.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "マグネットフォース",
+    image: "/cards/マグネットフォース.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "四次元マンション",
+    image: "/cards/四次元マンション.png",
+    physicalPenalty: false,
+  },
 ];
 
 type DrawnCard = {
   image: string;
   revealed: boolean;
   rare?: boolean;
+  physicalPenalty?: boolean;
 };
 
 export default function Home() {
@@ -32,6 +93,7 @@ export default function Home() {
     image: string;
     revealed: boolean;
     rare?: boolean;
+    physicalPenalty?: boolean;
   }[]
 >([]);
   const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
@@ -160,9 +222,10 @@ useEffect(() => {
 
     setDrawnCards(
   shuffled.slice(0, 2).map((card) => ({
-    image: card,
+    image: card.image,
     revealed: false,
-    rare: card === "/cards/四次元マンション.png",
+    rare: card.name === "四次元マンション",
+    physicalPenalty: card.physicalPenalty,
   }))
 );
 
@@ -1158,13 +1221,32 @@ filter:
       zIndex: 9999,
     }}
   >
-    <img
-      src={selectedCard.image}
+     <div
       style={{
-        width: "300px",
-        filter: "brightness(2)",
+        position: "relative",
       }}
-    />
+    >
+      <img
+        src={selectedCard.image}
+        style={{
+          width: "300px",
+          filter: "brightness(2)",
+        }}
+      />
+
+      {selectedCard.physicalPenalty && (
+        <img
+          src="/images/制約と誓約.png"
+          alt="制約と誓約"
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "-80px",
+            width: "100px",
+          }}
+        />
+      )}
+    </div>
   </div>
 )}
       </main>
