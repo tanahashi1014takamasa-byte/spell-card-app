@@ -612,13 +612,27 @@ return (
     maxWidth: "500px",
     borderRadius: "12px",
     animation: "none",
-filter:
-  zoomImage === "/cards/四次元マンション.png"
-    ? "brightness(2) drop-shadow(0 0 30px white)"
-    : "none",
+    filter:
+      zoomImage === "/cards/四次元マンション.png"
+        ? "brightness(2) drop-shadow(0 0 30px white)"
+        : "none",
   }}
 />
 )}
+
+{zoomCard?.physicalPenalty && (
+  <img
+    src="/images/制約と誓約.png"
+    alt="制約と誓約"
+    style={{
+      position: "absolute",
+      top: "10px",
+      right: "-80px",
+      width: "100px",
+    }}
+  />
+)}
+
   </div>
 )}
 
