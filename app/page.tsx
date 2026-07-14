@@ -658,7 +658,10 @@ return (
       borderRadius: "10px",
       zIndex: 20000,
       whiteSpace: "pre-line",
-      maxWidth: "80%",
+      width: "90%",
+      maxWidth: "90%",
+      maxHeight: "70vh",
+      overflowY: "auto",
     }}
   >
     【制約と誓約】
@@ -670,12 +673,14 @@ return (
 ベット倍率を上昇させる。
 
 【誓約A】
-倍率 ×2
+
+倍率×2
 そのカードの自分使用不可。
 相手には使用可能。
 
 【誓約B】
-倍率 ×3
+
+倍率×3
 そのカードを使用不可。
   </div>
 )}
