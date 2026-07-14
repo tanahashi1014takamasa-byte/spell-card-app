@@ -624,6 +624,8 @@ return (
   <img
     src="/images/制約と誓約.png"
     alt="制約と誓約"
+  onLoad={() => console.log("制約画像ロード成功")}
+  onError={() => console.log("制約画像ロード失敗")}
     style={{
       position: "absolute",
       top: "10px",
