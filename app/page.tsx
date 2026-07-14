@@ -235,7 +235,9 @@ useEffect(() => {
 }, []);
 
   const drawCards = () => {
-    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    const shuffled = [...cards]
+  .filter((card) => card.name !== "四次元マンション")
+  .sort(() => Math.random() - 0.5);
 
     const isRare = Math.random() < 0.03;
 
