@@ -641,7 +641,10 @@ return (
 
 {showPhysicalText && (
   <div
-  onClick={() => setShowPhysicalText(false)}
+  onClick={(e) => {
+    e.stopPropagation();
+    setShowPhysicalText(false);
+  }}
   style={{
       position: "fixed",
       top: "50%",
