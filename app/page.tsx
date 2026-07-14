@@ -671,8 +671,24 @@ return (
       maxHeight: "70vh",
       overflowY: "auto",
     }}
-  >
-    {physicalText}
+    >
+    <h2
+      style={{
+        textAlign: "center",
+        fontSize: "28px",
+        marginBottom: "20px",
+      }}
+    >
+      【制約と誓約】
+    </h2>
+
+    <div
+      style={{
+        textAlign: "left",
+      }}
+    >
+      {physicalText}
+    </div>
   </div>
 )}
 
