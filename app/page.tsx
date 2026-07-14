@@ -276,10 +276,10 @@ if (!card.revealed) {
 
   // ③ 通常拡大（効果を見る）
   setIsZooming(true);
-
   setTimeout(() => {
   setZoomImage(card.image);
   setZoomCard(card);
+  console.log(card);
   setIsZooming(false);
 }, 150);
 
