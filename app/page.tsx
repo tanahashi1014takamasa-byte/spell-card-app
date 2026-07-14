@@ -132,6 +132,7 @@ export default function Home() {
   const [productionText, setProductionText] = useState("");
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
+  const [physicalText, setPhysicalText] = useState("");
   
   
   
@@ -224,6 +225,13 @@ useEffect(() => {
   fetch("/text/baseballnote.txt")
     .then((res) => res.text())
     .then(setBaseballNoteText);
+}, []);
+
+
+useEffect(() => {
+  fetch("/text/制約と誓約.txt")
+    .then((res) => res.text())
+    .then((text) => setPhysicalText(text));
 }, []);
 
   const drawCards = () => {
@@ -664,27 +672,7 @@ return (
       overflowY: "auto",
     }}
   >
-    【制約と誓約】
-
-自分自身に使用することで
-「制約と誓約」を発動することができる。
-
-制約を自分に課すことで、
-ベット倍率を上昇させる。
-
-制約を課したら、
-どちらかの誓約を選択する。
-
-【誓約A】
-
-・ベット倍率 ×2
-・そのゲーム中、自分自身への使用不可
-・相手への使用は可能
-
-【誓約B】
-
-・ベット倍率 ×3
-・そのゲーム中、そのカードは使用不可
+    {physicalText}
   </div>
 )}
 
