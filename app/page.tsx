@@ -657,20 +657,21 @@ return (
     setShowPhysicalText(false);
   }}
   style={{
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      background: "white",
-      padding: "30px",
-      borderRadius: "10px",
-      zIndex: 20000,
-      whiteSpace: "pre-line",
-      width: "90%",
-      maxWidth: "90%",
-      maxHeight: "70vh",
-      overflowY: "auto",
-    }}
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  background: "#333",
+  color: "white",
+  padding: "30px",
+  borderRadius: "10px",
+  zIndex: "20000",
+  whiteSpace: "pre-line",
+  width: "90%",
+  maxWidth: "90%",
+  maxHeight: "70vh",
+  overflowY: "auto",
+}}
     >
     <h2
       style={{
