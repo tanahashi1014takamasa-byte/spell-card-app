@@ -105,6 +105,8 @@ export default function Home() {
   rare?: boolean;
   physicalPenalty?: boolean;
 } | null>(null);
+  const [showPhysicalText, setShowPhysicalText] = useState(false);
+
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
@@ -626,8 +628,7 @@ return (
   <img
     src="/images/制約と誓約.png"
     alt="制約と誓約"
-  onLoad={() => console.log("制約画像ロード成功")}
-  onError={() => console.log("制約画像ロード失敗")}
+  onClick={() => setShowPhysicalText(true)}
     style={{
   position: "fixed",
   top: "50px",
@@ -636,6 +637,23 @@ return (
   zIndex: 10000,
 }}
   />
+)}
+
+{showPhysicalText && (
+  <div
+    style={{
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      background: "white",
+      padding: "30px",
+      borderRadius: "10px",
+      zIndex: 20000,
+    }}
+  >
+    制約と誓約の説明
+  </div>
 )}
 
   </div>
