@@ -237,8 +237,12 @@ useEffect(() => {
   const drawCards = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
 
+    const isRare = Math.random() < 0.03;
+
+    const rareCard = cards.find((card) => card.name === "四次元マンション");
+
     setDrawnCards(
-  shuffled.slice(0, 2).map((card) => ({
+  (isRare && rareCard ? [rareCard, ...shuffled].slice(0, 2) : shuffled.slice(0, 2)).map((card) => ({
     image: card.image,
     revealed: false,
     rare: card.name === "四次元マンション",
