@@ -590,6 +590,8 @@ return (
 
 
     onClick={closeZoom}
+
+    
   >
     {zoomImage.endsWith(".mp4") ? (
   <video
@@ -627,11 +629,12 @@ return (
   onLoad={() => console.log("制約画像ロード成功")}
   onError={() => console.log("制約画像ロード失敗")}
     style={{
-      position: "absolute",
-      top: "10px",
-      right: "-80px",
-      width: "100px",
-    }}
+  position: "fixed",
+  top: "50px",
+  right: "50px",
+  width: "100px",
+  zIndex: 10000,
+}}
   />
 )}
 
