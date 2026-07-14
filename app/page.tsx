@@ -628,7 +628,10 @@ return (
   <img
     src="/images/制約と誓約.png"
     alt="制約と誓約"
-  onClick={() => setShowPhysicalText(true)}
+  onClick={(e) => {
+  e.stopPropagation();
+  setShowPhysicalText(true);
+}}
     style={{
   position: "fixed",
   top: "50px",
