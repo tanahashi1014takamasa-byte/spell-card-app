@@ -905,14 +905,7 @@ return (
   />
 
 
-  <img
-  src="/images/拡腸展開.png"
-  alt="拡腸展開"
-style={{
-  marginTop: "40px",
-}}
-
-/>
+  
 
   {/* ②のテキスト（ルールブック用） */}
   {isRuleOpen && (
@@ -935,7 +928,14 @@ style={{
 </div>
 
 
+<img
+  src="/images/拡腸展開.png"
+  alt="拡腸展開"
+style={{
+  marginTop: "40px",
+}}
 
+/>
 
 
 
@@ -972,57 +972,11 @@ style={{
   }}
 >
   <img
-    src="/images/木更津バーナー①.png"
-    alt="木更津バーナー①"
-    onClick={() => {
-      setResumeBgm(false);
-      setZoomImage("/videos/円陣①.mp4");
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
-
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "40px",
-  }}
->
-  <img
     src="/images/木更津バーナー②.png"
     alt="木更津バーナー②"
     onClick={() => {
       setResumeBgm(false);
       setZoomImage("/videos/円陣②.mp4");
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
-
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "40px",
-  }}
->
-  <img
-    src="/images/木更津バーナー③.png"
-    alt="木更津バーナー③"
-    onClick={() => {
-      setResumeBgm(false);
-      setZoomImage("/videos/ダブル太陽.mp4");
     }}
     style={{
       width: "500px",
