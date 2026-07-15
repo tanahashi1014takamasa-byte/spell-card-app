@@ -908,6 +908,10 @@ return (
   <img
   src="/images/拡腸展開.png"
   alt="拡腸展開"
+style={{
+  marginTop: "20px",
+}}
+
 />
 
   {/* ②のテキスト（ルールブック用） */}
