@@ -21,8 +21,11 @@ export const metadata: Metadata = {
   title: "ちいかわストラックアウト",
   description: "Spell Card App",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon-192.png",
+    apple: "/icon-192.png",
+  },
 };
-
 export default function RootLayout({
   children,
 }: {

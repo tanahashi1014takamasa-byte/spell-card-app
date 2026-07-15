@@ -3,27 +3,89 @@
 import { useState, useEffect, useRef } from "react";
 
 const cards = [
-  "/cards/カース.png",
-  "/cards/グングニル.png",
-  "/cards/サムフリック.png",
-  "/cards/ショットガン.png",
-  "/cards/スチール.png",
-  "/cards/トマソン.png",
-  "/cards/ナパームガール.png",
-  "/cards/ノーリスト.png",
-  "/cards/パーム・ストライク.png",
-  "/cards/ファントム.png",
-  "/cards/ブラインド.png",
-  "/cards/ブラックチケット.png",
-  "/cards/ボルテックス.png",
-  "/cards/マグネットフォース.png",
-  "/cards/四次元マンション.png",
+  {
+    name: "カース",
+    image: "/cards/カース.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "グングニル",
+    image: "/cards/グングニル.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "サムフリック",
+    image: "/cards/サムフリック.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ショットガン",
+    image: "/cards/ショットガン.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "スチール",
+    image: "/cards/スチール.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "トマソン",
+    image: "/cards/トマソン.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ナパームガール",
+    image: "/cards/ナパームガール.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ノーリスト",
+    image: "/cards/ノーリスト.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "パーム・ストライク",
+    image: "/cards/パーム・ストライク.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ファントム",
+    image: "/cards/ファントム.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ブラインド",
+    image: "/cards/ブラインド.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "ブラックチケット",
+    image: "/cards/ブラックチケット.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "ボルテックス",
+    image: "/cards/ボルテックス.png",
+    physicalPenalty: true,
+  },
+  {
+    name: "マグネットフォース",
+    image: "/cards/マグネットフォース.png",
+    physicalPenalty: false,
+  },
+  {
+    name: "四次元マンション",
+    image: "/cards/四次元マンション.png",
+    physicalPenalty: false,
+  },
 ];
 
 type DrawnCard = {
   image: string;
   revealed: boolean;
   rare?: boolean;
+  physicalPenalty?: boolean;
+  homeRunChecked?: boolean;
 };
 
 export default function Home() {
@@ -32,11 +94,21 @@ export default function Home() {
     image: string;
     revealed: boolean;
     rare?: boolean;
+    physicalPenalty?: boolean;
+    homeRunChecked?: boolean;
   }[]
 >([]);
   const [selectedCard, setSelectedCard] = useState<DrawnCard | null>(null);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomImage, setZoomImage] = useState<string | null>(null);
+  const [zoomCard, setZoomCard] = useState<{
+  image: string;
+  revealed: boolean;
+  rare?: boolean;
+  physicalPenalty?: boolean;
+} | null>(null);
+  const [showPhysicalText, setShowPhysicalText] = useState(false);
+
   const [isHomeRun, setIsHomeRun] = useState(false);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [bgmStarted, setBgmStarted] = useState(false);
@@ -50,7 +122,7 @@ export default function Home() {
   const [taniguchiText, setTaniguchiText] = useState("");
   const [maruiText, setMaruiText] = useState("");
   const [igarashiText, setIgarashiText] = useState("");
-　const [kondoText, setKondoText] = useState("");
+  const [kondoText, setKondoText] = useState("");
   const [waniImage, setWaniImage] = useState("/images/wani③.png");
   const [isWaniOpen, setIsWaniOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,6 +134,8 @@ export default function Home() {
   const [productionText, setProductionText] = useState("");
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
+  const [physicalText, setPhysicalText] = useState("");
+  
   
   
 
@@ -155,14 +229,28 @@ useEffect(() => {
     .then(setBaseballNoteText);
 }, []);
 
+
+useEffect(() => {
+  fetch("/text/制約と誓約.txt")
+    .then((res) => res.text())
+    .then((text) => setPhysicalText(text));
+}, []);
+
   const drawCards = () => {
-    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    const shuffled = [...cards]
+  .filter((card) => card.name !== "四次元マンション")
+  .sort(() => Math.random() - 0.5);
+
+    const isRare = Math.random() < 0.03;
+
+    const rareCard = cards.find((card) => card.name === "四次元マンション");
 
     setDrawnCards(
-  shuffled.slice(0, 2).map((card) => ({
-    image: card,
+  (isRare && rareCard ? [rareCard, ...shuffled].slice(0, 2) : shuffled.slice(0, 2)).map((card) => ({
+    image: card.image,
     revealed: false,
-    rare: card === "/cards/四次元マンション.png",
+    rare: card.name === "四次元マンション",
+    physicalPenalty: card.physicalPenalty,
   }))
 );
 
@@ -188,9 +276,15 @@ if (!card.revealed) {
   
 
   // ② 表カード → 効果表示（ここが本体）
+if (!card.homeRunChecked) {
+
+  const updated = [...drawnCards];
+  updated[index].homeRunChecked = true;
+  setDrawnCards(updated);
+
   const chance = Math.random();
 
-  if (chance < 0.04) {
+  if (chance < 0.03) {
     const videos = [
       "/videos/home-run-1.mp4",
       "/videos/home-run-2.mp4",
@@ -202,15 +296,18 @@ if (!card.revealed) {
     setIsHomeRun(true);
     setZoomImage(randomVideo);
     return;
+     }
   }
 
   // ③ 通常拡大（効果を見る）
   setIsZooming(true);
-
   setTimeout(() => {
-    setZoomImage(card.image);
-    setIsZooming(false);
-  }, 150);
+  setZoomImage(card.image);
+  setZoomCard(card);
+  console.log(card);
+  setIsZooming(false);
+}, 150);
+
 };
 
 return (
@@ -518,6 +615,8 @@ return (
 
 
     onClick={closeZoom}
+
+    
   >
     {zoomImage.endsWith(".mp4") ? (
   <video
@@ -539,13 +638,76 @@ return (
     width: "85vw",
     maxWidth: "500px",
     borderRadius: "12px",
-    animation:
+    animation: "none",
+    filter:
       zoomImage === "/cards/四次元マンション.png"
-        ? "rareFlash 0.8s infinite"
+        ? "brightness(2) drop-shadow(0 0 30px white)"
         : "none",
   }}
 />
 )}
+
+{zoomCard?.physicalPenalty && (
+  <img
+    src="/images/制約と誓約.png"
+    alt="制約と誓約"
+  onClick={(e) => {
+  e.stopPropagation();
+  setShowPhysicalText(true);
+}}
+    style={{
+  position: "fixed",
+  top: "50px",
+  right: "50px",
+  width: "100px",
+  zIndex: 10000,
+}}
+  />
+)}
+
+{showPhysicalText && (
+  <div
+  onClick={(e) => {
+    e.stopPropagation();
+    setShowPhysicalText(false);
+  }}
+  style={{
+  position: "fixed",
+  top: "55%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  background: "#333",
+  color: "white",
+  padding: "30px",
+  borderRadius: "10px",
+  zIndex: "20000",
+  whiteSpace: "pre-line",
+  width: "90%",
+  maxWidth: "90%",
+  maxHeight: "70vh",
+  overflowY: "auto",
+}}
+    >
+    <h2
+      style={{
+        textAlign: "center",
+        fontSize: "28px",
+        marginBottom: "20px",
+      }}
+    >
+      【制約と誓約】
+    </h2>
+
+    <div
+      style={{
+        textAlign: "left",
+      }}
+    >
+      {physicalText}
+    </div>
+  </div>
+)}
+
   </div>
 )}
 
@@ -631,12 +793,15 @@ return (
                 />
 
                 <img
-                  src={card.image}
-                  className="card-front"
-                  style={{
-    animation: card.rare ? "rareFlash 0.8s infinite" : "none",
+                 src={card.image}
+  className="card-front"
+  style={{
+    animation:
+      card.image === "/cards/四次元マンション.png"
+        ? "rareFlash 0.8s infinite"
+        : "none",
   }}
-                />
+/>
               </div>
             </div>
           ))}
@@ -1154,13 +1319,32 @@ return (
       zIndex: 9999,
     }}
   >
-    <img
-      src={selectedCard.image}
+     <div
       style={{
-        width: "300px",
-        filter: "brightness(2)",
+        position: "relative",
       }}
-    />
+    >
+      <img
+        src={selectedCard.image}
+        style={{
+          width: "300px",
+          filter: "brightness(2)",
+        }}
+      />
+
+      {selectedCard.physicalPenalty && (
+        <img
+          src="/images/制約と誓約.png"
+          alt="制約と誓約"
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "-80px",
+            width: "100px",
+          }}
+        />
+      )}
+    </div>
   </div>
 )}
       </main>
