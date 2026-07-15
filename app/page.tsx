@@ -904,6 +904,12 @@ return (
     }}
   />
 
+
+  <img
+  src="/images/拡腸展開.png"
+  alt="拡腸展開"
+/>
+
   {/* ②のテキスト（ルールブック用） */}
   {isRuleOpen && (
     <p
