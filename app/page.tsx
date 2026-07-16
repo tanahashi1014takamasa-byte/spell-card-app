@@ -138,7 +138,6 @@ export default function Home() {
   const [showCanMenu, setShowCanMenu] = useState(false);
   const [physicalText, setPhysicalText] = useState("");
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
-  const [isExpansionFlash, setIsExpansionFlash] = useState(false);
   
   
 
@@ -971,14 +970,8 @@ return (
     </p>
 
     <button
-      onClick={() => {
+     onClick={() => {
   setIsExpansionAnimation(true);
-
-  setIsExpansionFlash(true);
-
-  setTimeout(() => {
-    setIsExpansionFlash(false);
-  }, 200);
 }}
      style={{
   marginTop: "20px",
@@ -1024,17 +1017,6 @@ return (
         height: "auto",
       }}
     />
-
-      {isExpansionFlash && (
-  <div
-    style={{
-      position: "absolute",
-      inset: 0,
-      background: "white",
-      zIndex: 2,
-    }}
-  />
-)}
 
   </div>
 )}
