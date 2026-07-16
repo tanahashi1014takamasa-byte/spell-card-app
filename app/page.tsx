@@ -952,7 +952,7 @@ return (
 />
 
 {isExpansionOpen && (
-  <p
+  <div
     style={{
       marginTop: "20px",
       color: "white",
@@ -965,9 +965,29 @@ return (
       marginRight: "auto",
     }}
   >
-    {expansionText}
-  </p>
+    <p>
+      {expansionText}
+    </p>
+
+    <button
+      style={{
+        marginTop: "20px",
+        padding: "12px 40px",
+        fontSize: "20px",
+        fontWeight: "bold",
+        background: "#b00000",
+        color: "white",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+      }}
+    >
+      発動
+    </button>
+  </div>
 )}
+
+
 
 
 <div
