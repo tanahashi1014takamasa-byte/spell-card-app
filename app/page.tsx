@@ -1000,8 +1000,21 @@ return (
       inset: 0,
       background: "black",
       zIndex: 30000,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     }}
-  />
+  >
+    <img
+      src="/images/拡腸展開s.png"
+      alt="拡腸展開"
+      style={{
+        width: "80vw",
+        maxWidth: "700px",
+        height: "auto",
+      }}
+    />
+  </div>
 )}
 
 
