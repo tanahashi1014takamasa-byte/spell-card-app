@@ -110,7 +110,6 @@ body {
   position: absolute;
   width: 500px;
   height: 500px;
-  border-radius: 50%;
   background: conic-gradient(
   transparent,
   white,
@@ -120,6 +119,7 @@ body {
 );
   animation: expansionAura 5s infinite;
   z-index: 0;
+   transform: rotate(45deg);
 }
 
 @keyframes expansionAura {
