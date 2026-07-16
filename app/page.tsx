@@ -973,6 +973,8 @@ return (
     <button
      onClick={() => {
   setIsExpansionAnimation(true);
+new Audio("/sounds/拡腸展開.mp3").play();
+
 }}
      style={{
   marginTop: "20px",
