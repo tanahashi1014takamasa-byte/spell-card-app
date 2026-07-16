@@ -105,26 +105,3 @@ body {
     filter: brightness(1);
   }
 }
-
-.expansion-aura {
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  background: repeating-conic-gradient(
-    white 0deg,
-    transparent 10deg,
-    transparent 25deg
-  );
-  animation: expansionAura 1s infinite;
-  opacity: 0.5;
-}
-
-@keyframes expansionAura {
-  from {
-    transform: rotate(0deg) scale(1);
-  }
-
-  to {
-    transform: rotate(360deg) scale(1.1);
-  }
-}

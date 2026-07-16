@@ -1029,8 +1029,6 @@ return (
 
 {showExpansionImage && (
   <>
-    <div className="expansion-aura" />
-
     <img
       src="/images/拡腸展開s.png"
       alt="拡腸展開"
