@@ -970,13 +970,13 @@ return (
     </p>
 
     <button
-      style={{
+     style={{
   marginTop: "20px",
   padding: "12px 40px",
   fontSize: "20px",
   fontWeight: "bold",
-  background: "pink",
-  color: "white",
+  background: "#ff69b4",
+  color: "black",
   border: "none",
   borderRadius: "8px",
   cursor: "pointer",
