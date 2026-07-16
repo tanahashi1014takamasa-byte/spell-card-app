@@ -1031,15 +1031,17 @@ return (
   <>
     <div className="expansion-aura" />
 
-  <img
-    src="/images/拡腸展開s.png"
-    alt="拡腸展開"
-    style={{
-      width: "80vw",
-      maxWidth: "700px",
-      height: "auto",
-    }}
-  />
+    <img
+      src="/images/拡腸展開s.png"
+      alt="拡腸展開"
+      style={{
+        width: "80vw",
+        maxWidth: "700px",
+        height: "auto",
+        position: "relative",
+        zIndex: 1,
+      }}
+    />
   </>
 )}
 
