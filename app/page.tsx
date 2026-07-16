@@ -1009,6 +1009,7 @@ return (
       alignItems: "center",
     }}
   >
+    {!showExpansionImage && (
     <video
   src="/videos/effect.mp4"
   autoPlay
@@ -1021,6 +1022,7 @@ return (
     maxWidth: "700px",
   }}
 />
+)}
 
 {showExpansionImage && (
   <img
