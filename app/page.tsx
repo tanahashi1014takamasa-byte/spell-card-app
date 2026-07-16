@@ -1024,6 +1024,18 @@ return (
         height: "auto",
       }}
     />
+
+      {isExpansionFlash && (
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "white",
+      zIndex: 2,
+    }}
+  />
+)}
+
   </div>
 )}
 
