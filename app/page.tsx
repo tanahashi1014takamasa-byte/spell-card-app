@@ -114,6 +114,8 @@ export default function Home() {
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
+  const [isExpansionOpen, setIsExpansionOpen] = useState(false);
+  const [expansionText, setExpansionText] = useState("");
   const [guideText, setGuideText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBambiOpen, setIsBambiOpen] = useState(false);
@@ -931,12 +933,41 @@ return (
 <img
   src="/images/拡腸展開.png"
   alt="拡腸展開"
-style={{
-  marginTop: "40px",
-}}
-
+  onClick={() => {
+    if (!isExpansionOpen) {
+      fetch("/text/拡腸展開.txt")
+        .then((response) => response.text())
+        .then((text) => {
+          setExpansionText(text);
+          setIsExpansionOpen(true);
+        });
+    } else {
+      setIsExpansionOpen(false);
+    }
+  }}
+  style={{
+    marginTop: "40px",
+    cursor: "pointer",
+  }}
 />
 
+{isExpansionOpen && (
+  <p
+    style={{
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
+      textAlign: "left",
+      maxWidth: "500px",
+      marginLeft: "auto",
+      marginRight: "auto",
+    }}
+  >
+    {expansionText}
+  </p>
+)}
 
 
 <div
