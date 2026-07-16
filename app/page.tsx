@@ -138,6 +138,7 @@ export default function Home() {
   const [showCanMenu, setShowCanMenu] = useState(false);
   const [physicalText, setPhysicalText] = useState("");
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
+  const [showExpansionImage, setShowExpansionImage] = useState(false);
   
   
 
@@ -1012,11 +1013,26 @@ return (
   src="/videos/effect.mp4"
   autoPlay
   playsInline
+  onEnded={() => {
+  setShowExpansionImage(true);
+}}
   style={{
     width: "80vw",
     maxWidth: "700px",
   }}
 />
+
+{showExpansionImage && (
+  <img
+    src="/images/拡腸展開s.png"
+    alt="拡腸展開"
+    style={{
+      width: "80vw",
+      maxWidth: "700px",
+      height: "auto",
+    }}
+  />
+)}
 
   </div>
 )}
