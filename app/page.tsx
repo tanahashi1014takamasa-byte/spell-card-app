@@ -138,6 +138,7 @@ export default function Home() {
   const [showCanMenu, setShowCanMenu] = useState(false);
   const [physicalText, setPhysicalText] = useState("");
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
+  const [isExpansionFlash, setIsExpansionFlash] = useState(false);
   
   
 
@@ -971,8 +972,14 @@ return (
 
     <button
       onClick={() => {
-    setIsExpansionAnimation(true);
-  }}
+  setIsExpansionAnimation(true);
+
+  setIsExpansionFlash(true);
+
+  setTimeout(() => {
+    setIsExpansionFlash(false);
+  }, 200);
+}}
      style={{
   marginTop: "20px",
   padding: "12px 40px",
