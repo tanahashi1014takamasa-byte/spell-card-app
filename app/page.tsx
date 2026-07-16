@@ -1047,7 +1047,7 @@ return (
   </div>
 )}
 
-
+<div className="expansion-aura" />
 
 
 <div
