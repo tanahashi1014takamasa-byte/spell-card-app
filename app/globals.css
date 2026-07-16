@@ -105,3 +105,30 @@ body {
     filter: brightness(1);
   }
 }
+
+.expansion-aura {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, white, transparent);
+  animation: expansionAura 5s infinite;
+  z-index: 0;
+}
+
+@keyframes expansionAura {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
