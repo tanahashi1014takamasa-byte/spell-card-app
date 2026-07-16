@@ -973,7 +973,6 @@ return (
     <button
      onClick={() => {
   setIsExpansionAnimation(true);
-new Audio("/sounds/拡腸展開.mp3").play();
 
 }}
      style={{
@@ -1018,6 +1017,7 @@ new Audio("/sounds/拡腸展開.mp3").play();
   playsInline
   onEnded={() => {
   setShowExpansionImage(true);
+  new Audio("/sounds/拡腸展開.mp3").play();
 }}
   style={{
     width: "80vw",
