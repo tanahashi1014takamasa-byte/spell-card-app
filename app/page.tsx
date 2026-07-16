@@ -1008,15 +1008,15 @@ return (
       alignItems: "center",
     }}
   >
-    <img
-      src="/images/拡腸展開s.png"
-      alt="拡腸展開"
-      style={{
-        width: "80vw",
-        maxWidth: "700px",
-        height: "auto",
-      }}
-    />
+    <video
+  src="/videos/effect.mp4"
+  autoPlay
+  playsInline
+  style={{
+    width: "80vw",
+    maxWidth: "700px",
+  }}
+/>
 
   </div>
 )}
