@@ -111,12 +111,24 @@ body {
   width: 700px;
   height: 700px;
   background:
-    linear-gradient(
-      45deg,
-      transparent 45%,
-      white 48%,
-      transparent 52%
-    );
+  linear-gradient(
+    120deg,
+    transparent 40%,
+    white 45%,
+    transparent 50%
+  ),
+  linear-gradient(
+    250deg,
+    transparent 35%,
+    white 40%,
+    transparent 45%
+  ),
+  linear-gradient(
+    20deg,
+    transparent 45%,
+    white 50%,
+    transparent 55%
+  );
   animation: lightning 0.3s infinite;
   opacity: 0.8;
 }
