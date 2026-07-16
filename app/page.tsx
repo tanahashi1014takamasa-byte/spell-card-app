@@ -976,7 +976,7 @@ return (
   fontSize: "20px",
   fontWeight: "bold",
   background: "#ff69b4",
-  color: "black",
+  color: "white",
   border: "none",
   borderRadius: "8px",
   cursor: "pointer",
