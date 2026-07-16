@@ -108,33 +108,32 @@ body {
 
 .expansion-aura {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: conic-gradient(
-  transparent,
-  white,
-  transparent,
-  white,
-  transparent
-);
-  animation: expansionAura 5s infinite;
-  z-index: 0;
-   transform: rotate(45deg);
+  width: 700px;
+  height: 700px;
+  background:
+    linear-gradient(
+      45deg,
+      transparent 45%,
+      white 48%,
+      transparent 52%
+    );
+  animation: lightning 0.3s infinite;
+  opacity: 0.8;
 }
 
-@keyframes expansionAura {
+@keyframes lightning {
   0% {
-    transform: scale(0.8);
+    transform: rotate(0deg) scale(1);
     opacity: 0.3;
   }
 
   50% {
-    transform: scale(1.2);
-    opacity: 0.8;
+    transform: rotate(20deg) scale(1.1);
+    opacity: 1;
   }
 
   100% {
-    transform: scale(0.8);
+    transform: rotate(0deg) scale(1);
     opacity: 0.3;
   }
 }
