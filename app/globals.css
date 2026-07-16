@@ -111,7 +111,13 @@ body {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, white, transparent);
+  background: conic-gradient(
+  transparent,
+  white,
+  transparent,
+  white,
+  transparent
+);
   animation: expansionAura 5s infinite;
   z-index: 0;
 }
