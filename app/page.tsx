@@ -1035,11 +1035,12 @@ return (
       src="/images/拡腸展開s.png"
       alt="拡腸展開"
       style={{
-        width: "80vw",
+        width: "90vw",
         maxWidth: "700px",
         height: "auto",
         position: "relative",
         zIndex: 1,
+        transform: "scale(1.15)",
       }}
     />
   </>
