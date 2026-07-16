@@ -137,7 +137,7 @@ export default function Home() {
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
   const [physicalText, setPhysicalText] = useState("");
-  
+  const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
   
   
 
@@ -970,6 +970,9 @@ return (
     </p>
 
     <button
+      onClick={() => {
+    setIsExpansionAnimation(true);
+  }}
      style={{
   marginTop: "20px",
   padding: "12px 40px",
@@ -988,6 +991,17 @@ return (
       発動
     </button>
   </div>
+)}
+
+{isExpansionAnimation && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "black",
+      zIndex: 30000,
+    }}
+  />
 )}
 
 
