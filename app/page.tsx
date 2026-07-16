@@ -999,6 +999,7 @@ return (
   <div
   onClick={() => {
       setIsExpansionAnimation(false);
+      setShowExpansionImage(false);
     }}
     style={{
       position: "fixed",
