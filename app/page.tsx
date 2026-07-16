@@ -971,16 +971,19 @@ return (
 
     <button
       style={{
-        marginTop: "20px",
-        padding: "12px 40px",
-        fontSize: "20px",
-        fontWeight: "bold",
-        background: "#b00000",
-        color: "white",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-      }}
+  marginTop: "20px",
+  padding: "12px 40px",
+  fontSize: "20px",
+  fontWeight: "bold",
+  background: "pink",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto",
+}}
     >
       発動
     </button>
