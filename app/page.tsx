@@ -995,6 +995,9 @@ return (
 
 {isExpansionAnimation && (
   <div
+  onClick={() => {
+      setIsExpansionAnimation(false);
+    }}
     style={{
       position: "fixed",
       inset: 0,
