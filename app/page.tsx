@@ -318,10 +318,6 @@ return (
     style={{
       width: "100vw",
       height: "100dvh",
-      overflow: "hidden",
-      position: "fixed",
-      top: 0,
-      left: 0,
     }}
   >
 
