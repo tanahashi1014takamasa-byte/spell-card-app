@@ -114,6 +114,8 @@ export default function Home() {
   const [bgmStarted, setBgmStarted] = useState(false);
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   const [ruleText, setRuleText] = useState("");
+  const [isExpansionOpen, setIsExpansionOpen] = useState(false);
+  const [expansionText, setExpansionText] = useState("");
   const [guideText, setGuideText] = useState("");
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isBambiOpen, setIsBambiOpen] = useState(false);
@@ -135,7 +137,8 @@ export default function Home() {
   const [baseballNoteText, setBaseballNoteText] = useState("");
   const [showCanMenu, setShowCanMenu] = useState(false);
   const [physicalText, setPhysicalText] = useState("");
-  
+  const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
+  const [showExpansionImage, setShowExpansionImage] = useState(false);
   
   
 
@@ -311,9 +314,12 @@ if (!card.homeRunChecked) {
 };
 
 return (
-
-
-   <>
+  <div
+    style={{
+      width: "100vw",
+      height: "100dvh",
+    }}
+  >
 
 <button
       onClick={() => window.location.reload()}
@@ -904,6 +910,9 @@ return (
     }}
   />
 
+
+  
+
   {/* ②のテキスト（ルールブック用） */}
   {isRuleOpen && (
     <p
@@ -925,8 +934,121 @@ return (
 </div>
 
 
+<img
+  src="/images/拡腸展開.png"
+  alt="拡腸展開"
+  onClick={() => {
+    if (!isExpansionOpen) {
+      fetch("/text/拡腸展開.txt")
+        .then((response) => response.text())
+        .then((text) => {
+          setExpansionText(text);
+          setIsExpansionOpen(true);
+        });
+    } else {
+      setIsExpansionOpen(false);
+    }
+  }}
+  style={{
+    marginTop: "40px",
+    cursor: "pointer",
+  }}
+/>
 
+{isExpansionOpen && (
+  <div
+    style={{
+      marginTop: "20px",
+      color: "white",
+      fontSize: "18px",
+      lineHeight: "1.8",
+      whiteSpace: "pre-wrap",
+      textAlign: "left",
+      maxWidth: "500px",
+      marginLeft: "auto",
+      marginRight: "auto",
+    }}
+  >
+    <p>
+      {expansionText}
+    </p>
 
+    <button
+     onClick={() => {
+  setIsExpansionAnimation(true);
+
+}}
+     style={{
+  marginTop: "20px",
+  padding: "12px 40px",
+  fontSize: "20px",
+  fontWeight: "bold",
+  background: "#ff69b4",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto",
+}}
+    >
+      発動
+    </button>
+  </div>
+)}
+
+{isExpansionAnimation && (
+  <div
+  onClick={() => {
+      setIsExpansionAnimation(false);
+      setShowExpansionImage(false);
+    }}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "black",
+      zIndex: 30000,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {!showExpansionImage && (
+    <video
+  src="/videos/effect.mp4"
+  autoPlay
+  playsInline
+  onEnded={() => {
+  setShowExpansionImage(true);
+  new Audio("/sounds/拡腸展開.mp3").play();
+}}
+  style={{
+    width: "80vw",
+    maxWidth: "700px",
+  }}
+/>
+)}
+
+{showExpansionImage && (
+  <>
+    <img
+      src="/images/拡腸展開s.png"
+      alt="拡腸展開"
+      style={{
+        width: "90vw",
+        maxWidth: "700px",
+        height: "auto",
+        position: "relative",
+        zIndex: 1,
+        transform: "scale(1.15)",
+      }}
+    />
+  </>
+)}
+
+  </div>
+)}
 
 
 <div
@@ -962,57 +1084,11 @@ return (
   }}
 >
   <img
-    src="/images/木更津バーナー①.png"
-    alt="木更津バーナー①"
-    onClick={() => {
-      setResumeBgm(false);
-      setZoomImage("/videos/円陣①.mp4");
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
-
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "40px",
-  }}
->
-  <img
     src="/images/木更津バーナー②.png"
     alt="木更津バーナー②"
     onClick={() => {
       setResumeBgm(false);
       setZoomImage("/videos/円陣②.mp4");
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
-
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "40px",
-  }}
->
-  <img
-    src="/images/木更津バーナー③.png"
-    alt="木更津バーナー③"
-    onClick={() => {
-      setResumeBgm(false);
-      setZoomImage("/videos/ダブル太陽.mp4");
     }}
     style={{
       width: "500px",
@@ -1347,8 +1423,8 @@ return (
     </div>
   </div>
 )}
-      </main>
-    </>
+            </main>
+    </div>
 );
       
 }
