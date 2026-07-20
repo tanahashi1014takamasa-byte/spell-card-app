@@ -105,3 +105,9 @@ body {
     filter: brightness(1);
   }
 }
+
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
