@@ -330,7 +330,7 @@ return (
         background: "transparent",
         border: "none",
         color: "white",
-        fontSize: "36px",
+        fontSize: "50px",
         cursor: "pointer",
         zIndex: 10003,
       }}
