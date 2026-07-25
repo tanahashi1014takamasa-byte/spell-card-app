@@ -325,7 +325,7 @@ return (
       onClick={() => window.location.reload()}
       style={{
         position: "fixed",
-        top: "20px",
+        top: "10px",
         left: "20px",
         background: "transparent",
         border: "none",
