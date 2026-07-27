@@ -38,13 +38,15 @@ const [gotPrize, setGotPrize] = useState("");
 
   return (
     <main
-      style={{
-        minHeight: "100vh",
-        background: "#111",
-        color: "white",
-        padding: "30px",
-      }}
-    >
+  style={{
+    minHeight: "100dvh",
+    background: "#111",
+    color: "white",
+    padding: "30px",
+    overflowY: "auto",
+    WebkitOverflowScrolling: "touch",
+  }}
+>
       <h1
         style={{
           textAlign: "center",
