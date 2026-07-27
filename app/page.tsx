@@ -315,11 +315,12 @@ if (!card.homeRunChecked) {
 
 return (
   <div
-    style={{
-      width: "100vw",
-      height: "100dvh",
-    }}
-  >
+  style={{
+    width: "100%",
+    minHeight: "100dvh",
+    overflowX: "hidden",
+  }}
+>
 
 <button
       onClick={() => window.location.reload()}
@@ -732,15 +733,17 @@ return (
       />
     )}
 
-    <main
-      style={{
-        padding: 20,
-        textAlign: "center",
-        background: "#111",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+   <main
+  style={{
+    padding: 20,
+    textAlign: "center",
+    background: "#111",
+    minHeight: "100vh",
+    color: "white",
+    overflowX: "hidden",
+    boxSizing: "border-box",
+  }}
+>
       
         <img
    src="/images/spell-card-logo③.png"
