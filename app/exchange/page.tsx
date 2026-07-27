@@ -43,7 +43,9 @@ const [gotPrize, setGotPrize] = useState("");
     background: "#111",
     color: "white",
     padding: "30px",
+    boxSizing: "border-box",
     overflowY: "auto",
+    overflowX: "hidden",
     WebkitOverflowScrolling: "touch",
   }}
 >
