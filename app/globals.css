@@ -108,6 +108,6 @@ body {
 
 html,
 body {
-  overflow: hidden;
-  overscroll-behavior: none;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
 }
