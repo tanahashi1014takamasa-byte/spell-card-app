@@ -141,6 +141,7 @@ export default function Home() {
   const [showExpansionImage, setShowExpansionImage] = useState(false);
   const [showSpellTap, setShowSpellTap] = useState(false);
   const csoVideoRef = useRef<HTMLVideoElement | null>(null);
+  const [showCsoVideo, setShowCsoVideo] = useState(false);
   
 
 
@@ -832,21 +833,33 @@ return (
   src="/images/cso.png"
   alt="cso"
   onClick={() => {
-    csoVideoRef.current?.play();
-  }}
+  setShowCsoVideo(true);
+}}
   style={{
     cursor: "pointer",
   }}
 />
 
+{showCsoVideo && (
+  <video
+    src="/videos/オトナブルー.mp4"
+    autoPlay
+    onEnded={() => {
+      setShowCsoVideo(false);
+    }}
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      objectFit: "cover",
+      zIndex: 9999,
+    }}
+  />
+)}
 
-<video
-  ref={csoVideoRef}
-  src="/videos/オトナブルー.mp4"
-  style={{
-    display: "none",
-  }}
-/>
+
         </div>
 
 {/* ====================== ① スペルカード名鑑 ====================== */}
