@@ -1050,26 +1050,7 @@ return (
       }}
     />
 
-{showSpellTap && (
-  <div
-    onClick={() => setShowSpellTap(false)}
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "black",
-      zIndex: 9999,
-    }}
-  >
-    <img
-      src="/images/spell_tap.png"
-      style={{
-        width: "100%",
-        height: "100%",
-        objectFit: "contain",
-      }}
-    />
-  </div>
-)}
+
 
 
   </>
@@ -1449,6 +1430,27 @@ return (
         />
       )}
     </div>
+  </div>
+)}
+
+{showSpellTap && (
+  <div
+    onClick={() => setShowSpellTap(false)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "black",
+      zIndex: 9999,
+    }}
+  >
+    <img
+      src="/images/spell_tap.png"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
+      }}
+    />
   </div>
 )}
             </main>
