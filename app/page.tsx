@@ -632,7 +632,6 @@ return (
   autoPlay
   playsInline
   onEnded={closeZoom}
-  onClick={(e) => e.stopPropagation()}
   style={{
     width: "85vw",
     maxWidth: "500px",
