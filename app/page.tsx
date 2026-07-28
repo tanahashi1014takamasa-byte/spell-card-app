@@ -139,7 +139,7 @@ export default function Home() {
   const [physicalText, setPhysicalText] = useState("");
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
   const [showExpansionImage, setShowExpansionImage] = useState(false);
-  
+  const [showSpellTap, setShowSpellTap] = useState(false);
   
 
 
@@ -745,13 +745,15 @@ return (
   }}
 >
       
-        <img
-   src="/images/spell-card-logo③.png"
+       <img
+  src="/images/spell-card-logo③.png"
   alt="SPELL CARD"
+  onClick={() => setShowSpellTap(true)}
   style={{
-    width: "700px", // 好きなサイズ
+    width: "700px",
     height: "auto",
     marginBottom: "20px",
+    cursor: "pointer",
   }}
 />
 
@@ -1047,6 +1049,29 @@ return (
         transform: "scale(1.15)",
       }}
     />
+
+{showSpellTap && (
+  <div
+    onClick={() => setShowSpellTap(false)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "black",
+      zIndex: 9999,
+    }}
+  >
+    <img
+      src="/images/spell_tap.jpg"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
+      }}
+    />
+  </div>
+)}
+
+
   </>
 )}
 
