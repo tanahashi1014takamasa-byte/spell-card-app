@@ -1061,7 +1061,7 @@ return (
     }}
   >
     <img
-      src="/images/spell_tap.jpg"
+      src="/images/spell_tap.png"
       style={{
         width: "100%",
         height: "100%",
