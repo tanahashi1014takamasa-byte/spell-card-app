@@ -140,7 +140,6 @@ export default function Home() {
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
   const [showExpansionImage, setShowExpansionImage] = useState(false);
   const [showSpellTap, setShowSpellTap] = useState(false);
-  const csoVideoRef = useRef<HTMLVideoElement | null>(null);
   const [showCsoVideo, setShowCsoVideo] = useState(false);
   
 
@@ -821,46 +820,28 @@ return (
         </div>
 
         
-
-        <div
-          style={{
-            marginTop: "60px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <img
-  src="/images/cso.png"
-  alt="cso"
-  onClick={() => {
-  setShowCsoVideo(true);
-}}
+<div
   style={{
-    cursor: "pointer",
+    marginTop: "60px",
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "40px",
   }}
-/>
-
-{showCsoVideo && (
-  <video
-    src="/videos/オトナブルー.mp4"
-    autoPlay
-    onEnded={() => {
-      setShowCsoVideo(false);
+>
+  <img
+    src="/images/cso.png"
+    alt="cso"
+    onClick={() => {
+      setResumeBgm(false);
+      setZoomImage("/videos/オトナブルー.mp4");
     }}
     style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100vw",
-      height: "100vh",
-      objectFit: "cover",
-      zIndex: 9999,
+      width: "500px",
+      height: "auto",
+      cursor: "pointer",
     }}
   />
-)}
-
-
-        </div>
+</div>
 
 {/* ====================== ① スペルカード名鑑 ====================== */}
 <div
