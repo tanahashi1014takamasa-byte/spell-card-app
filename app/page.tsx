@@ -140,7 +140,6 @@ export default function Home() {
   const [isExpansionAnimation, setIsExpansionAnimation] = useState(false);
   const [showExpansionImage, setShowExpansionImage] = useState(false);
   const [showSpellTap, setShowSpellTap] = useState(false);
-  const [showCsoVideo, setShowCsoVideo] = useState(false);
   
 
 
@@ -632,6 +631,7 @@ return (
   autoPlay
   playsInline
   onEnded={closeZoom}
+  onClick={(e) => e.stopPropagation()}
   style={{
     width: "85vw",
     maxWidth: "500px",
@@ -819,28 +819,23 @@ return (
         </div>
 
         
-<div
-  style={{
-    marginTop: "60px",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "40px",
-  }}
->
-  <img
-    src="/images/cso.png"
-    alt="cso"
-    onClick={() => {
-      setResumeBgm(false);
-      setZoomImage("/videos/オトナブルー.mp4");
-    }}
-    style={{
-      width: "500px",
-      height: "auto",
-      cursor: "pointer",
-    }}
-  />
-</div>
+
+        <div
+          style={{
+            marginTop: "60px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src="/images/cso.png"
+            alt="cso"
+            style={{
+              width: "420px",
+              height: "auto",
+            }}
+          />
+        </div>
 
 {/* ====================== ① スペルカード名鑑 ====================== */}
 <div
