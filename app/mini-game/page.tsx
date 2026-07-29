@@ -16,9 +16,7 @@ export default function MiniGamePage() {
   const bgmRef = useRef<HTMLAudioElement | null>(null);
 
   const nishidaMessages = [
-  "目つぶってやっとんけ？笑",
   "カスが……死ね",
-  "シケモクで脳みそのシワ作ったろか？",
 ];
 
   const [fallingItems, setFallingItems] = useState<
