@@ -752,7 +752,7 @@ return (
   style={{
     width: "700px",
     height: "auto",
-    marginBottom: "20px",
+    marginBottom: "40px",
     cursor: "pointer",
   }}
 />
